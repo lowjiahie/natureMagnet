@@ -3,9 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity.xml" value="0.11096014492753623" />
-        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.22" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_main.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_main.xml" value="0.12" />
       </map>
     </option>
   </component>
