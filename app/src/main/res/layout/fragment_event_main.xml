@@ -19,20 +19,6 @@
     <!--</android.support.constraint.ConstraintLayout>-->
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        android:minHeight="50dp"
-        app:contentPadding="25dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="cat_card_elevation_desc"/>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,13 +81,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="action_1"
-                    style="?attr/borderlessButtonStyle"
+                    style="@style/Widget.App.Button"
                     />
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="action_2"
-                    style="?attr/borderlessButtonStyle"
+                    style="@style/Theme.App"
                     />
             </LinearLayout>
 
