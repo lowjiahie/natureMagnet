@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- padding -->
+    <dimen name="lp">24dp</dimen>
+    // large size padding
+    <dimen name="mp">20dp</dimen>
+    // medium size padding
+    <dimen name="sp">8dp</dimen>
+    // small size padding
+
+    <!-- margin -->
+    <dimen name="lm">24dp</dimen>
+    // large size margin
+    <dimen name="mm">20dp</dimen>
+    // medium size margin
+    <dimen name="sm">8dp</dimen>
+    // small size margin
+    <dimen name="screen_edge_margin">8dp</dimen>
+    //always use this for spacing between ur content n edge of screen
+
+    <dimen name="action_area_height">52dp</dimen>
+    // height for action are
+    <dimen name="icon_height">56dp</dimen>
+    // height for icon
+</resources>
