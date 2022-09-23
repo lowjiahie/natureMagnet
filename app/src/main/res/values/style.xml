@@ -7,11 +7,11 @@
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
         <item name="android:colorBackground">@color/white</item>
+        <item name="android:textColorPrimary">@color/primaryTextColor</item>
         <item name="colorOnBackground">@color/material_on_background_emphasis_medium</item>
         <item name="colorOnError">@color/design_default_color_error</item>
-        <item name="colorOnSurface">@color/design_default_color_surface</item>
-        <item name="scrimBackground">@color/mtrl_scrim_color</item>
-
+<!--        <item name="colorOnSurface">@color/design_default_color_surface</item>-->
+<!--        <item name="scrimBackground">@color/mtrl_scrim_color</item>-->
         <!-- HeadLine Appearance -->
         <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2</item>
@@ -31,5 +31,15 @@
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
     </style>
-</resources>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+<!--        <item name="drawerArrowStyle">@style/DrawerHamburgerStyle</item>-->
+    </style>
+
+    <style name="DrawerHamburgerStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/primaryTextColor</item>
+    </style>
+</resources>

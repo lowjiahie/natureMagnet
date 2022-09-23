@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Event">
+        <menu>
+            <!--            <group android:checkableBehavior="single">-->
+            <group>
+                <item
+                    android:id="@+id/test1"
+                    android:icon="@drawable/ic_dashboard"
+                    android:title="@string/dashboard"></item>
+                <item
+                    android:id="@+id/test2"
+                    android:icon="@drawable/ic_activity_fill"
+                    android:title="@string/manageActivity"></item>
+            </group>
+        </menu>
+    </item>
+    <item android:title="Awareness">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/myPost"
+                    android:icon="@drawable/ic_ios_paper"
+                    android:title="@string/myPost"></item>
+                <item
+                    android:id="@+id/mySavedNewsPosts"
+                    android:icon="@drawable/ic_star_fill"
+                    android:title="@string/mySavedNewsPosts"></item>
+            </group>
+        </menu>
+    </item>
+    <item android:title="Shop">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/cart"
+                    android:icon="@drawable/ic_cart_empty_fill"
+                    android:title="@string/cart"></item>
+                <item
+                    android:id="@+id/trackShipping"
+                    android:icon="@drawable/ic_local_shipping"
+                    android:title="@string/trackShipping"></item>
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/logout"></item>
+
+
+</menu>

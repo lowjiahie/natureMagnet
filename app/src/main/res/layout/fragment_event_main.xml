@@ -44,13 +44,13 @@
             android:orientation="vertical">
 
             <!-- Media -->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="194dp"
-                app:srcCompat="@drawable/fruit"
-                android:scaleType="centerCrop"
-                android:contentDescription="content_description_media"
-                />
+<!--            <ImageView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="194dp"-->
+<!--                app:srcCompat="@drawable/fruit"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:contentDescription="content_description_media"-->
+<!--                />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
