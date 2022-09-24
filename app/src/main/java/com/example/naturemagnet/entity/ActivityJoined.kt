@@ -1,5 +1,6 @@
 package com.example.naturemagnet.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
@@ -7,14 +8,15 @@ import androidx.room.Index
 @Entity(
     tableName = "activityJoined",
     primaryKeys = ["custID", "activityID"],
-    indices = [Index("custID"), Index("activityID")],
+    indices = [Index( value = ["custID","activityID"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,
             parentColumns = arrayOf("custID"),
             childColumns = arrayOf("custID"),
             onDelete = ForeignKey.CASCADE
-        ), ForeignKey(
+        ),
+        ForeignKey(
             entity = Activity::class,
             parentColumns = arrayOf("activityID"),
             childColumns = arrayOf("activityID"),
@@ -23,7 +25,7 @@ import androidx.room.Index
     ]
 )
 data class ActivityJoined(
-    val custID: String,
-    val activityID: String,
-    val dateJoined: String
+    @ColumnInfo(name = "custID") val custID: Int,
+    @ColumnInfo(name = "activityID") val activityID: Int,
+    @ColumnInfo(name = "dateJoined") val dateJoined: String
 )

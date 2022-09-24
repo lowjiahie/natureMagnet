@@ -1,10 +1,9 @@
 package com.example.naturemagnet.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
+import android.graphics.Bitmap
+import android.media.Image
+import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
-import androidx.room.PrimaryKey
 
 //one to many (one category can have many activity)
 @Entity(
@@ -14,18 +13,19 @@ import androidx.room.PrimaryKey
         parentColumns = arrayOf("categoryID"),
         childColumns = arrayOf("categoryID"),
         onDelete = CASCADE
-    )]
+    )],
+    indices = [Index(value = ["activityID"], unique = true)]
 )
 data class Activity (
-    @PrimaryKey val activityId: String,
-    val name: String?,
-    val title: String?,
-    val dateTime: String?,
-    val descriptions: String?,
-    val registrationDeadline: String?,
-    val dateCreated: String?,
-    val venue: String?,
-    val sneakPeek: String?,
-    val participants: String?,
+    @PrimaryKey (autoGenerate = true) val activityId: Int,
+    @ColumnInfo (name = "name") val name: String?,
+    @ColumnInfo (name = "title") val title: String?,
+    @ColumnInfo (name = "datetime") val dateTime: String?,
+    @ColumnInfo (name = "descriptions") val descriptions: String?,
+    @ColumnInfo (name = "registration_deadline") val registrationDeadline: String?,
+    @ColumnInfo (name = "date_created") val dateCreated: String?,
+    @ColumnInfo (name = "venue") val venue: String?,
+    @ColumnInfo (name = "sneak_peek") val sneakPeek: Bitmap?,
+    @ColumnInfo (name = "participants") val participants: Int?,
     @ColumnInfo(index = true) var categoryID: String
 )
