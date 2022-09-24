@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorAccent">@color/primaryDarkColor</item>
@@ -13,16 +14,24 @@
         <item name="scrimBackground">@color/mtrl_scrim_color</item>
 
         <!-- HeadLine Appearance -->
-        <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1</item>
-        <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2</item>
-        <item name="textAppearanceHeadline3">@style/TextAppearance.MaterialComponents.Headline3</item>
-        <item name="textAppearanceHeadline4">@style/TextAppearance.MaterialComponents.Headline4</item>
-        <item name="textAppearanceHeadline5">@style/TextAppearance.MaterialComponents.Headline5</item>
-        <item name="textAppearanceHeadline6">@style/TextAppearance.MaterialComponents.Headline6</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1
+        </item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2
+        </item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.MaterialComponents.Headline3
+        </item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.MaterialComponents.Headline4
+        </item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.MaterialComponents.Headline5
+        </item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MaterialComponents.Headline6
+        </item>
 
         <!-- Subtitle Appearance -->
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1</item>
-        <item name="textAppearanceSubtitle2">@style/TextAppearance.MaterialComponents.Subtitle2</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1
+        </item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.MaterialComponents.Subtitle2
+        </item>
 
         <!-- Text Appearance -->
         <item name="textAppearanceBody1">@style/TextAppearance.MaterialComponents.Body1</item>
@@ -75,6 +84,167 @@
     <style name="ThemeOverlay.App.Button" parent="">
         <item name="colorPrimary">#FEDBD0</item>
         <item name="colorOnPrimary">#442C2E</item>
+    </style>
+
+    <style name="subheading">
+        <item name="android:fontFamily">Raleway</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:paddingLeft">@dimen/padding_15</item>
+        <item name="android:paddingRight">@dimen/padding_15</item>
+        <item name="android:layout_marginTop">@dimen/margin_15</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="row">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingTop">@dimen/padding_15</item>
+        <item name="android:paddingBottom">@dimen/padding_15</item>
+    </style>
+
+    <style name="col">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="card_container">
+        <item name="android:layout_width">125dp</item>
+        <item name="android:layout_height">155dp</item>
+        <item name="android:layout_marginRight">@dimen/margin_15</item>
+        <item name="cardCornerRadius">@dimen/border_radius_10</item>
+    </style>
+
+    <style name="card_icon_activity">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/margin_24</item>
+        <item name="android:elevation">10dp</item>
+        <item name="android:translationZ">2dp</item>
+    </style>
+
+    <style name="card_desc_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">1dp</item>
+    </style>
+
+    <style name="card_desc_title_activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_28</item>
+        <item name="android:fontFamily">raleway</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="card_desc_text_activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">48dp</item>
+        <item name="android:fontFamily">roboto regular</item>
+        <item name="android:padding">@dimen/margin_8</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="cat_btn" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">38dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_15</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="card_rectangle_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_15</item>
+    </style>
+
+    <style name="card_rectangle_img">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:contentDescription">content_description_media</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="card_rectangle_icon_activity">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_marginLeft">@dimen/margin_15</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:elevation">10dp</item>
+        <item name="android:translationZ">2dp</item>
+    </style>
+
+    <style name="card_rectangle_desc_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:layout_marginLeft">70dp</item>
+        <item name="android:layout_marginRight">80dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">1dp</item>
+    </style>
+
+    <style name="card_rectangle_desc_title_activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:fontFamily">raleway</item>
+        <item name="android:paddingTop">@dimen/padding_15</item>
+        <item name="android:paddingBottom">@dimen/padding_8</item>
+        <item name="android:paddingLeft">@dimen/padding_24</item>
+        <item name="android:paddingRight">@dimen/padding_15</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="card_rectangle_desc_text_activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:paddingTop">@dimen/padding_8</item>
+        <item name="android:paddingBottom">@dimen/padding_8</item>
+        <item name="android:paddingLeft">@dimen/padding_24</item>
+        <item name="android:paddingRight">@dimen/padding_15</item>
+        <item name="android:fontFamily">roboto regular</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="card_rectangle_date_container">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">1dp</item>
+    </style>
+
+    <style name="card_rectangle_date_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fontFamily">roboto</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <!-- Customize text field of the text input mode. -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
     </style>
 </resources>
 

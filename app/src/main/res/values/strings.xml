@@ -2,4 +2,7 @@
     <string name="app_name">Nature Magnet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activitiesTodayTitle">Activities Happening Today</string>
+    <string name="yourActivitiesTitle">Your Activities</string>
+    <string name="popularUpComingEventsTitle">Popular Up-Coming Events</string>
 </resources>
