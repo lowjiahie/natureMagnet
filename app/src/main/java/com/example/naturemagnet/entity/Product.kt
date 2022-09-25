@@ -22,13 +22,18 @@ import androidx.room.PrimaryKey
     ]
 )
 
+//data class Product(
+//    @PrimaryKey val productID: String,
+//    val prodName: String?,
+//    val prodPrice: String?,
+//    val prodDescription: String?,
+//    val prodQuantityStock: String?,
+//    val prodImage: String?,
+//    @ColumnInfo(index = true) var categoryID: String,
+//    @ColumnInfo(index = true) var adminID: String
+//)
+
 data class Product(
-    @PrimaryKey val productID: String,
-    val prodName: String?,
-    val prodPrice: String?,
-    val prodDescription: String?,
-    val prodQuantityStock: String?,
-    val prodImage: String?,
-    @ColumnInfo(index = true) var categoryID: String,
-    @ColumnInfo(index = true) var adminID: String
+    val prodName: String,
+    val prodPrice: String,
 )
