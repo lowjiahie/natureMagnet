@@ -25,7 +25,7 @@ import androidx.room.Index
 )
 
 data class ActivityLiked(
-    @ColumnInfo(name = "custID") val custID: Int,
-    @ColumnInfo(name = "activityID") val activityID: Int,
+    @ColumnInfo(name = "custID") val custID: Long,
+    @ColumnInfo(name = "activityID") val activityID: Long,
     @ColumnInfo(name = "dateLiked") val dateLiked: String
 )

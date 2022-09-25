@@ -25,7 +25,7 @@ import androidx.room.Index
     ]
 )
 data class ActivityJoined(
-    @ColumnInfo(name = "custID") val custID: Int,
-    @ColumnInfo(name = "activityID") val activityID: Int,
+    @ColumnInfo(name = "custID") val custID: Long,
+    @ColumnInfo(name = "activityID") val activityID: Long,
     @ColumnInfo(name = "dateJoined") val dateJoined: String
 )

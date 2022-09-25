@@ -17,7 +17,7 @@ import androidx.room.ForeignKey.CASCADE
     indices = [Index(value = ["activityID"], unique = true)]
 )
 data class Activity (
-    @PrimaryKey (autoGenerate = true) val activityId: Int,
+    @PrimaryKey (autoGenerate = true) val activityId: Long,
     @ColumnInfo (name = "name") val name: String?,
     @ColumnInfo (name = "title") val title: String?,
     @ColumnInfo (name = "datetime") val dateTime: String?,
