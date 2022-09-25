@@ -42,4 +42,5 @@
         <item name="spinBars">true</item>
         <item name="color">@color/primaryTextColor</item>
     </style>
+
 </resources>

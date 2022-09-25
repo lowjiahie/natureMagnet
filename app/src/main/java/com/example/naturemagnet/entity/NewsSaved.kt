@@ -1,5 +1,6 @@
 package com.example.naturemagnet.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
@@ -8,7 +9,7 @@ import androidx.room.Index
 @Entity(
     tableName = "newsSaved",
     primaryKeys = ["custID", "newsID"],
-    indices = [Index("custID"), Index("newsID")],
+    indices = [Index(value = ["custID"], unique = true),Index(value = ["newsID"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,
@@ -25,7 +26,7 @@ import androidx.room.Index
 )
 
 data class NewsSaved(
-    val custID: String,
-    val newsID: String,
+    val custID: Long,
+    val newsID: Long,
     val savedDateTime: String
 )

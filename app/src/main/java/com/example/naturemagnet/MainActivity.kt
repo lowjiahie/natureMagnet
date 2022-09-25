@@ -3,6 +3,7 @@ package com.example.naturemagnet
 import android.app.PendingIntent.getActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -21,20 +22,26 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.ActivityMainBinding
+import com.example.naturemagnet.datagenerator.SampleDataGenerator
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    lateinit var toggle: ActionBarDrawerToggle
-    lateinit var toolbar_title: TextView
-    lateinit var drawerLayout: DrawerLayout
     lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var navController: NavController
+    private lateinit var db : NatureMagnetDB
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        db = NatureMagnetDB.getInstance(this)!!
+//        db.customerDao().insertCustomer(SampleDataGenerator.getCustomer())
+        Log.i("MainActivity",db.customerDao().getCustAll().toString())
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,

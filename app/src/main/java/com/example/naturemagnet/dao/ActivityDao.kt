@@ -1,9 +1,9 @@
 package com.example.naturemagnet.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.naturemagnet.entity.Activity
+import com.example.naturemagnet.entity.Customer
+import com.example.naturemagnet.entity.entityRelationship.CustomerWithActivities
 
 @Dao
 interface ActivityDao {
@@ -12,4 +12,19 @@ interface ActivityDao {
 
     @Insert
     fun insertActivity(activity:Activity)
+
+    @Update
+    fun updateUsers(activity: Activity)
+
+    @Delete
+    fun deleteActivity(activity:Activity)
+
+    //Example - Intermediate data class
+    @Transaction
+    @Query("SELECT * FROM Customer WHERE custID = :custID")
+    fun getCustomerWithActivities(custID : Long): List<CustomerWithActivities>
+
+    //Example - Multimap return types
+    @Query("SELECT * FROM Customer JOIN Activity ON Customer.custID = Activity.custID")
+    fun loadUserAndBookNames(): Map<Customer, List<Activity>>
 }
