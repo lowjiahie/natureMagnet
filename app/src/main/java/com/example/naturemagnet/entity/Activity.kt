@@ -1,7 +1,6 @@
 package com.example.naturemagnet.entity
 
 import android.graphics.Bitmap
-import android.media.Image
 import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
 
@@ -13,11 +12,18 @@ import androidx.room.ForeignKey.CASCADE
         parentColumns = arrayOf("categoryID"),
         childColumns = arrayOf("categoryID"),
         onDelete = CASCADE
+    ), ForeignKey(
+        entity = Customer::class,
+        parentColumns = arrayOf("custID"),
+        childColumns = arrayOf("custID"),
+        onDelete = CASCADE
     )],
     indices = [Index(value = ["activityID"], unique = true)]
+
 )
+
 data class Activity (
-    @PrimaryKey (autoGenerate = true) val activityId: Long,
+    @PrimaryKey(autoGenerate = true) val activityID: Long = 0L,
     @ColumnInfo (name = "name") val name: String?,
     @ColumnInfo (name = "title") val title: String?,
     @ColumnInfo (name = "datetime") val dateTime: String?,
@@ -27,5 +33,7 @@ data class Activity (
     @ColumnInfo (name = "venue") val venue: String?,
     @ColumnInfo (name = "sneak_peek") val sneakPeek: Bitmap?,
     @ColumnInfo (name = "participants") val participants: Int?,
-    @ColumnInfo(index = true) var categoryID: String
+    @ColumnInfo(index = true) var custID: Long,
+    @ColumnInfo(index = true) var categoryID: Long
 )
+

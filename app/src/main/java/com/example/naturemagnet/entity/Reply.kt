@@ -1,9 +1,6 @@
 package com.example.naturemagnet.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 //one to many (one customer can have many posts)
 @Entity(
@@ -20,14 +17,15 @@ import androidx.room.PrimaryKey
             childColumns = arrayOf("commentID"),
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index(value = ["replyID"], unique = true)],
 )
 
 data class Reply(
-    @PrimaryKey val replyID: String,
+    @PrimaryKey(autoGenerate = true) val replyID: Long,
     val content: String?,
     val replyDatetime: String?,
     val eventLink: String?,
-    @ColumnInfo(index = true) var custID: String,
-    @ColumnInfo(index = true) var commentID: String
+    @ColumnInfo(index = true) var custID: Long,
+    @ColumnInfo(index = true) var commentID: Long
 )

@@ -3,24 +3,24 @@ package com.example.naturemagnet.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.Index
 
 @Entity(
     tableName = "activityJoined",
     primaryKeys = ["custID", "activityID"],
-    indices = [Index( value = ["custID","activityID"], unique = true)],
+    indices = [Index(value = ["custID"], unique = true),Index(value = ["activityID"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,
             parentColumns = arrayOf("custID"),
             childColumns = arrayOf("custID"),
-            onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
+            onDelete = CASCADE
+        ), ForeignKey(
             entity = Activity::class,
             parentColumns = arrayOf("activityID"),
             childColumns = arrayOf("activityID"),
-            onDelete = ForeignKey.CASCADE
+            onDelete = CASCADE
         )
     ]
 )
