@@ -27,4 +27,9 @@
         android:name="com.example.naturemagnet.test2"
         android:label="test2"
         tools:layout="@layout/fragment_test2" />
+    <fragment
+        android:id="@+id/eventManage"
+        android:name="com.example.naturemagnet.event_edit"
+        android:label="fragment_event_edit"
+        tools:layout="@layout/fragment_event_edit" />
 </navigation>
