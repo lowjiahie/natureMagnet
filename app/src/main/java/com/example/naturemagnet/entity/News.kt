@@ -1,15 +1,13 @@
 package com.example.naturemagnet.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 @Entity(
     tableName = "news",
+    indices = [Index(value = ["newsID"], unique = true)]
 )
 data class News(
-    @PrimaryKey val newsID: String,
+    @PrimaryKey(autoGenerate = true) val newsID: Long,
     val title: String?,
     val newsLink: String?,
     val sourceName: String?,

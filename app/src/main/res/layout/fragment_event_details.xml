@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".event_details">
+
+    <!-- blur background -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="#E6ACBA9A"
+        app:cardElevation="1dp">
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- event details card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_gravity="center"
+        android:elevation="2dp"
+        app:cardCornerRadius="@dimen/border_radius_10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#313E1A">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center_horizontal"
+                    app:cardCornerRadius="50dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="content_description_media"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/photo" />
+
+                </androidx.cardview.widget.CardView>
+                <!-- Title, secondary and supporting text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:text="Event Title ..."
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="#ACBA9A"
+                    android:textSize="22dp"/>
+            </LinearLayout>
+
+            <!-- Media -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="194dp"
+                android:src="@drawable/photo"
+                android:scaleType="centerCrop"
+                android:contentDescription="content_description_media"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- secondary and supporting text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="24/6/2022 \n12 : 00 P.M. - 12 : 30 P.M."
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="#ACBA9A"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Event Descriptions - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="#ACBA9A"
+                    android:textSize="14dp"
+                    android:lineHeight="20dp"/>
+
+            </LinearLayout>
+
+            <!-- Buttons -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:layout_gravity="end">
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Join"
+                    style="?attr/borderlessButtonStyle"
+                    android:textColor="#313E1A"
+                    android:backgroundTint="#ACBA9A"
+                    app:cornerRadius="50dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quit"
+                    style="?attr/borderlessButtonStyle"
+                    android:textColor="#313E1A"
+                    android:backgroundTint="#ACBA9A"
+                    app:cornerRadius="50dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>
