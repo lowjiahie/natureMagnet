@@ -1,15 +1,14 @@
 package com.example.naturemagnet.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
+import android.graphics.Bitmap
+import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
-import androidx.room.PrimaryKey
 
 
 //one to many (one customer can have many posts)
 @Entity(
     tableName = "post",
+    indices = [Index(value = ["postID"], unique = true)],
     foreignKeys = [ForeignKey(
         entity = Customer::class,
         parentColumns = arrayOf("custID"),
@@ -18,12 +17,13 @@ import androidx.room.PrimaryKey
     )]
 )
 data class Post(
-    @PrimaryKey val postID: String,
+    @PrimaryKey(autoGenerate = true) val postID: Long,
     val title: String?,
     val content: String?,
-    val imgPost: String?,
+//    @TypeConverters(ImageConverter::class) val imgPost: Bitmap?,
+    val imgPost: Bitmap?,
     val eventLink: String?,
-    val shareCount: String?,
+    val shareCount: Int?,
     val postDateTime: String?,
-    @ColumnInfo(index = true) var custID: String
+    @ColumnInfo(index = true) var custID: Long
 )

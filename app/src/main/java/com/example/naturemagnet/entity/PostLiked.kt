@@ -1,5 +1,6 @@
 package com.example.naturemagnet.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
@@ -7,7 +8,7 @@ import androidx.room.Index
 @Entity(
     tableName = "postLiked",
     primaryKeys = ["custID", "postID"],
-    indices = [Index("custID"), Index("postID")],
+    indices = [Index(value = ["custID"], unique = true),Index(value = ["postID"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,
@@ -24,7 +25,7 @@ import androidx.room.Index
 )
 
 data class PostLiked(
-    val custID: String,
-    val postID: String,
+    val custID: Long,
+    val postID: Long,
     val likeDateTime: String
 )

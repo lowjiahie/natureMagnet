@@ -3,14 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_register.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_changepassword.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_deleteaccount.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_editprofile.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_login.xml" value="0.2" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_main.xml" value="0.2" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_register.xml" value="0.152" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/drawable/rectangle.xml" value="0.171" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activities_row.xml" value="0.1" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_main.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/drawer_header.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_details.xml" value="0.22" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_edit.xml" value="0.22" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_main.xml" value="0.1" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/menu/drawer_menu.xml" value="0.18541666666666667" />
       </map>
     </option>
   </component>
