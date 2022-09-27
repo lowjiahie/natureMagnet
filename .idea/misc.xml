@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_register.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_changepassword.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_deleteaccount.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_editprofile.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_login.xml" value="0.2" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_main.xml" value="0.2" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_user_register.xml" value="0.152" />
       </map>
     </option>
   </component>
