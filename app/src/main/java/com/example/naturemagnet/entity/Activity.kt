@@ -22,18 +22,19 @@ import androidx.room.ForeignKey.CASCADE
 
 )
 
-data class Activity (
-    @PrimaryKey(autoGenerate = true) val activityID: Long = 0L,
-    @ColumnInfo (name = "name") val name: String?,
-    @ColumnInfo (name = "title") val title: String?,
-    @ColumnInfo (name = "datetime") val dateTime: String?,
-    @ColumnInfo (name = "descriptions") val descriptions: String?,
-    @ColumnInfo (name = "registration_deadline") val registrationDeadline: String?,
-    @ColumnInfo (name = "date_created") val dateCreated: String?,
-    @ColumnInfo (name = "venue") val venue: String?,
-    @ColumnInfo (name = "sneak_peek") val sneakPeek: Bitmap?,
-    @ColumnInfo (name = "participants") val participants: Int?,
+data class Activity(
+    @ColumnInfo(name = "name") val name: String?,
+    @ColumnInfo(name = "title") val title: String?,
+    @ColumnInfo(name = "datetime") val dateTime: String?,
+    @ColumnInfo(name = "descriptions") val descriptions: String?,
+    @ColumnInfo(name = "registration_deadline") val registrationDeadline: String?,
+    @ColumnInfo(name = "date_created") val dateCreated: String?,
+    @ColumnInfo(name = "venue") val venue: String?,
+    @ColumnInfo(name = "sneak_peek") val sneakPeek: Bitmap?,
+    @ColumnInfo(name = "participants") val participants: Int?,
     @ColumnInfo(index = true) var custID: Long,
     @ColumnInfo(index = true) var categoryID: Long
-)
+) {
+    @PrimaryKey(autoGenerate = true) var activityID: Long = 0L
+}
 

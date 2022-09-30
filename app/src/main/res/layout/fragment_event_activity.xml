@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".event_activity"
+    android:orientation="horizontal">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_activity"
+        style="@style/card_container">
+
+        <!-- background sneak peek -->
+        <ImageView
+            android:id="@+id/card_background_activity"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="content_description_media"
+            android:scaleType="centerCrop"
+            app:srcCompat="@mipmap/fruit" />
+
+        <!-- event icon-->
+        <androidx.cardview.widget.CardView
+            style="@style/card_icon_activity"
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:id="@+id/card_icon_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="content_description_media"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/photo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Event Brief Info-->
+        <androidx.cardview.widget.CardView
+            style="@style/card_desc_container"
+            app:cardBackgroundColor="#E6FFFFFF"
+            app:cardCornerRadius="@dimen/border_radius_10">
+
+            <TextView
+                android:id="@+id/card_desc_title"
+                style="@style/card_desc_title_activity"
+                android:text="@string/yourActivitiesTitle"></TextView>
+
+            <TextView
+                android:id="@+id/card_desc_participants"
+                style="@style/card_desc_text_activity"
+                android:text="102,938 Participants"></TextView>
+        </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

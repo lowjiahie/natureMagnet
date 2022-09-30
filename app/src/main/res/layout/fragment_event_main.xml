@@ -81,62 +81,18 @@
                         android:paddingRight="@dimen/margin_15">
 
                         <LinearLayout
-                            android:id="@+id/YA_row"
                             style="@style/row"
                             tools:showIn="@layout/fragment_event_main">
 
-                            <LinearLayout
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/yourActivity_card_recycler_view"
+                                style="@style/card_container"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:layout_height="100dp"
+                                android:scrollbars="horizontal"
+                                tools:listitem="@layout/fragment_event_activity" />
 
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/YA_card"
-                                    style="@style/card_container">
-
-                                    <!-- background sneak peek -->
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="180dp"
-                                        android:contentDescription="content_description_media"
-                                        android:scaleType="centerCrop"
-                                        app:srcCompat="@drawable/fruit" />
-
-                                    <!-- event icon-->
-                                    <androidx.cardview.widget.CardView
-                                        style="@style/card_icon_activity"
-                                        app:cardCornerRadius="50dp">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:contentDescription="content_description_media"
-                                            android:scaleType="centerCrop"
-                                            app:srcCompat="@drawable/photo" />
-
-                                    </androidx.cardview.widget.CardView>
-
-                                    <!-- Event Brief Info-->
-                                    <androidx.cardview.widget.CardView
-                                        style="@style/card_desc_container"
-                                        app:cardBackgroundColor="#E6FFFFFF"
-                                        app:cardCornerRadius="@dimen/border_radius_10">
-
-                                        <TextView
-                                            android:id="@+id/title"
-                                            style="@style/card_desc_title_activity"
-                                            android:text="@string/yourActivitiesTitle"></TextView>
-
-                                        <TextView
-                                            android:id="@+id/participants"
-                                            style="@style/card_desc_text_activity"
-                                            android:text="102,938 Participants"></TextView>
-                                    </androidx.cardview.widget.CardView>
-                                </com.google.android.material.card.MaterialCardView>
-
-                            </LinearLayout>
                         </LinearLayout>
-
                     </HorizontalScrollView>
                 </LinearLayout>
 
@@ -160,65 +116,21 @@
                         android:paddingLeft="@dimen/margin_15"
                         android:paddingRight="@dimen/margin_15">
 
-                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
-                            xmlns:tools="http://schemas.android.com/tools"
-                            android:id="@+id/ATT_row"
+                        <LinearLayout
                             style="@style/row"
                             tools:showIn="@layout/fragment_event_main">
 
-                            <LinearLayout
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/activitiesToday_card_recycler_view"
+                                style="@style/card_container"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:layout_height="100dp"
+                                android:scrollbars="horizontal"
+                                tools:listitem="@layout/fragment_event_activity" />
 
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/YA_card"
-                                    style="@style/card_container">
-
-                                    <!-- background sneak peek -->
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="180dp"
-                                        android:contentDescription="content_description_media"
-                                        android:scaleType="centerCrop"
-                                        app:srcCompat="@drawable/fruit" />
-
-                                    <!-- event icon-->
-                                    <androidx.cardview.widget.CardView
-                                        style="@style/card_icon_activity"
-                                        app:cardCornerRadius="50dp">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:contentDescription="content_description_media"
-                                            android:scaleType="centerCrop"
-                                            app:srcCompat="@drawable/photo" />
-
-                                    </androidx.cardview.widget.CardView>
-
-                                    <!-- Event Brief Info-->
-                                    <androidx.cardview.widget.CardView
-                                        style="@style/card_desc_container"
-                                        app:cardBackgroundColor="#E6FFFFFF"
-                                        app:cardCornerRadius="@dimen/border_radius_10">
-
-                                        <TextView
-                                            android:id="@+id/title"
-                                            style="@style/card_desc_title_activity"
-                                            android:text="@string/yourActivitiesTitle"></TextView>
-
-                                        <TextView
-                                            android:id="@+id/participants"
-                                            style="@style/card_desc_text_activity"
-                                            android:text="102,938 Participants"></TextView>
-                                    </androidx.cardview.widget.CardView>
-                                </com.google.android.material.card.MaterialCardView>
-
-                            </LinearLayout>
                         </LinearLayout>
                     </HorizontalScrollView>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -229,7 +141,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activitiesToday">
-
 
                     <TextView
                         android:id="@+id/popularUpComingEventsTitle"
@@ -245,43 +156,20 @@
                         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:app="http://schemas.android.com/apk/res-auto"
                             xmlns:tools="http://schemas.android.com/tools"
-                            android:id="@+id/PUCE_row"
                             style="@style/row"
                             tools:showIn="@layout/fragment_event_main">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
                                 <Button
                                     android:id="@+id/containedButton1"
                                     style="@style/cat_btn"
-                                    android:text="button1" />
+                                    android:text="button1"
+                                    app:icon="@drawable/ic_charity"/>
 
                                 <Button
                                     android:id="@+id/containedButton2"
                                     style="@style/cat_btn"
-                                    android:text="Contained button" />
-
-                                <Button
-                                    android:id="@+id/containedButton1"
-                                    style="@style/cat_btn"
-                                    android:text="button1" />
-
-                                <Button
-                                    android:id="@+id/containedButton2"
-                                    style="@style/cat_btn"
-                                    android:text="Contained button" />
-                                <!--                    <Button-->
-                                <!--                        android:id="@+id/containedButton"-->
-                                <!--                        android:layout_width="wrap_content"-->
-                                <!--                        android:layout_height="wrap_content"-->
-                                <!--                        android:text="Contained button"-->
-                                <!--                        style="@style/Widget.MaterialComponents.Button.Icon"-->
-                                <!--                        app:icon="@drawable/ic_add_24dp"-->
-                                <!--                        />-->
-                            </LinearLayout>
+                                    android:text="Contained button"
+                                    app:icon="@drawable/ic_environmental"/>
                         </LinearLayout>
                     </HorizontalScrollView>
 
@@ -292,56 +180,26 @@
                         android:layout_marginEnd="@dimen/margin_15"
                         android:orientation="vertical">
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/event1"
-                            style="@style/card_rectangle_container"
-                            app:cardCornerRadius="@dimen/border_radius_10">
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/margin_15"
+                            android:paddingRight="@dimen/margin_15">
 
-                            <!-- event background-->
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                style="@style/card_rectangle_img"
-                                app:srcCompat="@drawable/fruit" />
+                            <LinearLayout
+                                style="@style/row"
+                                tools:showIn="@layout/fragment_event_main">
 
-                            <!-- event icon-->
-                            <androidx.cardview.widget.CardView
-                                style="@style/card_rectangle_icon_activity"
-                                app:cardCornerRadius="50dp">
-
-                                <ImageView
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/upComingEvent_card_recycler_view"
+                                    style="@style/card_container"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:contentDescription="content_description_media"
-                                    android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/photo" />
+                                    android:layout_height="100dp"
+                                    android:scrollbars="horizontal"
+                                    tools:listitem="@layout/fragment_event_activity" />
 
-                            </androidx.cardview.widget.CardView>
-
-                            <!-- Event Brief Info-->
-                            <androidx.cardview.widget.CardView
-                                style="@style/card_rectangle_desc_container"
-                                app:cardBackgroundColor="#E6ACBA9A">
-
-                                <TextView
-                                    style="@style/card_rectangle_desc_title_activity"
-                                    android:text="@string/yourActivitiesTitle"></TextView>
-
-                                <TextView
-                                    style="@style/card_rectangle_desc_text_activity"
-                                    android:text="102,938 Participants"></TextView>
-                            </androidx.cardview.widget.CardView>
-
-                            <!-- date -->
-                            <androidx.cardview.widget.CardView
-                                style="@style/card_rectangle_date_container"
-                                app:cardBackgroundColor="#E6FFFFFF">
-
-                                <TextView
-                                    android:id="@+id/event_date"
-                                    style="@style/card_rectangle_date_text"
-                                    android:text="26/10"></TextView>
-                            </androidx.cardview.widget.CardView>
-                        </com.google.android.material.card.MaterialCardView>
+                            </LinearLayout>
+                        </HorizontalScrollView>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

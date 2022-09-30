@@ -177,7 +177,7 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/fruit" />
+                                    android:src="@mipmap/fruit" />
 
                             </androidx.cardview.widget.CardView>
                         </LinearLayout>

@@ -15,16 +15,22 @@ import com.example.naturemagnet.typeconverterClass.ImageConverter
 import java.util.concurrent.Executors
 
 //Any new entity please add here
-@Database (entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
-    News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
-    PostSaved::class, Product::class, ProductCategory::class, Reply::class],
-    version = 1)
+@Database(
+    entities = [Activity::class, ActivityJoined::class, ActivityLiked::class, Admin::class, Category::class, Comment::class, Customer::class,
+        News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
+        PostSaved::class, Product::class, ProductCategory::class, Reply::class],
+    version = 1
+)
 //Any new converter please add here
 @TypeConverters(ImageConverter::class)
-abstract class NatureMagnetDB : RoomDatabase () {
+abstract class NatureMagnetDB : RoomDatabase() {
     //define your DAO here
-    abstract fun activityDao(): ActivityDao
     abstract fun customerDao(): CustomerDao
+    abstract fun activityDao(): ActivityDao
+    abstract fun categoryDao(): CategoryDao
+    abstract fun activityJoinedDao(): ActivityJoinedDao
+    abstract fun activityLikedDao(): ActivityLikedDao
+
 
     companion object {
         private var INSTANCE: NatureMagnetDB? = null
@@ -39,7 +45,17 @@ abstract class NatureMagnetDB : RoomDatabase () {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             Thread(Runnable {
-                                getInstance(context)?.customerDao()?.insertCustomer(SampleDataGenerator.getCustomers())
+                                val db = getInstance(context)
+                                db?.customerDao()
+                                    ?.insertCustomer(SampleDataGenerator.getCustomers())
+                                db?.categoryDao()
+                                    ?.insertCategories(SampleDataGenerator.injectCategories(context))
+                                db?.activityDao()
+                                    ?.insertActivities(SampleDataGenerator.injectActivities(context))
+                                db?.activityJoinedDao()
+                                    ?.insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
+                                db?.activityLikedDao()
+                                    ?.insertActivitiesLiked(SampleDataGenerator.injectActivityLiked())
                             }).start()
                         }
                     }).allowMainThreadQueries().build()
@@ -52,5 +68,4 @@ abstract class NatureMagnetDB : RoomDatabase () {
             INSTANCE = null
         }
     }
-
 }

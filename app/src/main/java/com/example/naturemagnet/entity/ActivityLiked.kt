@@ -8,7 +8,7 @@ import androidx.room.Index
 @Entity(
     tableName = "activityLiked",
     primaryKeys = ["custID", "activityID"],
-    indices = [Index(value = ["custID"], unique = true),Index(value = ["activityID"], unique = true)],
+    indices = [Index(value = ["custID", "activityID"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,
