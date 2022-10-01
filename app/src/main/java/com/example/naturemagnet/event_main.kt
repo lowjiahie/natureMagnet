@@ -19,17 +19,11 @@ import com.example.naturemagnet.datagenerator.SampleDataGenerator
 import com.example.naturemagnet.entity.Activity
 
 
-class event_main : Fragment() {
+class event_main : Fragment(), EventRectangleAdapter.RectangleActivityClickListener {
     // TODO: Rename and change types of parameters
-    private var activityAdapter: EventAdapter? = null
-    private var activityRecyclerView: RecyclerView? = null
     lateinit var binding: FragmentEventMainBinding
-//    private lateinit var listener: EventRectangleAdapter.ActivityClickListener
+    private lateinit var listener: EventRectangleAdapter.RectangleActivityClickListener
 
-    //    fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        DBHelper = DatabaseHelper(activity)
-//    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,20 +47,20 @@ class event_main : Fragment() {
 
         val layoutManager3 = LinearLayoutManager(application);
         layoutManager3.orientation = LinearLayoutManager.VERTICAL
-//        listener = this
-        val eventRectangleAdapter = EventRectangleAdapter(SampleDataGenerator.injectActivities(application))
+        listener = this
+        val eventRectangleAdapter = EventRectangleAdapter(SampleDataGenerator.injectActivities(application), listener)
         binding.upComingEventCardRecyclerView.layoutManager = layoutManager3
         binding.upComingEventCardRecyclerView.adapter = eventRectangleAdapter
 
         /** binding the Button to redirect user to another fragment "manageEvent" */
-//        binding.createActivityBtn.setOnClickListener { view ->
-//            view.findNavController().navigate(R.id.eventEdit)
+        binding.createActivityBtn.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.eventEdit)
 //            Log.e("Event_Main_Fragment", "clicked !!!!!")
-//        }
+        }
         return binding.root
     }
 
-//    override fun onActivityClick(view: View, activity: Activity) {
-//        Log.e("Event_Main_Fragment", "$view clicked !!!!!")
-//    }
+    override fun onRectangleActivityClick(view: View, activity: Activity) {
+        view.findNavController().navigate(R.id.event_details)
+    }
 }

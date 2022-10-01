@@ -14,31 +14,11 @@ import com.example.naturemagnet.databinding.FragmentEventActivityBinding
 import com.example.naturemagnet.entity.Activity
 import java.text.DecimalFormat
 
-
 class EventAdapter(private val activities: List<Activity>) :
     RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = FragmentEventActivityBinding.inflate(layoutInflater, parent, false)
-        return EventViewHolder(binding, parent.context)
-    }
-
-    /** bind the data from the current object to the fragment's attribute defined in EventViewHolder() */
-    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        holder.bind(activities[position])
-        holder.itemView.setOnClickListener{view ->
-            view.findNavController().navigate(R.id.event_details)
-//            Log.e("event_adapter", "Clicked on item. $position")
-        }
-//        Log.e("Adapter", currentActivity.toString())
-    }
-
-    /** get numbers of activity to be load into the recycler view */
-    override fun getItemCount() = activities.size
-
     /** define the attribute according to the fragment to bind data on it later */
-    class EventViewHolder(private val binding: FragmentEventActivityBinding, var context: Context) :
+    class EventViewHolder(private val binding: FragmentEventActivityBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(activity: Activity) {
             val decimalFormat = DecimalFormat("###,###")
@@ -53,4 +33,23 @@ class EventAdapter(private val activities: List<Activity>) :
 //            binding.rectangleCardIconActivity?.setImageBitmap(activity.sneakPeek)
         }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = FragmentEventActivityBinding.inflate(layoutInflater, parent, false)
+        return EventViewHolder(binding)
+    }
+
+    /** bind the data from the current object to the fragment's attribute defined in EventViewHolder() */
+    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
+        holder.bind(activities[position])
+        holder.itemView.setOnClickListener{view ->
+            view.findNavController().navigate(R.id.event_details)
+//            Log.e("event_adapter", "Clicked on item. $position")
+        }
+//        Log.e("Adapter", currentActivity.toString())
+    }
+
+    /** get numbers of activity to be load into the recycler view */
+    override fun getItemCount() = activities.size
 }
