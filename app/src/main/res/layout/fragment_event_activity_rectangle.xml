@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".event_activity_rectangle">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="activity"
+            type="com.example.naturemagnet.entity.Activity" />
+
+        <variable
+            name="participants"
+            type="String" />
+        <variable
+            name="date"
+            type="String" />
+    </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/rectangle_activity"
@@ -15,7 +25,7 @@
         <ImageView
             android:id="@+id/rectangle_card_background_activity"
             style="@style/card_rectangle_img"
-            app:srcCompat="@mipmap/fruit" />
+            app:srcCompat="@drawable/beach_cleaning" />
 
         <!-- event icon-->
         <androidx.cardview.widget.CardView
@@ -40,12 +50,14 @@
             <TextView
                 android:id="@+id/rectangle_card_desc_title"
                 style="@style/card_rectangle_desc_title_activity"
-                android:text="@string/yourActivitiesTitle"></TextView>
+                android:text="@{activity.title}"></TextView>
 
             <TextView
-                android:id="@+id/rectangle_card_desc_text"
+                android:id="@+id/rectangle_card_desc_participants"
                 style="@style/card_rectangle_desc_text_activity"
-                android:text="102,938 Participants"></TextView>
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:text="@{participants}"></TextView>
         </androidx.cardview.widget.CardView>
 
         <!-- date -->
@@ -56,8 +68,7 @@
             <TextView
                 android:id="@+id/rectangle_card_desc_date"
                 style="@style/card_rectangle_date_text"
-                android:text="26/10"></TextView>
+                android:text="@{date}"></TextView>
         </androidx.cardview.widget.CardView>
     </com.google.android.material.card.MaterialCardView>
-
-</FrameLayout>
+</layout>

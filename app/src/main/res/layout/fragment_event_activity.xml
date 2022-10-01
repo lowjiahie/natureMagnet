@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".event_activity"
-    android:orientation="horizontal">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.example.naturemagnet.entity.Activity" />
+
+        <variable
+            name="participants"
+            type="String" />
+    </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_activity"
@@ -15,10 +22,10 @@
         <ImageView
             android:id="@+id/card_background_activity"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="match_parent"
             android:contentDescription="content_description_media"
             android:scaleType="centerCrop"
-            app:srcCompat="@mipmap/fruit" />
+            app:srcCompat="@drawable/beach_cleaning" />
 
         <!-- event icon-->
         <androidx.cardview.widget.CardView
@@ -31,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="content_description_media"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/photo" />
+                app:srcCompat="@drawable/beach_cleaning" />
 
         </androidx.cardview.widget.CardView>
 
@@ -44,13 +51,12 @@
             <TextView
                 android:id="@+id/card_desc_title"
                 style="@style/card_desc_title_activity"
-                android:text="@string/yourActivitiesTitle"></TextView>
+                android:text="@{activity.title}"></TextView>
 
-            <TextView
-                android:id="@+id/card_desc_participants"
-                style="@style/card_desc_text_activity"
-                android:text="102,938 Participants"></TextView>
+<!--            <TextView-->
+<!--                android:id="@+id/card_desc_participants"-->
+<!--                style="@style/card_desc_text_activity"-->
+<!--                android:text="@{participants}"></TextView>-->
         </androidx.cardview.widget.CardView>
     </com.google.android.material.card.MaterialCardView>
-
-</LinearLayout>
+</layout>

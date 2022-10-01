@@ -35,6 +35,21 @@ data class Activity(
     @ColumnInfo(index = true) var custID: Long,
     @ColumnInfo(index = true) var categoryID: Long
 ) {
-    @PrimaryKey(autoGenerate = true) var activityID: Long = 0L
+    @PrimaryKey(autoGenerate = true)
+    var activityID: Long = 0L
+
+    constructor(sneakPeek: Bitmap?, title: String?, participants: Int?) : this(
+        "example",
+        title,
+        "example",
+        "example",
+        "example",
+        "example",
+        "example",
+        sneakPeek,
+        participants,
+        2,
+        1
+    )
 }
 

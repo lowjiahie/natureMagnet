@@ -81,7 +81,7 @@ class SampleDataGenerator {
                     "2022-11-15 24:00:00",
                     "2022-9-27 17:21:51",
                     "Chow Kit",
-                    bitmapList[0],
+                    bitmapList[2],
                     27,
                     2,
                     1

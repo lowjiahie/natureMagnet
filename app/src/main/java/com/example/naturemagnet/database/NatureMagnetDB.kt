@@ -56,6 +56,7 @@ abstract class NatureMagnetDB : RoomDatabase() {
                                     ?.insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
                                 db?.activityLikedDao()
                                     ?.insertActivitiesLiked(SampleDataGenerator.injectActivityLiked())
+                                Log.e("db", "DB is working")
                             }).start()
                         }
                     }).allowMainThreadQueries().build()

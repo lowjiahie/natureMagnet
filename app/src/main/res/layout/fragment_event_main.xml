@@ -1,184 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_goneMarginTop="125dp"
-    tools:context=".event_main">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data></data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        app:layout_goneMarginTop="125dp"
+        tools:context=".event_main">
 
-        <ScrollView
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/searchArea"
-                    style="@style/row"
-                    android:paddingBottom="0dp"
-                    app:layout_constraintBottom_toTopOf="@+id/yourActivities"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/outlinedTextField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_15"
-                        android:layout_marginRight="@dimen/margin_15"
-                        android:hint="@string/label"
-                        app:boxCornerRadiusBottomEnd="50dp"
-                        app:boxCornerRadiusBottomStart="50dp"
-                        app:boxCornerRadiusTopEnd="50dp"
-                        app:boxCornerRadiusTopStart="50dp"
-                        app:placeholderText="Search For Events">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Theme.App"
-                        android:layout_width="55dp"
-                        android:layout_height="60dp"
-                        app:cornerRadius="50dp"
-                        android:textAlignment="center"
-                        android:text="+"
-                        android:textSize="28dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/yourActivities"
-                    style="@style/col"
-                    app:layout_constraintBottom_toTopOf="@+id/activitiesToday"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/searchArea"
-                    app:layout_goneMarginBottom="0dp">
-
-                    <TextView
-                        android:id="@+id/yourActivitiesTitle"
-                        style="@style/subheading"
-                        android:text="@string/yourActivitiesTitle"></TextView>
-
-                    <HorizontalScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingLeft="@dimen/margin_15"
-                        android:paddingRight="@dimen/margin_15">
-
-                        <LinearLayout
-                            style="@style/row"
-                            tools:showIn="@layout/fragment_event_main">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/yourActivity_card_recycler_view"
-                                style="@style/card_container"
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp"
-                                android:scrollbars="horizontal"
-                                tools:listitem="@layout/fragment_event_activity" />
-
-                        </LinearLayout>
-                    </HorizontalScrollView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/activitiesToday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/yourActivities">
-
-                    <TextView
-                        android:id="@+id/activitiesTodayTitle"
-                        style="@style/subheading"
-                        android:text="@string/activitiesTodayTitle"></TextView>
-
-                    <HorizontalScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingLeft="@dimen/margin_15"
-                        android:paddingRight="@dimen/margin_15">
-
-                        <LinearLayout
-                            style="@style/row"
-                            tools:showIn="@layout/fragment_event_main">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/activitiesToday_card_recycler_view"
-                                style="@style/card_container"
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp"
-                                android:scrollbars="horizontal"
-                                tools:listitem="@layout/fragment_event_activity" />
-
-                        </LinearLayout>
-                    </HorizontalScrollView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/popularUpComingEvents"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/activitiesToday">
-
-                    <TextView
-                        android:id="@+id/popularUpComingEventsTitle"
-                        style="@style/subheading"
-                        android:text="@string/popularUpComingEventsTitle"></TextView>
-
-                    <HorizontalScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingLeft="@dimen/margin_15"
-                        android:paddingRight="@dimen/margin_15">
-
-                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
-                            xmlns:tools="http://schemas.android.com/tools"
-                            style="@style/row"
-                            tools:showIn="@layout/fragment_event_main">
-
-                                <Button
-                                    android:id="@+id/containedButton1"
-                                    style="@style/cat_btn"
-                                    android:text="button1"
-                                    app:icon="@drawable/ic_charity"/>
-
-                                <Button
-                                    android:id="@+id/containedButton2"
-                                    style="@style/cat_btn"
-                                    android:text="Contained button"
-                                    app:icon="@drawable/ic_environmental"/>
-                        </LinearLayout>
-                    </HorizontalScrollView>
+                    android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/searchArea"
+                        style="@style/row"
+                        android:paddingBottom="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/yourActivities"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/outlinedTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_15"
+                            android:layout_marginRight="@dimen/margin_15"
+                            android:hint="@string/label"
+                            app:boxCornerRadiusBottomEnd="50dp"
+                            app:boxCornerRadiusBottomStart="50dp"
+                            app:boxCornerRadiusTopEnd="50dp"
+                            app:boxCornerRadiusTopStart="50dp"
+                            app:placeholderText="Search For Events">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/createActivityBtn"
+                            style="@style/Theme.App"
+                            android:layout_width="55dp"
+                            android:layout_height="60dp"
+                            android:text="+"
+                            android:textAlignment="center"
+                            android:textSize="28dp"
+                            app:cornerRadius="50dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/yourActivities"
+                        style="@style/col"
+                        app:layout_constraintBottom_toTopOf="@+id/activitiesToday"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/searchArea"
+                        app:layout_goneMarginBottom="0dp">
+
+                        <TextView
+                            android:id="@+id/yourActivitiesTitle"
+                            style="@style/subheading"
+                            android:text="@string/yourActivitiesTitle"></TextView>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/yourActivity_card_recycler_view"
+                            style="@style/row"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/margin_15"
+                            android:paddingRight="@dimen/padding_15"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/fragment_event_activity"
+                            tools:showIn="@layout/fragment_event_main" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitiesToday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginEnd="@dimen/margin_15"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/yourActivities">
+
+                        <TextView
+                            android:id="@+id/activitiesTodayTitle"
+                            style="@style/subheading"
+                            android:text="@string/activitiesTodayTitle"></TextView>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/activitiesToday_card_recycler_view"
+                            style="@style/row"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/padding_15"
+                            android:paddingRight="@dimen/padding_15"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/fragment_event_activity"
+                            tools:showIn="@layout/fragment_event_main" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/popularUpComingEvents"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activitiesToday">
+
+                        <TextView
+                            android:id="@+id/popularUpComingEventsTitle"
+                            style="@style/subheading"
+                            android:text="@string/popularUpComingEventsTitle"></TextView>
 
                         <HorizontalScrollView
                             android:layout_width="match_parent"
@@ -186,59 +139,38 @@
                             android:paddingLeft="@dimen/margin_15"
                             android:paddingRight="@dimen/margin_15">
 
-                            <LinearLayout
+                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                xmlns:tools="http://schemas.android.com/tools"
                                 style="@style/row"
                                 tools:showIn="@layout/fragment_event_main">
 
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/upComingEvent_card_recycler_view"
-                                    style="@style/card_container"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:scrollbars="horizontal"
-                                    tools:listitem="@layout/fragment_event_activity" />
+                                <Button
+                                    android:id="@+id/containedButton1"
+                                    style="@style/cat_btn"
+                                    android:text="button1"
+                                    app:icon="@drawable/ic_charity" />
 
+                                <Button
+                                    android:id="@+id/containedButton2"
+                                    style="@style/cat_btn"
+                                    android:text="Contained button"
+                                    app:icon="@drawable/ic_environmental" />
                             </LinearLayout>
                         </HorizontalScrollView>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/upComingEvent_card_recycler_view"
+                            style="@style/row"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/padding_15"
+                            android:paddingRight="@dimen/padding_15"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/fragment_event_activity_rectangle" />
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/linearLayout3"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginBottom="7dp"-->
-        <!--            android:orientation="vertical"-->
-        <!--            android:padding="16dp"-->
-        <!--            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/activitiesToday">-->
-
-        <!--            &lt;!&ndash; Title, secondary and supporting text &ndash;&gt;-->
-        <!--            <TextView-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="title"-->
-        <!--                android:textAppearance="?attr/textAppearanceHeadline6" />-->
-
-        <!--            <TextView-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginTop="8dp"-->
-        <!--                android:text="secondary_text"-->
-        <!--                android:textAppearance="?attr/textAppearanceBody2"-->
-        <!--                android:textColor="?android:attr/textColorSecondary" />-->
-
-        <!--            <TextView-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginTop="16dp"-->
-        <!--                android:text="supporting_text"-->
-        <!--                android:textAppearance="?attr/textAppearanceBody2"-->
-        <!--                android:textColor="@color/secondaryColor" />-->
-
-        <!--        </LinearLayout>-->
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

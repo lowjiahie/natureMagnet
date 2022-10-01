@@ -7,6 +7,7 @@ import com.example.naturemagnet.entity.Category
 
 class EventRepository(private val activityDao: ActivityDao, private val categoryDao: CategoryDao) {
 
+
     //activity
     fun getAllActivities(): List<Activity> = activityDao.getAll()
     fun getActivity(activityId: Long): Activity = activityDao.getActivity(activityId)
