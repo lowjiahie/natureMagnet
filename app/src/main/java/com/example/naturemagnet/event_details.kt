@@ -1,59 +1,85 @@
 package com.example.naturemagnet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
+import com.example.naturemagnet.databinding.FragmentEventDetailsBinding
+import com.example.naturemagnet.entity.Activity
+import com.example.naturemagnet.viewModel.EventDetailsViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [event_details.newInstance] factory method to
- * create an instance of this fragment.
- */
 class event_details : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var binding: FragmentEventDetailsBinding? = null
+    /** viewModel important */
+    private val sharedViewModel: EventDetailsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_details, container, false)
+        val fragmentBinding = FragmentEventDetailsBinding.inflate(inflater, container, false)
+        binding = fragmentBinding
+        binding?.apply {
+            /** using viewModel set on another fragment */
+            val currentActivity = sharedViewModel.activity.value
+            val dateTime: String = currentActivity?.dateTime.toString()
+            var date: String = dateTime.subSequence(0, 10) as String
+            date = date.replace('-', '/')
+
+            var time: String = dateTime.subSequence(11, 16) as String
+            var hr = time.split(':')[0]
+            val min = time.split(':')[1]
+            if (hr.toInt() - 12 >= 0) {
+                if (hr.toInt() - 12 > 0) {
+                    hr = (hr.toInt() - 12).toString()
+                }
+                time = hr + " : " + min + " P.M."
+            } else {
+                time = hr + " : " + min + " A.M."
+            }
+            val formatedDateTime: String = date + "\nEvent Start @ " + time
+
+            detailsCardTitle.text = currentActivity?.name
+            detailsCardSneakpeek.setImageBitmap(currentActivity?.sneakPeek)
+            detailsCardIcon.setImageBitmap(currentActivity?.sneakPeek)
+            detailsCardDatetime.text = formatedDateTime
+            detailsCardDesc.text = currentActivity?.descriptions
+
+            detailsCardJoinBtn.setOnClickListener {
+                //TODO: insert an activityJoined entries using current custId & activityId
+                Log.e("Event_ Details", "join btn clicked")
+            }
+
+            detailsCardQuitBtn.setOnClickListener {
+                //TODO: delete specific activityJoined entries using with custId & activityId
+                Log.e("Event_ Details", "join btn clicked")
+            }
+
+            detailsCardCancelBtn.setOnClickListener {
+                //TODO: bring user back to previous fragment
+                Log.e("Event_ Details", "join btn clicked")
+            }
+        }
+//        Log.e("event_details", sharedViewModel.activity.value.toString())
+//        Log.e("event_details", sharedViewModel.num.value.toString())
+
+        return fragmentBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment event_details.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            event_details().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.apply {
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
