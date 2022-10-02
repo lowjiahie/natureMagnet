@@ -1,6 +1,7 @@
 package com.example.naturemagnet.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.naturemagnet.entity.Activity
@@ -19,4 +20,7 @@ interface ActivityJoinedDao {
 
     @Insert
     fun insertActivitiesJoined(activityJoined: List<ActivityJoined>)
+
+    @Query("DELETE FROM ActivityJoined WHERE ActivityJoined.activityId == :activityId AND ActivityJoined.custId == :custId")
+    fun deleteActivityJoined(activityId: Long, custId: Long)
 }

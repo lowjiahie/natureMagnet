@@ -58,16 +58,15 @@ class EventRepository(private val activityDao: ActivityDao, private val category
 
 
     fun getAllActivitiesJoined(): List<ActivityJoined> = activityJoinedDao.getAll()
-
     fun getActivityJoined(activityId: Long): ActivityJoined = activityJoinedDao.getActivityJoined(activityId)
-
     fun insertActivityJoined(activityJoined: ActivityJoined) {
         activityJoinedDao.insertActivityJoined(activityJoined)
     }
-
     fun insertActivitiesJoined(activitiesJoined: List<ActivityJoined>){
         activityJoinedDao.insertActivitiesJoined(activitiesJoined)
     }
-
+    fun deleteActivityJoined(activityId: Long, custId: Long) {
+        activityJoinedDao.deleteActivityJoined(activityId, custId)
+    }
     fun getActivitiesJoinedByUser(userId: Long): List<Activity> = activityDao.getActivitiesJoinedByUser(userId)
 }

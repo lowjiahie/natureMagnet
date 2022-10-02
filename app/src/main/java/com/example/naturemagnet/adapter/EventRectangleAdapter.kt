@@ -19,7 +19,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class EventRectangleAdapter(private val activities: List<Activity>, private val activityClickListener: EventActivityClickkListener) :
+class EventRectangleAdapter(private val activities: List<Activity>, private val activityClickListener: EventActivityClickkListener, private val layout: String) :
     RecyclerView.Adapter<EventRectangleAdapter.EventRectangleViewHolder>() {
 
     /** define the attribute according to the fragment to bind data on it later */
@@ -54,7 +54,7 @@ class EventRectangleAdapter(private val activities: List<Activity>, private val 
     override fun onBindViewHolder(holder: EventRectangleViewHolder, position: Int) {
         holder.bind(activities[position])
         holder.binding.root.setOnClickListener{
-            activityClickListener.onActivityClick(it, activities[position])
+            activityClickListener.onActivityClick(it, activities[position], layout)
         }
 //        holder.itemView.setOnClickListener { view ->
 //            view.findNavController().navigate(R.id.event_details)

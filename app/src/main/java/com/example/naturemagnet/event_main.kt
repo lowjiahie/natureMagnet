@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.naturemagnet.adapter.EventActivityClickkListener
@@ -56,9 +59,7 @@ class event_main : Fragment(), EventActivityClickkListener {
         /** get all activities the specific user has joined and display in a RecyclerView */
         val layoutManager1 = LinearLayoutManager(application)
         layoutManager1.orientation = LinearLayoutManager.HORIZONTAL
-
-        val eventAdapter1 = EventAdapter(eventRepository.getActivitiesJoinedByUser(1), this)
-
+        val eventAdapter1 = EventAdapter(eventRepository.getActivitiesJoinedByUser(2), this, "ActivitiesJoined")
         binding.yourActivityCardRecyclerView.layoutManager = layoutManager1
         binding.yourActivityCardRecyclerView.adapter = eventAdapter1
 
@@ -71,17 +72,21 @@ class event_main : Fragment(), EventActivityClickkListener {
         val month = c.get(Calendar.MONTH) + 1
         val day = c.get(Calendar.DAY_OF_MONTH)
         val activitiesHappeningToday = eventRepository.getActivitiesByDate("$year/$month/$day")
+//        2022-10-31 to display sample data
+        val eventAdapter2 = EventAdapter(activitiesHappeningToday, this, "ActivitiesToday")
 
-        val eventAdapter2 = EventAdapter(activitiesHappeningToday, this)
-
-        binding.activitiesTodayCardRecyclerView.layoutManager = layoutManager2
-        binding.activitiesTodayCardRecyclerView.adapter = eventAdapter2
+        if (activitiesHappeningToday == null) {
+            binding.activitiesToday.visibility = GONE
+        } else {
+            binding.activitiesTodayCardRecyclerView.layoutManager = layoutManager2
+            binding.activitiesTodayCardRecyclerView.adapter = eventAdapter2
+        }
 
         /** get all activities available */
         val layoutManager3 = LinearLayoutManager(application)
         layoutManager3.orientation = LinearLayoutManager.VERTICAL
         val eventRectangleAdapter =
-            EventRectangleAdapter(eventRepository.getAllActivities(), listener)
+            EventRectangleAdapter(eventRepository.getAllActivities(), listener, "PopEvent")
         binding.upComingEventCardRecyclerView.layoutManager = layoutManager3
         binding.upComingEventCardRecyclerView.adapter = eventRectangleAdapter
 
@@ -97,12 +102,15 @@ class event_main : Fragment(), EventActivityClickkListener {
 
     }
 
-    override fun onActivityClick(view: View, activity: Activity) {
+    override fun onActivityClick(view: View, activity: Activity, layout: String) {
         val tempActivity = MutableLiveData<Activity>(activity)
+        val tempParent = MutableLiveData<String>(layout)
 
         /** updating data in viewModel */
         sharedViewModel.setActivity(tempActivity)
-//        Log.e("event_main", view.parent.)
+        sharedViewModel.setParent(tempParent)
+        /** get to know which component invoking */
+//        Log.e("event_main", layout)
         view.findNavController().navigate(R.id.event_details)
 //        Log.e("Event_Main_Fragment", sharedViewModel.num.value.toString())
 //        Log.e("Event_Main_Fragment", sharedViewModel.activity.value.toString())
