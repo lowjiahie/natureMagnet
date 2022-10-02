@@ -1,8 +1,8 @@
 package com.example.naturemagnet.dao
 
+import android.graphics.Bitmap
 import androidx.room.*
 import com.example.naturemagnet.entity.Product
-import com.example.naturemagnet.entity.ProductCategory
 
 @Dao
 interface ProductDao {
@@ -10,14 +10,34 @@ interface ProductDao {
     fun getProdAll(): List<Product>
 
     @Query(
-        "SELECT * FROM Product JOIN ProductCategory ON Product.prodCategoryID = ProductCategory.prodCategoryID"
+        "SELECT * FROM Product WHERE Product.prodName = :productName"
     )
-    fun loadProductAndProductCat(): Map<ProductCategory, List<Product>>
+    fun loadProductDetail(productName: String): Product
 
     @Query(
-        "SELECT * FROM Product WHERE Product.productID = :productID"
+        "UPDATE Product SET prodName = :newProdName WHERE prodName = :oldProdName"
     )
-    fun loadProductDetail(productID: Int): Product
+    fun replaceNewProdName(newProdName: String , oldProdName: String): Product
+
+    @Query(
+        "UPDATE Product SET prodPrice = :newProdPrice WHERE prodPrice = :oldProdPrice"
+    )
+    fun replaceNewProdPrice(newProdPrice: String , oldProdPrice: String): Product
+
+    @Query(
+        "UPDATE Product SET prodQuantityStock = :newProdStock WHERE prodQuantityStock = :oldProdStock"
+    )
+    fun replaceNewProdStock(newProdStock: Int , oldProdStock: Int): Product
+
+    @Query(
+        "UPDATE Product SET prodDescription = :newProdDesc WHERE prodDescription = :oldProdDesc"
+    )
+    fun replaceNewProdDesc(newProdDesc: String, oldProdDesc: String): Product
+
+    @Query(
+        "UPDATE Product SET prodImage = :newProdImg WHERE prodImage = :oldProdImg"
+    )
+    fun replaceNewProdImage(newProdImg: Bitmap, oldProdImg: Bitmap): Product
 
     @Insert
     fun insertProducts(product: List<Product>)
