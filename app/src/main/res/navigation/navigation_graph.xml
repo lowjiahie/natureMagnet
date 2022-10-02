@@ -27,4 +27,16 @@
         android:name="com.example.naturemagnet.test2"
         android:label="test2"
         tools:layout="@layout/fragment_test2" />
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.example.naturemagnet.create_post"
+        android:label="Create Post" />
+    <fragment
+        android:id="@+id/fragment_all_post"
+        android:name="com.example.naturemagnet.all_posts"
+        android:label="All Posts" >
+        <action
+            android:id="@+id/action_fragment_all_post_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+    </fragment>
 </navigation>

@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         db = NatureMagnetDB.getInstance(this)!!
-//        db.customerDao().insertCustomer(SampleDataGenerator.getCustomer())
         Log.i("MainActivity",db.customerDao().getCustAll().toString())
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -90,6 +89,7 @@ class MainActivity : AppCompatActivity() {
 //        return navController.navigateUp(appBarConfiguration)
 //                || super.onSupportNavigateUp()
 //    }
+
 
 
 }
