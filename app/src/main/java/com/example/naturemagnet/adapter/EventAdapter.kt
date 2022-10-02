@@ -14,11 +14,11 @@ import com.example.naturemagnet.databinding.FragmentEventActivityBinding
 import com.example.naturemagnet.entity.Activity
 import java.text.DecimalFormat
 
-class EventAdapter(private val activities: List<Activity>) :
+class EventAdapter(private val activities: List<Activity>, private val activityClickListener: EventActivityClickkListener) :
     RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     /** define the attribute according to the fragment to bind data on it later */
-    class EventViewHolder(private val binding: FragmentEventActivityBinding) :
+    class EventViewHolder(val binding: FragmentEventActivityBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(activity: Activity) {
             val decimalFormat = DecimalFormat("###,###")
@@ -43,9 +43,8 @@ class EventAdapter(private val activities: List<Activity>) :
     /** bind the data from the current object to the fragment's attribute defined in EventViewHolder() */
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         holder.bind(activities[position])
-        holder.itemView.setOnClickListener{view ->
-            view.findNavController().navigate(R.id.event_details)
-//            Log.e("event_adapter", "Clicked on item. $position")
+        holder.binding.root.setOnClickListener{
+            activityClickListener.onActivityClick(it, activities[position])
         }
 //        Log.e("Adapter", currentActivity.toString())
     }

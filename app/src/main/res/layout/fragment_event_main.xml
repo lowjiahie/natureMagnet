@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.naturemagnet.viewModel.EventDetailsViewModel" />
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -29,7 +33,7 @@
                         android:id="@+id/searchArea"
                         style="@style/row"
                         android:paddingBottom="0dp"
-                        app:layout_constraintBottom_toTopOf="@+id/yourActivities"
+                        app:layout_constraintBottom_toTopOf="@+id/activitiesJoined"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -66,7 +70,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/yourActivities"
+                        android:id="@+id/activitiesJoined"
                         style="@style/col"
                         app:layout_constraintBottom_toTopOf="@+id/activitiesToday"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -75,9 +79,9 @@
                         app:layout_goneMarginBottom="0dp">
 
                         <TextView
-                            android:id="@+id/yourActivitiesTitle"
+                            android:id="@+id/activitiesJoinedTitle"
                             style="@style/subheading"
-                            android:text="@string/yourActivitiesTitle"></TextView>
+                            android:text="@string/activitiesJoined"></TextView>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/yourActivity_card_recycler_view"
@@ -99,7 +103,7 @@
                         android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/yourActivities">
+                        app:layout_constraintTop_toBottomOf="@+id/activitiesJoined">
 
                         <TextView
                             android:id="@+id/activitiesTodayTitle"
