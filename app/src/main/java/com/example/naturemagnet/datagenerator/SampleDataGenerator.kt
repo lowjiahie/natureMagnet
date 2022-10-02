@@ -37,7 +37,7 @@ class SampleDataGenerator {
         }
 
         //generate activities data
-      fun injectActivities(context: Context): List<Activity> {
+        fun injectActivities(context: Context): List<Activity> {
             val listOfImage = listOf(R.drawable.sustainable_cities_development,R.drawable.beach_cleaning,R.drawable.charity_fundraising)
             val bitmapList : MutableList<Bitmap> = mutableListOf()
             var bitmap : Bitmap
@@ -53,7 +53,7 @@ class SampleDataGenerator {
                     "2022-10-31 9:59:00",
                     "In this event, there will be several industry researchers presenting their founding in how to effectively establish a cities development plan that are sustainable in both for the human and the environment of the cities",
                     "2022-9-31 24:00:00",
-                    "2022-9-27 13:39:21",
+                    "2022-09-27 13:39:21",
                     "Pavillion @ Bukit Jalil",
                     bitmapList[0],
                     82,
@@ -63,10 +63,10 @@ class SampleDataGenerator {
                 Activity(
                     "Beach Cleaning @ the rimbayu",
                     "Environment Preservation",
-                    "2022-11-2 12:35:00",
+                    "2022-11-02 12:35:00",
                     "We will be in cooperation with the local authority to clean the beach located @ the Rimbayu area and aim to recycle all the collected material to improve the quality of the environment.",
                     "2022-10-15 12:00:00",
-                    "2022-9-27 14:28:44",
+                    "2022-09-27 14:28:44",
                     "Rimbayu @ Bukit Indah",
                     bitmapList[1],
                     2914,
@@ -79,7 +79,7 @@ class SampleDataGenerator {
                     "2022-12-12 19:21:00",
                     "All kind of item will be accepted as a charity goods including tangible & intangible product that could be utilized by the old folks home",
                     "2022-11-15 24:00:00",
-                    "2022-9-27 17:21:51",
+                    "2022-09-27 17:21:51",
                     "Chow Kit",
                     bitmapList[2],
                     27,
@@ -106,20 +106,13 @@ class SampleDataGenerator {
             )
         }
 
-        fun injectActivityLiked(): List<ActivityLiked> {
-            return listOf(
-                ActivityLiked(1, 2, "2022-9-17 23:23:29"),
-                ActivityLiked(1, 3, "2022-9-18 23:34:37"),
-                ActivityLiked(2, 1, "2022-9-24 23:13:52"),
-                ActivityLiked(2, 2, "2022-9-24 23:23:29"),
-                ActivityLiked(2, 3, "2022-9-25 00:14:37")
-            )
-        }
-
         fun injectActivityJoined(): List<ActivityJoined> {
             return listOf(
-                ActivityJoined(1, 3, "2022-9-30 23:34:37"),
-                ActivityJoined(2, 1, "2022-9-30 23:13:52")
+                ActivityJoined(1, 2, "2022-9-17 23:23:29"),
+                ActivityJoined(1, 3, "2022-9-18 23:34:37"),
+                ActivityJoined(2, 1, "2022-9-24 23:13:52"),
+                ActivityJoined(2, 2, "2022-9-24 23:23:29"),
+                ActivityJoined(2, 3, "2022-9-25 00:14:37")
             )
         }
     }
