@@ -11,26 +11,26 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.naturemagnet.dao.*
 import com.example.naturemagnet.datagenerator.SampleDataGenerator
 import com.example.naturemagnet.entity.*
-import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.typeconverterClass.ImageConverter
 import java.util.concurrent.Executors
 
 //Any new entity please add here
-@Database(
-    entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
-        News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
-        PostSaved::class, Product::class, ProductCategory::class, Reply::class],
-    version = 1
-)
+@Database (entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
+    News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
+    PostSaved::class, Product::class, ProductCategory::class, Reply::class],
+    version = 1)
 //Any new converter please add here
 @TypeConverters(ImageConverter::class)
-abstract class NatureMagnetDB : RoomDatabase() {
+abstract class NatureMagnetDB : RoomDatabase () {
     //define your DAO here
     abstract fun customerDao(): CustomerDao
     abstract fun activityDao(): ActivityDao
     abstract fun categoryDao(): CategoryDao
     abstract fun activityJoinedDao(): ActivityJoinedDao
     private val eventRepository: EventRepository = EventRepository(activityDao(), categoryDao(), activityJoinedDao())
+    abstract fun postDao(): PostDao
+    abstract fun newsDao(): NewsDao
+    abstract fun commentDao(): CommentDao
 
     companion object {
         private var INSTANCE: NatureMagnetDB? = null
@@ -55,6 +55,14 @@ abstract class NatureMagnetDB : RoomDatabase() {
                                 db?.activityJoinedDao()
                                     ?.insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
                                 Log.e("db", "DB is working")
+                                val db = getInstance(context)!!
+                                db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
+                                db.postDao().insertPosts(SampleDataGenerator.injectPost(context))
+                                db.postDao().insertPostLiked(SampleDataGenerator.injectPostLiked())
+                                db.postDao().insertPostSaved(SampleDataGenerator.injectPostSaved())
+                                db.newsDao().insertNews(SampleDataGenerator.injectNews())
+                                db.newsDao().insertNewsSaved(SampleDataGenerator.injectNewsSaved())
+                                db.commentDao().insertComments(SampleDataGenerator.injectComment())
                             }).start()
                         }
                     }).allowMainThreadQueries().build()
@@ -67,4 +75,5 @@ abstract class NatureMagnetDB : RoomDatabase() {
             INSTANCE = null
         }
     }
+
 }

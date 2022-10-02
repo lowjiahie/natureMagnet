@@ -11,5 +11,8 @@ data class News(
     val title: String?,
     val newsLink: String?,
     val sourceName: String?,
-    val publishedDateTime: String?
-)
+    val publishedDate: String?
+){
+    constructor(title: String, newsLink: String, sourceName: String, publishedDate: String)
+            : this(0, title, newsLink, sourceName, publishedDate)
+}

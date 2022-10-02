@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.example.naturemagnet"
         minSdk 21
-        targetSdk 31
+        targetSdk 32
         versionCode 1
         versionName "1.0"
         javaCompileOptions {
@@ -92,4 +92,11 @@ dependencies {
 
     //Volley
     implementation 'com.android.volley:volley:1.2.1'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.14.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.1'
+
+
+
 }

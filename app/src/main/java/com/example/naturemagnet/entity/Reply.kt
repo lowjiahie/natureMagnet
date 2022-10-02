@@ -1,5 +1,6 @@
 package com.example.naturemagnet.entity
 
+import android.graphics.Bitmap
 import androidx.room.*
 
 //one to many (one customer can have many posts)
@@ -28,4 +29,7 @@ data class Reply(
     val eventLink: String?,
     @ColumnInfo(index = true) var custID: Long,
     @ColumnInfo(index = true) var commentID: Long
-)
+){
+    constructor(content:String, replyDatetime:String, eventLink:String?, custID:Long, commentID:Long)
+            : this(0, content, replyDatetime, eventLink, custID, commentID)
+}
