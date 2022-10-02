@@ -11,6 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.naturemagnet.dao.*
 import com.example.naturemagnet.datagenerator.SampleDataGenerator
 import com.example.naturemagnet.entity.*
+import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.typeconverterClass.ImageConverter
 import java.util.concurrent.Executors
 
@@ -45,7 +46,7 @@ abstract class NatureMagnetDB : RoomDatabase () {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             Thread(Runnable {
-                                val db = getInstance(context)
+                                val db = getInstance(context)!!
                                 db?.customerDao()
                                     ?.insertCustomer(SampleDataGenerator.getCustomers())
                                 db?.categoryDao()
@@ -55,7 +56,6 @@ abstract class NatureMagnetDB : RoomDatabase () {
                                 db?.activityJoinedDao()
                                     ?.insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
                                 Log.e("db", "DB is working")
-                                val db = getInstance(context)!!
                                 db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
                                 db.postDao().insertPosts(SampleDataGenerator.injectPost(context))
                                 db.postDao().insertPostLiked(SampleDataGenerator.injectPostLiked())
