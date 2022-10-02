@@ -3,17 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/drawable/rectangle.xml" value="0.171" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activities_row.xml" value="0.1" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_main.xml" value="0.1585144927536232" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/drawer_header.xml" value="0.24547101449275363" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_details.xml" value="0.22" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_edit.xml" value="0.22" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_main.xml" value="0.1" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.18541666666666667" />
-        <entry key="..\:/Users/ngjin/AndroidStudioProjects/natureMagnet/app/src/main/res/menu/drawer_menu.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity.xml" value="0.11096014492753623" />
+        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/drawable-v24/rounded_corners_red.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/drawable/active_circle.xml" value="0.125" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/drawable/inactive_circle.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/drawable/rectangle.xml" value="0.125" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/activity_ecommerce.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment__card_for_cart.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment__order_confirmation.xml" value="0.1796875" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_add_product.xml" value="0.1796875" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_add_to_cart.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_admin_management.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_admin_management_component.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_delivery.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_edit_product.xml" value="0.165625" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_details.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_edit.xml" value="0.1640625" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_main.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_order_confirmation.xml" value="0.359375" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_order_submission_result.xml" value="0.12849162011173185" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_payment.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_payment_confirmation.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_prod_detail.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_product.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_shipping_detail.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_shop.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_test1.xml" value="0.1796875" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/layout/fragment_track_shipping.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/Asus/StudioProjects/natureMagnet/app/src/main/res/menu/drawer_menu.xml" value="0.1796875" />
       </map>
     </option>
   </component>

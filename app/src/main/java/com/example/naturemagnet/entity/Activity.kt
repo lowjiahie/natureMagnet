@@ -23,7 +23,7 @@ import androidx.room.ForeignKey.CASCADE
 )
 
 data class Activity (
-    @PrimaryKey(autoGenerate = true) val activityID: Long = 0L,
+    @PrimaryKey(autoGenerate = true) var activityID: Long = 0L,
     @ColumnInfo (name = "name") val name: String?,
     @ColumnInfo (name = "title") val title: String?,
     @ColumnInfo (name = "datetime") val dateTime: String?,

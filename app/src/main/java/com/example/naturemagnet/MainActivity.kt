@@ -1,33 +1,16 @@
 package com.example.naturemagnet
 
-import android.app.PendingIntent.getActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.ActivityMainBinding
-import com.example.naturemagnet.datagenerator.SampleDataGenerator
-import com.google.android.material.navigation.NavigationView
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -45,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,
-                R.id.eventMainFragment
+                R.id.eventMainFragment, R.id.fragment_shop, R.id.fragment_admin_management
             ), binding.drawerLayout
         )
         navController = findNavController(R.id.hostFragment)
@@ -67,6 +50,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> showBottomNav()
                 R.id.awarenessMainFragment -> showBottomNav()
                 R.id.eventMainFragment -> showBottomNav()
+                R.id.fragment_shop -> showBottomNav()
+                R.id.fragment_admin_management -> showBottomNav()
                 else -> hideBottomNav()
             }
         }

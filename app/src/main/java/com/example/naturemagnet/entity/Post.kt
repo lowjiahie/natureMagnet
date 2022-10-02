@@ -17,7 +17,7 @@ import androidx.room.ForeignKey.CASCADE
     )]
 )
 data class Post(
-    @PrimaryKey(autoGenerate = true) val postID: Long,
+    @PrimaryKey(autoGenerate = true) var postID: Long,
     val title: String?,
     val content: String?,
 //    @TypeConverters(ImageConverter::class) val imgPost: Bitmap?,

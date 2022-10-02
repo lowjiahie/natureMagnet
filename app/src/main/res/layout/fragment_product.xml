@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <GridLayout
-        android:id="@+id/gridLayout"
+<layout>
+    <data>
+        <variable
+            name="prodShopComp"
+            type="com.example.naturemagnet.entity.Product" />
+    </data>
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2"
-        android:columnOrderPreserved="false"
-        android:padding="14dp"
+        android:id="@+id/card"
+        android:layout_margin="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <!-- 1 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card1"
-            android:layout_width="157dp"
-            android:layout_height="200dp"
-            android:layout_margin="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,9 +21,9 @@
 
                 <!-- Media -->
                 <ImageView
+                    android:id="@+id/shopImage"
                     android:layout_width="157dp"
                     android:layout_height="101dp"
-                    android:contentDescription="@string/content_description_media"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/tomato" />
 
@@ -49,7 +38,8 @@
                         android:id="@+id/prodName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/productName"
+                        android:text="@{prodShopComp.prodName}"
+                        android:textColor="@color/black"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         android:textSize="16dp" />
 
@@ -58,259 +48,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/productPrice"
+                        android:text="@{prodShopComp.prodPrice}"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary" />
 
                 </LinearLayout>
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- 2 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card2"
-            android:layout_width="157dp"
-            android:layout_height="200dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Media -->
-                <ImageView
-                    android:layout_width="157dp"
-                    android:layout_height="101dp"
-                    android:contentDescription="@string/content_description_media"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/tomato" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Title, secondary and supporting text -->
-                    <TextView
-                        android:id="@+id/prodName2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/productName"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/prodPrice2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/productPrice"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- 3 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card3"
-            android:layout_width="157dp"
-            android:layout_height="200dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Media -->
-                <ImageView
-                    android:layout_width="157dp"
-                    android:layout_height="101dp"
-                    android:contentDescription="@string/content_description_media"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/tomato" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Title, secondary and supporting text -->
-                    <TextView
-                        android:id="@+id/prodName3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/productName"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/prodPrice3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/productPrice"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- 4 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card4"
-            android:layout_width="157dp"
-            android:layout_height="200dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Media -->
-                <ImageView
-                    android:layout_width="157dp"
-                    android:layout_height="101dp"
-                    android:contentDescription="@string/content_description_media"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/tomato" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Title, secondary and supporting text -->
-                    <TextView
-                        android:id="@+id/prodName4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/productName"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/prodPrice4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/productPrice"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- 5 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card5"
-            android:layout_width="157dp"
-            android:layout_height="200dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Media -->
-                <ImageView
-                    android:layout_width="157dp"
-                    android:layout_height="101dp"
-                    android:contentDescription="@string/content_description_media"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/tomato" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Title, secondary and supporting text -->
-                    <TextView
-                        android:id="@+id/prodName5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/productName"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/prodPrice5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/productPrice"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- 6 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card6"
-            android:layout_width="157dp"
-            android:layout_height="200dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Media -->
-                <ImageView
-                    android:layout_width="157dp"
-                    android:layout_height="101dp"
-                    android:contentDescription="@string/content_description_media"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/tomato" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Title, secondary and supporting text -->
-                    <TextView
-                        android:id="@+id/prodName6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/productName"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/prodPrice6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/productPrice"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-    </GridLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

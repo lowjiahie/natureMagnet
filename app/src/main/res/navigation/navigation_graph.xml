@@ -32,4 +32,37 @@
         android:name="com.example.naturemagnet.event_edit"
         android:label="fragment_event_edit"
         tools:layout="@layout/fragment_event_edit" />
+    <fragment
+        android:id="@+id/fragment_shop"
+        android:name="com.example.naturemagnet.fragment_shop"
+        android:label="Ecommerce" >
+        <action
+            android:id="@+id/action_fragment_shop_to_fragment_prodDetail"
+            app:destination="@id/fragment_prodDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_admin_management"
+        android:name="com.example.naturemagnet.fragment_admin_management"
+        android:label="fragment_admin_management" >
+        <action
+            android:id="@+id/action_fragment_admin_management_to_addProduct"
+            app:destination="@id/adminAddProduct" />
+        <action
+            android:id="@+id/action_fragment_admin_management_to_editProduct2"
+            app:destination="@id/adminEditProduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminAddProduct"
+        android:name="com.example.naturemagnet.AddProduct"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" />
+    <fragment
+        android:id="@+id/adminEditProduct"
+        android:name="com.example.naturemagnet.EditProduct"
+        android:label="EditProduct" />
+    <fragment
+        android:id="@+id/fragment_prodDetail"
+        android:name="com.example.naturemagnet.fragment_prodDetail"
+        android:label="fragment_prod_detail"
+        tools:layout="@layout/fragment_prod_detail" />
 </navigation>

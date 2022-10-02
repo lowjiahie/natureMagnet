@@ -22,12 +22,13 @@ import androidx.room.*
 )
 
 data class Product(
-    @PrimaryKey(autoGenerate = true) val productID: Long,
     val prodName: String?,
     val prodPrice: String?,
     val prodDescription: String?,
-    val prodQuantityStock: String?,
+    val prodQuantityStock: Int?,
     val prodImage: Bitmap?,
     @ColumnInfo(index = true) var prodCategoryID: Long,
     @ColumnInfo(index = true) var adminID: Long
-)
+){
+    @PrimaryKey(autoGenerate = true) var productID: Long=0
+}

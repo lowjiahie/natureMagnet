@@ -25,6 +25,11 @@ abstract class NatureMagnetDB : RoomDatabase () {
     //define your DAO here
     abstract fun activityDao(): ActivityDao
     abstract fun customerDao(): CustomerDao
+    abstract fun adminDao(): AdminDao
+    abstract fun productCategoryDao(): ProductCategoryDao
+    abstract fun productDao(): ProductDao
+    abstract fun orderDao(): OrderDao
+    abstract fun orderItemDao(): OrderItemDao
 
     companion object {
         private var INSTANCE: NatureMagnetDB? = null
@@ -39,7 +44,13 @@ abstract class NatureMagnetDB : RoomDatabase () {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             Thread(Runnable {
-                                getInstance(context)?.customerDao()?.insertCustomer(SampleDataGenerator.getCustomers())
+                                val db = getInstance(context)!!
+                                db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
+                                db.adminDao().insertAdmin(SampleDataGenerator.getAdmins())
+                                db.productCategoryDao().insertProdCats(SampleDataGenerator.getProductCategory())
+                                db.productDao().insertProducts(SampleDataGenerator.getProducts(context))
+                                db.orderDao().insertOrders(SampleDataGenerator.getOrders())
+                                db.orderItemDao().insertOrderItems(SampleDataGenerator.getOrderItems())
                             }).start()
                         }
                     }).allowMainThreadQueries().build()

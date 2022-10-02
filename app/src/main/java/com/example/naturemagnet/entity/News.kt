@@ -7,7 +7,7 @@ import androidx.room.*
     indices = [Index(value = ["newsID"], unique = true)]
 )
 data class News(
-    @PrimaryKey(autoGenerate = true) val newsID: Long,
+    @PrimaryKey(autoGenerate = true) var newsID: Long,
     val title: String?,
     val newsLink: String?,
     val sourceName: String?,

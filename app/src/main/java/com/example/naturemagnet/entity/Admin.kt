@@ -10,10 +10,11 @@ import androidx.room.PrimaryKey
     indices = [Index(value = ["adminEmail"], unique = true),Index(value = ["adminID"], unique = true)],
 )
 data class Admin(
-    @PrimaryKey(autoGenerate = true) val adminID: Long,
     val adminName: String?,
     val adminEmail: String,
     val address: String?,
     val phone: String?,
     val password: String?,
-)
+){
+    @PrimaryKey(autoGenerate = true) var adminID: Long=0
+}
