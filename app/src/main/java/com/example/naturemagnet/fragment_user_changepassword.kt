@@ -1,59 +1,74 @@
 package com.example.naturemagnet
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import com.example.naturemagnet.dao.CustomerDao
+import com.example.naturemagnet.dao.CustomerViewModel
+import com.example.naturemagnet.databinding.FragmentUserChangepasswordBinding
+import com.example.naturemagnet.databinding.FragmentUserMainBinding
+import com.example.naturemagnet.entity.Customer
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_user_changepassword.newInstance] factory method to
- * create an instance of this fragment.
- */
 class fragment_user_changepassword : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var cCustomerViewModel: CustomerViewModel
+    private lateinit var binding: FragmentUserChangepasswordBinding
+    private lateinit var cCustomerDao: CustomerDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_changepassword, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_user_main, container, false)
+
+
+        cCustomerViewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
+
+        binding.confirmButton.setOnClickListener{
+            changePassword()
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_user_changepassword.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_user_changepassword().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun changePassword() {
+        val password = binding.newPasswordText.text.toString()
+        val confirmpassword = binding.confirmPasswordText.text.toString()
+
+
+        if (compare(password, confirmpassword)) {
+
+
+            val customers = Customer(password)
+            cCustomerDao.updateCustomer(customers)
+
+            Toast.makeText(
+                context,
+                "Successfully Change Password",
+                Toast.LENGTH_LONG
+            ).show()
+
+            val intent = Intent(context, fragment_user_main::class.java)
+            startActivity(intent)
+        }
     }
+
+    private fun compare(password:String, confirmpassword: String):Boolean{
+        return if(confirmpassword != password){
+            Toast.makeText(context, "Password not same", Toast.LENGTH_LONG).show()
+            false
+        }else{
+            true
+        }
+
+    }
+
+
 }

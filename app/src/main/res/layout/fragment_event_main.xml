@@ -100,7 +100,7 @@
                                         android:layout_height="180dp"
                                         android:contentDescription="content_description_media"
                                         android:scaleType="centerCrop"
-                                        app:srcCompat="@drawable/fruit" />
+                                        app:srcCompat="@drawable/ic_activity_fill" />
 
                                     <!-- event icon-->
                                     <androidx.cardview.widget.CardView
@@ -182,7 +182,7 @@
                                         android:layout_height="180dp"
                                         android:contentDescription="content_description_media"
                                         android:scaleType="centerCrop"
-                                        app:srcCompat="@drawable/fruit" />
+                                        app:srcCompat="@drawable/ic_activity_fill" />
 
                                     <!-- event icon-->
                                     <androidx.cardview.widget.CardView
@@ -301,7 +301,7 @@
                             <ImageView
                                 android:id="@+id/imageView2"
                                 style="@style/card_rectangle_img"
-                                app:srcCompat="@drawable/fruit" />
+                                app:srcCompat="@drawable/ic_activity_fill" />
 
                             <!-- event icon-->
                             <androidx.cardview.widget.CardView

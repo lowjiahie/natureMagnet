@@ -1,59 +1,92 @@
 package com.example.naturemagnet
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.naturemagnet.dao.CustomerViewModel
+import com.example.naturemagnet.dao.PrefManager
+import com.example.naturemagnet.database.NatureMagnetDB
+import com.example.naturemagnet.databinding.FragmentUserMainBinding
+import com.example.naturemagnet.entity.Customer
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_user_main.newInstance] factory method to
- * create an instance of this fragment.
- */
 class fragment_user_main : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var cCustomerViewModel: CustomerViewModel
+    private lateinit var binding: FragmentUserMainBinding
+    private lateinit var prefManager: PrefManager
+    private lateinit var email : String
+    private lateinit var phone : String
+    private lateinit var address : String
+    private lateinit var db : NatureMagnetDB
+    private lateinit var customer : Customer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_main, container, false)
+
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_user_main, container, false)
+
+
+        cCustomerViewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
+
+        val application = requireNotNull(this.activity).application
+
+        binding.logoutButton.setOnClickListener{
+            clickLogout(it)
+        }
+        prefManager = PrefManager(this.requireActivity())
+        db = NatureMagnetDB.getInstance(application)!!
+        customer = db.customerDao().loginValidation(prefManager.getEmail().toString())
+
+
+        setupUI()
+
+        binding.editprofileButton.setOnClickListener{
+            findNavController().navigate(R.id.fragment_user_editprofile)
+        }
+        binding.changepasswordButton.setOnClickListener{
+            findNavController().navigate(R.id.fragment_user_changepassword)
+        }
+//        binding.deleteaccountButton.setOnClickListener{
+//            findNavController().navigate(R.id.fragment_user_deleteaccount)
+//        }
+        return binding.root
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_user_main.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_user_main().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun init(){
+
     }
+
+//    private fun checkLogin(){
+//        if(prefManager.isLogin() == false){
+//            val intent = Intent(activity, activity_user_login::class.java)
+//            startActivity(intent)
+//        }
+//    }
+
+    private fun setupUI(){
+        binding.nameText.text = customer.custName
+        binding.emailText.text = customer.custEmail
+        binding.phoneText.text =customer.phone
+        binding.addressText.text = customer.address
+    }
+
+    fun clickLogout(view: View){
+        prefManager.removeData()
+        val intent = Intent(activity, activity_user_firstpage::class.java)
+        startActivity(intent)
+    }
+
 }
