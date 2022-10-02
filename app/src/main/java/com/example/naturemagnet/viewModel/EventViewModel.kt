@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.example.naturemagnet.dao.ActivityDao
+import com.example.naturemagnet.dao.ActivityJoinedDao
 import com.example.naturemagnet.dao.CategoryDao
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.entity.Activity
@@ -13,14 +14,15 @@ import com.example.naturemagnet.repository.EventRepository
 class EventViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var activities: List<Activity>
     private lateinit var categories: List<Category>
-    private lateinit var eventRepository: EventRepository
+    private var eventRepository: EventRepository
     private var db = NatureMagnetDB.getInstance(application)
 
     init {
         Log.d("Activity_Fragment", "EventViewModel created !")
-        var activityDao: ActivityDao = db!!.activityDao()
-        var categoryDao: CategoryDao = db!!.categoryDao()
-        eventRepository = EventRepository(activityDao, categoryDao)
+        val activityDao: ActivityDao = db!!.activityDao()
+        val categoryDao: CategoryDao = db!!.categoryDao()
+        val activityJoinedDao: ActivityJoinedDao = db!!.activityJoinedDao()
+        eventRepository = EventRepository(activityDao, categoryDao, activityJoinedDao)
     }
 
     override fun onCleared() {
