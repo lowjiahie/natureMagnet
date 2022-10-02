@@ -11,12 +11,13 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.naturemagnet.dao.*
 import com.example.naturemagnet.datagenerator.SampleDataGenerator
 import com.example.naturemagnet.entity.*
+import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.typeconverterClass.ImageConverter
 import java.util.concurrent.Executors
 
 //Any new entity please add here
 @Database(
-    entities = [Activity::class, ActivityJoined::class, ActivityLiked::class, Admin::class, Category::class, Comment::class, Customer::class,
+    entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
         News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
         PostSaved::class, Product::class, ProductCategory::class, Reply::class],
     version = 1
@@ -29,8 +30,7 @@ abstract class NatureMagnetDB : RoomDatabase() {
     abstract fun activityDao(): ActivityDao
     abstract fun categoryDao(): CategoryDao
     abstract fun activityJoinedDao(): ActivityJoinedDao
-    abstract fun activityLikedDao(): ActivityLikedDao
-
+    private val eventRepository: EventRepository = EventRepository(activityDao(), categoryDao(), activityJoinedDao())
 
     companion object {
         private var INSTANCE: NatureMagnetDB? = null
@@ -54,8 +54,6 @@ abstract class NatureMagnetDB : RoomDatabase() {
                                     ?.insertActivities(SampleDataGenerator.injectActivities(context))
                                 db?.activityJoinedDao()
                                     ?.insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
-                                db?.activityLikedDao()
-                                    ?.insertActivitiesLiked(SampleDataGenerator.injectActivityLiked())
                                 Log.e("db", "DB is working")
                             }).start()
                         }
