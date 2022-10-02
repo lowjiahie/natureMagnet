@@ -13,6 +13,13 @@ interface ActivityDao {
     @Query("SELECT * FROM Activity WHERE Activity.activityID == :activityId")
     fun getActivity(activityId: Long): Activity
 
+    @Query(
+    "SELECT * FROM Activity " +
+            "INNER JOIN ActivityJoined ON ActivityJoined.activityID = Activity.activityID " +
+            "WHERE ActivityJoined.custID == :userId"
+    )
+    fun getActivitiesJoinedByUser(userId: Long): List<Activity>
+
     @Insert
     fun insertActivity(activity: Activity)
 
