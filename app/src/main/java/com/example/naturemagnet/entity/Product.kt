@@ -7,11 +7,6 @@ import androidx.room.*
     tableName = "product",
     foreignKeys = [
         ForeignKey(
-            entity = ProductCategory::class,
-            parentColumns = arrayOf("prodCategoryID"),
-            childColumns = arrayOf("prodCategoryID"),
-            onDelete = ForeignKey.CASCADE
-        ), ForeignKey(
             entity = Admin::class,
             parentColumns = arrayOf("adminID"),
             childColumns = arrayOf("adminID"),
@@ -22,12 +17,12 @@ import androidx.room.*
 )
 
 data class Product(
-    @PrimaryKey(autoGenerate = true) val productID: Long,
     val prodName: String?,
     val prodPrice: String?,
     val prodDescription: String?,
-    val prodQuantityStock: String?,
+    val prodQuantityStock: Int?,
     val prodImage: Bitmap?,
-    @ColumnInfo(index = true) var prodCategoryID: Long,
     @ColumnInfo(index = true) var adminID: Long
-)
+){
+    @PrimaryKey(autoGenerate = true) var productID: Long=0
+}

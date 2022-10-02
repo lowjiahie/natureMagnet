@@ -1,7 +1,6 @@
 package com.example.naturemagnet
 
 import android.app.PendingIntent.getActivity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var navController: NavController
     private lateinit var db : NatureMagnetDB
-    private lateinit var prefManager: PrefManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,
-                R.id.eventMainFragment,R.id.fragment_user_main
+                R.id.eventMainFragment
             ), binding.drawerLayout
         )
         navController = findNavController(R.id.hostFragment)
@@ -71,6 +69,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> showBottomNav()
                 R.id.awarenessMainFragment -> showBottomNav()
                 R.id.eventMainFragment -> showBottomNav()
+                R.id.fragment_shop -> showBottomNav()
+                R.id.fragment_admin_management -> showBottomNav()
                 else -> hideBottomNav()
             }
         }

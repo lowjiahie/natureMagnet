@@ -19,13 +19,13 @@
         android:title="@string/event"/>
 
     <item
-        android:id="@+id/page_4"
+        android:id="@+id/fragment_shop"
         android:enabled="true"
         android:icon="@drawable/nav_shop_ic"
         android:title="@string/shop"/>
 
     <item
-        android:id="@+id/fragment_user_main"
+        android:id="@+id/fragment_admin_management"
         android:enabled="true"
         android:icon="@drawable/nav_user_ic"
         android:title="@string/profile"/>

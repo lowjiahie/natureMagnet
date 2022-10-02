@@ -14,14 +14,15 @@ import androidx.room.*
 )
 
 data class Order(
-    @PrimaryKey(autoGenerate = true) val orderID: Long,
     val orderDateTime: String?,
-    val aproxDate: String?,
+    val approxDate: String?,
     val orderStatus: String?,
-    val orderTotalPrice: Float?,
-    val shipmentName: String?,
+    val orderTotalPrice: Double?,
+    val shipmentNum: String?,
     val shipmentAddress: String?,
     val shipmentPhnNum: String?,
     val postDateTime: String?,
     @ColumnInfo(index = true) var custID: Long
-)
+){
+    @PrimaryKey(autoGenerate = true) var orderID: Long = 0
+}

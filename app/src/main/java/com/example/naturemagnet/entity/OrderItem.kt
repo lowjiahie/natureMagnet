@@ -8,7 +8,7 @@ import androidx.room.Index
 @Entity(
     tableName = "orderItem",
     primaryKeys = ["productID", "orderID"],
-    indices = [Index(value = ["productID"], unique = true),Index(value = ["orderID"], unique = true)],
+    indices = [Index(value = ["productID","orderID"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Product::class,

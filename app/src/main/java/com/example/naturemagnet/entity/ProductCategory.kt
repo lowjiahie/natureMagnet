@@ -12,6 +12,7 @@ import androidx.room.PrimaryKey
 )
 
 data class ProductCategory(
-    @PrimaryKey(autoGenerate = true) val prodCategoryID: Long,
     val categoryName: String?
-)
+){
+    @PrimaryKey(autoGenerate = true) var prodCategoryID: Long = 0
+}
