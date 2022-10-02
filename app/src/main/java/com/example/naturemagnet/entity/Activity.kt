@@ -38,6 +38,19 @@ data class Activity(
     @PrimaryKey(autoGenerate = true)
     var activityID: Long = 0L
 
+    constructor(): this (
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        null,
+        0,
+        1,
+        1)
+
     constructor(sneakPeek: Bitmap?, title: String?, participants: Int?) : this(
         "example",
         title,
