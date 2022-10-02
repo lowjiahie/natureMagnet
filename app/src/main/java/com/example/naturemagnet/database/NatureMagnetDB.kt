@@ -24,6 +24,7 @@ import java.util.concurrent.Executors
 @TypeConverters(ImageConverter::class)
 abstract class NatureMagnetDB : RoomDatabase () {
     //define your DAO here
+    abstract fun activityDao(): ActivityDao
     abstract fun customerDao(): CustomerDao
     abstract fun activityDao(): ActivityDao
     abstract fun categoryDao(): CategoryDao
@@ -63,6 +64,7 @@ abstract class NatureMagnetDB : RoomDatabase () {
                                 db.newsDao().insertNews(SampleDataGenerator.injectNews())
                                 db.newsDao().insertNewsSaved(SampleDataGenerator.injectNewsSaved())
                                 db.commentDao().insertComments(SampleDataGenerator.injectComment())
+                                db.customerDao().insertCustomers(SampleDataGenerator.getCustomers())
                             }).start()
                         }
                     }).allowMainThreadQueries().build()

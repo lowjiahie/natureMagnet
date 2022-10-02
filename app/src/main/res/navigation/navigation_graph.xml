@@ -62,4 +62,17 @@
             android:id="@+id/action_fragment_all_post_to_createPostFragment"
             app:destination="@id/createPostFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/fragment_user_main"
+        android:name="com.example.naturemagnet.fragment_user_main"
+        android:label="Profile"
+        tools:layout="@layout/fragment_user_main" />
+    <fragment
+        android:id="@+id/fragment_user_editprofile"
+        android:name="com.example.naturemagnet.fragment_user_editprofile"
+        android:label="fragment_user_editprofile" />
+    <fragment
+        android:id="@+id/fragment_user_changepassword"
+        android:name="com.example.naturemagnet.fragment_user_changepassword"
+        android:label="fragment_user_changepassword" />
 </navigation>
