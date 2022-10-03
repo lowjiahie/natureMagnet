@@ -21,11 +21,7 @@ import com.example.naturemagnet.entity.Activity
 import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.viewModel.EventDetailsViewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [event_manage.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class event_manage : Fragment(), EventActivityClickkListener {
     lateinit var binding: FragmentEventManageBinding
     private lateinit var db: NatureMagnetDB

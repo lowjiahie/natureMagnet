@@ -4,13 +4,21 @@ import android.app.Application
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.naturemagnet.R
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.MyPostCardBinding
 import com.example.naturemagnet.entity.Post
+import com.example.naturemagnet.viewmodel.PostDetailsViewModel
 
-class MyPostsAdapter(private val data: MutableList<Post>,val application : Application,val db : NatureMagnetDB,val cusID :Long)  :
+
+class MyPostsAdapter(private val data: MutableList<Post>,val application : Application,
+                     val db : NatureMagnetDB,val cusID :Long, val sharedViewModel: PostDetailsViewModel)  :
     RecyclerView.Adapter<MyPostsAdapter.MyPostsAdapterViewHolder>() {
+
 
     inner class MyPostsAdapterViewHolder(val binding: MyPostCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -46,10 +54,23 @@ class MyPostsAdapter(private val data: MutableList<Post>,val application : Appli
                 .show()
             this.notifyDataSetChanged()
         }
-
-        if (title!!.length > 25) {
-            title = title.substring(0, 25) + "...."
+        var passPost : MutableLiveData<Post>
+        holder.binding.updateBtn.setOnClickListener {
+            passPost = MutableLiveData<Post>(data[position])
+            sharedViewModel.setPost(passPost)
+            it.findNavController().navigate(R.id.action_my_posts_fragment_to_edit_post)
         }
+
+        holder.binding.root.setOnClickListener{
+            passPost = MutableLiveData<Post>(data[position])
+            sharedViewModel.setPost(passPost)
+            it.findNavController().navigate(R.id.action_my_posts_fragment_to_product_details)
+        }
+
+        if (title!!.length > 20) {
+            title = title.substring(0, 20) + "...."
+        }
+
 
         holder.binding.postTitle.text = title
         holder.binding.imageView.setImageBitmap(bitmap)

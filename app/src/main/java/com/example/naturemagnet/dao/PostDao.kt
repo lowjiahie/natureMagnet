@@ -1,5 +1,6 @@
 package com.example.naturemagnet.dao
 
+import android.graphics.Bitmap
 import androidx.room.*
 import com.example.naturemagnet.entity.*
 import com.example.naturemagnet.entity.entityRelationship.CustomerWithActivities
@@ -13,11 +14,17 @@ interface PostDao {
     @Query("SELECT * FROM Post")
     fun getAllPost(): List<Post>
 
+    @Query("SELECT * FROM Post WHERE Post.postID = :postID")
+    fun getPost(postID:Long): Post
+
     @Query("SELECT * FROM Post WHERE Post.custID = :cusID")
     fun getCusPost(cusID: Long): List<Post>
 
     @Query("DELETE FROM Post WHERE Post.postID = :postID")
     fun deleteCusPost(postID: Long)
+
+    @Query("UPDATE Post SET title = :title, content = :content, imgPost= :imgPost WHERE postID= :id")
+    fun updatePost(id:Long, title:String, content:String, imgPost:Bitmap)
 
     @Insert
     fun insertPosts(post: List<Post>)
@@ -25,13 +32,13 @@ interface PostDao {
     @Insert
     fun insertPost(post: Post)
 
-    @Update
-    fun updatePost(post: Post)
-
     @Delete
     fun deletePost(post: Post)
 
     //PostSaved
+    @Query("SELECT * FROM PostSaved WHERE PostSaved.postID = :postID AND PostSaved.custID = :custID")
+    fun getCusPostSaved(postID:Long, custID: Long) : PostSaved
+
     @Insert
     fun insertPostSaveds(postSaved: List<PostSaved>)
 
@@ -43,6 +50,9 @@ interface PostDao {
 
 
     //PostLiked
+    @Query("SELECT * FROM PostLiked WHERE PostLiked.postID = :postID AND PostLiked.custID = :custID")
+    fun getCusPostLiked(postID:Long, custID: Long) : PostLiked
+
     @Insert
     fun insertPostLikeds(postLiked: List<PostLiked>)
 

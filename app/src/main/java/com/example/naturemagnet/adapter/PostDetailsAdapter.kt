@@ -95,9 +95,12 @@ class PostDetailsAdapter(private val data: List<Post>, private val application: 
             this.notifyDataSetChanged()
         }
 
+        if (title!!.length > 20) {
+            title = title.substring(0, 20) + "...."
+        }
 
-        if (content!!.length > 30) {
-            content = content.substring(0, 30) + "...."
+        if (content!!.length > 25) {
+            content = content.substring(0, 25) + "...."
         }
 
         //check customer saved post

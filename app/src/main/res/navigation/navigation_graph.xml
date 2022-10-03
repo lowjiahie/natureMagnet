@@ -72,7 +72,14 @@
     <fragment
         android:id="@+id/my_posts_fragment"
         android:name="com.example.naturemagnet.my_posts"
-        android:label="My Post" />
+        android:label="My Post" >
+        <action
+            android:id="@+id/action_my_posts_fragment_to_edit_post"
+            app:destination="@id/edit_post" />
+        <action
+            android:id="@+id/action_my_posts_fragment_to_product_details"
+            app:destination="@id/product_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/eventManageFragment"
@@ -93,4 +100,23 @@
         android:id="@+id/fragment_user_changepassword"
         android:name="com.example.naturemagnet.fragment_user_changepassword"
         android:label="fragment_user_changepassword" />
+    <fragment
+        android:id="@+id/edit_post"
+        android:name="com.example.naturemagnet.edit_post"
+        android:label="edit_post" >
+        <action
+            android:id="@+id/action_edit_post_to_my_posts_fragment"
+            app:destination="@id/my_posts_fragment"
+            app:popUpTo="@id/my_posts_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/product_details"
+        android:name="com.example.naturemagnet.post_details"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_post_details" >
+        <action
+            android:id="@+id/action_product_details_to_my_posts_fragment"
+            app:destination="@id/my_posts_fragment" />
+    </fragment>
 </navigation>

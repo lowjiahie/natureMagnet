@@ -29,4 +29,7 @@ data class Post(
 ){
     constructor(title: String, content: String, imgPost: Bitmap?, eventLink: String?, shareCount: Int, postDate: String, custID: Long)
             : this(0, title, content, imgPost, eventLink, shareCount, postDate, custID)
+
+    constructor(title: String, content: String, imgPost: Bitmap?)
+            : this(0, title, content, imgPost, "", 0, "", 0)
 }

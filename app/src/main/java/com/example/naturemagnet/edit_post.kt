@@ -1,37 +1,43 @@
 package com.example.naturemagnet
 
-import android.R.attr.path
-import android.app.Activity.RESULT_OK
+import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.room.ColumnInfo
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.naturemagnet.database.NatureMagnetDB
-import com.example.naturemagnet.databinding.FragmentCreatePostBinding
+import com.example.naturemagnet.databinding.FragmentEditPostBinding
 import com.example.naturemagnet.entity.Post
 import com.example.naturemagnet.entity.PrefManager
+import com.example.naturemagnet.viewmodel.PostDetailsViewModel
 import java.text.SimpleDateFormat
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import java.util.*
 
 
-class create_post : Fragment() {
-    lateinit var binding: FragmentCreatePostBinding
+class edit_post : Fragment() {
+
+    lateinit var binding: FragmentEditPostBinding
     lateinit var bitmap : Bitmap
+    lateinit var application: Application
+    lateinit var db : NatureMagnetDB
+    var postID: Long = 0
     private lateinit var prefManager: PrefManager
+    private val sharedViewModel: PostDetailsViewModel by activityViewModels()
 
     companion object{
         val IMAGE_REQUEST_CODE = 100
@@ -43,15 +49,17 @@ class create_post : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_create_post, container, false
+            inflater, R.layout.fragment_edit_post, container, false
         )
-        val application = requireNotNull(this.activity).application
+        application = requireNotNull(this.activity).application
+
+        init()
 
         binding.imageButton.setOnClickListener {
             pickImageGallery()
         }
 
-        binding.postBtn.setOnClickListener{
+        binding.updateBtn.setOnClickListener{
             checkValidPost(application)
         }
 
@@ -62,7 +70,18 @@ class create_post : Fragment() {
     fun pickImageGallery(){
         val intent = Intent(Intent.ACTION_PICK)
         intent.type ="image/*"
-        startActivityForResult(intent, IMAGE_REQUEST_CODE)
+        startActivityForResult(intent, create_post.IMAGE_REQUEST_CODE)
+    }
+
+    fun init(){
+        db = NatureMagnetDB.getInstance(application)!!
+        val passPost = sharedViewModel.post.value
+        postID = passPost!!.postID
+        val post = db.postDao().getPost(postID)
+
+        binding.imageButton.setImageBitmap(post.imgPost)
+        binding.textField.editText!!.setText(post.title)
+        binding.filledTextField.editText!!.setText(post.content)
     }
 
     fun checkValidPost(application : Application){
@@ -74,11 +93,7 @@ class create_post : Fragment() {
             val title = binding.textinputTtl.text.toString().trim()
             val content = binding.textinputTxt.text.toString().trim()
             var imgPost = bitmap
-            var eventLink = null
-            val shareCount = 0
-            val postDate = currentDate
 
-            val db = NatureMagnetDB.getInstance(application)!!
             prefManager = PrefManager(requireActivity())
             val loginedCus: Long = prefManager.getId()!!
 
@@ -87,9 +102,9 @@ class create_post : Fragment() {
                 Toast.makeText(application, "The post has been published", Toast.LENGTH_SHORT)
                     .show();
                 db.postDao()
-                    .insertPost(Post(title, content, imgPost, eventLink, shareCount, postDate, loginedCus))
+                    .updatePost(postID,title, content, imgPost)
                 //navigate to post page
-                findNavController().navigate(R.id.action_createPostFragment_to_fragment_all_post)
+                findNavController().navigate(R.id.action_edit_post_to_my_posts_fragment)
             } else {
                 Toast.makeText(application, "title/text/image cannot empty", Toast.LENGTH_SHORT)
                     .show();
@@ -97,15 +112,13 @@ class create_post : Fragment() {
         }catch (ex : Exception){
             Toast.makeText(application, "Please pick an image", Toast.LENGTH_SHORT)
                 .show()
-
-
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK){
+        if(requestCode == create_post.IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK){
             Glide.with(this)
                 .asBitmap()
                 .load(data?.data)
@@ -123,7 +136,6 @@ class create_post : Fragment() {
 
         }
     }
-
 
 
 }
