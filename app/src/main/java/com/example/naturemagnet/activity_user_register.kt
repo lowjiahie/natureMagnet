@@ -7,7 +7,7 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.naturemagnet.dao.CustomerViewModel
+import com.example.naturemagnet.viewmodel.CustomerViewModel
 import com.example.naturemagnet.databinding.ActivityUserRegisterBinding
 import com.example.naturemagnet.entity.Customer
 

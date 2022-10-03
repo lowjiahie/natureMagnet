@@ -1,4 +1,4 @@
-package com.example.naturemagnet.dao
+package com.example.naturemagnet.entity
 
 import android.content.Context
 import android.content.SharedPreferences

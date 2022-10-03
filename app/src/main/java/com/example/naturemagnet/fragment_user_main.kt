@@ -6,14 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.naturemagnet.dao.CustomerViewModel
-import com.example.naturemagnet.dao.PrefManager
+import com.example.naturemagnet.viewmodel.CustomerViewModel
+import com.example.naturemagnet.entity.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentUserMainBinding
 import com.example.naturemagnet.entity.Customer

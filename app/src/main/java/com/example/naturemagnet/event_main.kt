@@ -18,13 +18,12 @@ import com.example.naturemagnet.adapter.EventRectangleAdapter
 import com.example.naturemagnet.dao.ActivityDao
 import com.example.naturemagnet.dao.ActivityJoinedDao
 import com.example.naturemagnet.dao.CategoryDao
-import com.example.naturemagnet.dao.PrefManager
+import com.example.naturemagnet.entity.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentEventMainBinding
 import com.example.naturemagnet.entity.Activity
 import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.viewModel.EventDetailsViewModel
-import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 

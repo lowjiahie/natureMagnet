@@ -1,10 +1,10 @@
-package com.example.naturemagnet.dao
+package com.example.naturemagnet.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.naturemagnet.repository.CustomerRepository
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.entity.Customer
 import kotlinx.coroutines.Dispatchers

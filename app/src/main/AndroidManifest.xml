@@ -22,9 +22,6 @@
             android:name=".activity_user_adminlogin"
             android:exported="false" />
         <activity
-            android:name=".activitty_user_adminlogin"
-            android:exported="false" />
-        <activity
             android:name=".activity_user_firstpage"
             android:exported="false" />
         <activity

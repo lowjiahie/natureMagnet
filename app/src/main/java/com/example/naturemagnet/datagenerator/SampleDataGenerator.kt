@@ -1,6 +1,10 @@
 package com.example.naturemagnet.datagenerator
 
-import com.example.naturemagnet.entity.Customer
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import com.example.naturemagnet.R
+import com.example.naturemagnet.entity.*
 
 class SampleDataGenerator {
 

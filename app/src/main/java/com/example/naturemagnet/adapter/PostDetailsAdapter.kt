@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.naturemagnet.R
-import com.example.naturemagnet.dao.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.PostDetailsVerticalItemBinding
 import com.example.naturemagnet.entity.Post

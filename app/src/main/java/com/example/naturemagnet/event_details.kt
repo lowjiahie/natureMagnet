@@ -14,21 +14,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.example.naturemagnet.dao.ActivityDao
 import com.example.naturemagnet.dao.ActivityJoinedDao
 import com.example.naturemagnet.dao.CategoryDao
-import com.example.naturemagnet.dao.PrefManager
+import com.example.naturemagnet.entity.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentEventDetailsBinding
-import com.example.naturemagnet.entity.Activity
 import com.example.naturemagnet.entity.ActivityJoined
 import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.viewModel.EventDetailsViewModel
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class event_details : Fragment() {

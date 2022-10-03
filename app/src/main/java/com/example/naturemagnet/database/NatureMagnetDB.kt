@@ -47,7 +47,7 @@ abstract class NatureMagnetDB : RoomDatabase () {
                             super.onCreate(db)
                             Thread(Runnable {
                                 val db = getInstance(context)!!
-                                db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
+                                db.customerDao().insertCustomers(SampleDataGenerator.getCustomers())
                                 db.customerDao().insertAdmins(SampleDataGenerator.getAdmins())
                                 db.categoryDao().insertCategories(SampleDataGenerator.injectCategories(context))
                                 db.activityDao().insertActivities(SampleDataGenerator.injectActivities(context))

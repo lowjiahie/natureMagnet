@@ -9,10 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.naturemagnet.adapter.MyPostsAdapter
-import com.example.naturemagnet.adapter.PostDetailsAdapter
-import com.example.naturemagnet.dao.PrefManager
+import com.example.naturemagnet.entity.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
-import com.example.naturemagnet.databinding.FragmentCreatePostBinding
 import com.example.naturemagnet.databinding.FragmentMyPostsBinding
 import com.example.naturemagnet.entity.Post
 

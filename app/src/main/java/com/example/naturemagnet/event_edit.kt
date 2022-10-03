@@ -1,30 +1,20 @@
 package com.example.naturemagnet
 
-import android.database.sqlite.SQLiteConstraintException
-import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import com.example.naturemagnet.dao.ActivityDao
 import com.example.naturemagnet.dao.ActivityJoinedDao
 import com.example.naturemagnet.dao.CategoryDao
-import com.example.naturemagnet.dao.PrefManager
+import com.example.naturemagnet.entity.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentEventEditBinding
-import com.example.naturemagnet.entity.Activity
-import com.example.naturemagnet.entity.ActivityJoined
 import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.viewModel.EventDetailsViewModel
-import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
 import java.util.*
 
 /**

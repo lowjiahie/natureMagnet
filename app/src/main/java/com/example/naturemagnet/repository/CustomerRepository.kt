@@ -1,8 +1,8 @@
-package com.example.naturemagnet.dao
+package com.example.naturemagnet.repository
 
 import androidx.lifecycle.LiveData
+import com.example.naturemagnet.dao.CustomerDao
 import com.example.naturemagnet.entity.Customer
-import kotlinx.coroutines.Dispatchers
 
 class CustomerRepository(private val customerDao: CustomerDao) {
 

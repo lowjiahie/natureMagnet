@@ -1,6 +1,5 @@
 package com.example.naturemagnet
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,11 +10,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.naturemagnet.dao.CustomerDao
-import com.example.naturemagnet.dao.CustomerViewModel
-import com.example.naturemagnet.dao.PrefManager
+import com.example.naturemagnet.viewmodel.CustomerViewModel
+import com.example.naturemagnet.entity.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentUserChangepasswordBinding
-import com.example.naturemagnet.databinding.FragmentUserMainBinding
 import com.example.naturemagnet.entity.Customer
 
 

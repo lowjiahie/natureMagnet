@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.naturemagnet.adapter.NewsAdapter
 import com.example.naturemagnet.adapter.PostsAdapter
-import com.example.naturemagnet.dao.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentAwarenessMainBinding
 
