@@ -11,20 +11,27 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.naturemagnet.dao.*
 import com.example.naturemagnet.datagenerator.SampleDataGenerator
 import com.example.naturemagnet.entity.*
+import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.typeconverterClass.ImageConverter
 import java.util.concurrent.Executors
 
 //Any new entity please add here
-@Database (entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
-    News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
-    PostSaved::class, Product::class, ProductCategory::class, Reply::class],
-    version = 1)
+@Database(
+    entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
+        News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
+        PostSaved::class, Product::class, ProductCategory::class, Reply::class],
+    version = 1
+)
 //Any new converter please add here
 @TypeConverters(ImageConverter::class)
 abstract class NatureMagnetDB : RoomDatabase () {
     //define your DAO here
     abstract fun activityDao(): ActivityDao
     abstract fun customerDao(): CustomerDao
+    abstract fun activityDao(): ActivityDao
+    abstract fun categoryDao(): CategoryDao
+    abstract fun activityJoinedDao(): ActivityJoinedDao
+    private val eventRepository: EventRepository = EventRepository(activityDao(), categoryDao(), activityJoinedDao())
     abstract fun postDao(): PostDao
     abstract fun newsDao(): NewsDao
     abstract fun commentDao(): CommentDao
@@ -42,6 +49,16 @@ abstract class NatureMagnetDB : RoomDatabase () {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             Thread(Runnable {
+                                val db = getInstance(context)
+                                db?.customerDao()
+                                    ?.insertCustomer(SampleDataGenerator.getCustomers())
+                                db?.categoryDao()
+                                    ?.insertCategories(SampleDataGenerator.injectCategories(context))
+                                db?.activityDao()
+                                    ?.insertActivities(SampleDataGenerator.injectActivities(context))
+                                db?.activityJoinedDao()
+                                    ?.insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
+                                Log.e("db", "DB is working")
                                 val db = getInstance(context)!!
                                 db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
                                 db.postDao().insertPosts(SampleDataGenerator.injectPost(context))

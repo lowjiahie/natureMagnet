@@ -34,7 +34,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-<!--        <item name="drawerArrowStyle">@style/DrawerHamburgerStyle</item>-->
+        <!--        <item name="drawerArrowStyle">@style/DrawerHamburgerStyle</item>-->
     </style>
 
     <style name="DrawerHamburgerStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">

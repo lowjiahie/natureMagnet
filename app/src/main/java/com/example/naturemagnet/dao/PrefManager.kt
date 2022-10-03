@@ -14,9 +14,9 @@ class PrefManager(context: Context) {
     private val IS_LOGIN = "is_login"
 
     val pref: SharedPreferences? = context?.getSharedPreferences(PREF_NAME, PRIVATE_MODE)
-    val editor: SharedPreferences.Editor? = pref?.edit()
+    val editor :SharedPreferences.Editor? = pref?.edit()
 
-    fun setLogin(isLogin: Boolean) {
+    fun setLogin(isLogin : Boolean){
         editor?.putBoolean(IS_LOGIN, isLogin)
         editor?.commit()
     }
@@ -26,24 +26,24 @@ class PrefManager(context: Context) {
         editor?.commit()
     }
 
-    fun isLogin(): Boolean? {
-        return pref?.getBoolean(IS_LOGIN, false)
+    fun isLogin() : Boolean?{
+        return pref?.getBoolean(IS_LOGIN,false)
     }
 
-    fun getEmail(): String? {
-        return pref?.getString("custEmail", "")
+    fun getEmail() : String?{
+        return pref?.getString("custEmail","")
     }
 
-    fun setId(id: Long) {
-        editor?.putLong("id", id)
+    fun setId(id : Long){
+        editor?.putLong("id",id)
         editor?.commit()
     }
 
-    fun getId(): Long? {
-        return pref?.getLong("id", 0)
+    fun getId() : Long?{
+        return pref?.getLong("id",0)
     }
 
-    fun removeData() {
+    fun removeData(){
         editor?.clear()
         editor?.commit()
     }

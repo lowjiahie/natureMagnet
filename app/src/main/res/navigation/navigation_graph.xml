@@ -12,7 +12,20 @@
         android:id="@+id/eventMainFragment"
         android:name="com.example.naturemagnet.event_main"
         android:label="Event"
-        tools:layout="@layout/fragment_event_main" />
+        tools:layout="@layout/fragment_event_main" >
+        <action
+            android:id="@+id/action_eventMainFragment_to_eventEdit"
+            app:destination="@id/eventEdit" />
+
+        <argument
+            android:name="clickFrom"
+            app:argType="string"
+            android:defaultValue="From First Fragment" />
+
+        <action
+            android:id="@+id/action_eventMainFragment_to_event_details"
+            app:destination="@id/event_details" />
+    </fragment>
     <fragment
         android:id="@+id/awarenessMainFragment"
         android:name="com.example.naturemagnet.awareness_main"
@@ -32,6 +45,25 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
+        android:id="@+id/test2"
+        android:name="com.example.naturemagnet.test2"
+        android:label="test2"
+        tools:layout="@layout/fragment_test2" />
+    <fragment
+        android:id="@+id/eventEdit"
+        android:name="com.example.naturemagnet.event_edit"
+        android:label="Edit Activity Details"
+        tools:layout="@layout/fragment_event_edit" />
+    <fragment
+        android:id="@+id/event_details"
+        android:name="com.example.naturemagnet.event_details"
+        android:label="Event Details"
+        tools:layout="@layout/fragment_event_details" />
+    <fragment
+        android:id="@+id/eventManageFragment"
+        android:name="com.example.naturemagnet.event_manage"
+        android:label="Event Manage"
+        tools:layout="@layout/fragment_event_manage" />
         android:id="@+id/fragment_all_post"
         android:name="com.example.naturemagnet.all_posts"
         android:label="All Posts" >
