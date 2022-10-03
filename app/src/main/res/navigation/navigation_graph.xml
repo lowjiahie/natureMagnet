@@ -51,6 +51,43 @@
         android:label="Edit Activity Details"
         tools:layout="@layout/fragment_event_edit" />
     <fragment
+        android:id="@+id/fragment_shop"
+        android:name="com.example.naturemagnet.fragment_shop"
+        android:label="Ecommerce" >
+        <action
+            android:id="@+id/action_fragment_shop_to_fragment_prodDetail"
+            app:destination="@id/fragment_prodDetail" />
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_admin_management"
+        android:name="com.example.naturemagnet.Admin_management"
+        android:label="Product Management">
+        <action
+            android:id="@+id/action_fragment_admin_management_to_addProduct"
+            app:destination="@id/adminAddProduct" />
+        <action
+            android:id="@+id/action_fragment_admin_management_to_editProduct2"
+            app:destination="@id/adminEditProduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminAddProduct"
+        android:name="com.example.naturemagnet.AddProduct"
+        android:label="Add Product"
+        tools:layout="@layout/fragment_add_product" />
+    <fragment
+        android:id="@+id/adminEditProduct"
+        android:name="com.example.naturemagnet.EditProduct"
+        android:label="Edit Product" />
+    <fragment
+        android:id="@+id/fragment_prodDetail"
+        android:name="com.example.naturemagnet.fragment_prodDetail"
+        android:label="Details"
+        tools:layout="@layout/fragment_prod_detail" />
+    <fragment
         android:id="@+id/event_details"
         android:name="com.example.naturemagnet.event_details"
         android:label="Event Details"

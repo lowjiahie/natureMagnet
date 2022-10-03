@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,
-                R.id.eventMainFragment,R.id.fragment_user_main
+                R.id.eventMainFragment,R.id.fragment_user_main,
+                R.id.fragment_shop, R.id.fragment_admin_management
             ), binding.drawerLayout
         )
         navController = findNavController(R.id.hostFragment)
@@ -55,6 +56,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> showBottomNav()
                 R.id.awarenessMainFragment -> showBottomNav()
                 R.id.eventMainFragment -> showBottomNav()
+                R.id.fragment_shop -> showBottomNav()
+                R.id.fragment_admin_management -> showBottomNav()
                 R.id.fragment_user_main -> showBottomNav()
                 else -> hideBottomNav()
             }

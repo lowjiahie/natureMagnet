@@ -32,6 +32,7 @@ abstract class NatureMagnetDB : RoomDatabase () {
     abstract fun postDao(): PostDao
     abstract fun newsDao(): NewsDao
     abstract fun commentDao(): CommentDao
+    abstract fun productDao(): ProductDao
 
     companion object {
         private var INSTANCE: NatureMagnetDB? = null
@@ -58,7 +59,7 @@ abstract class NatureMagnetDB : RoomDatabase () {
                                 db.newsDao().insertNews(SampleDataGenerator.injectNews())
                                 db.newsDao().insertNewsSaved(SampleDataGenerator.injectNewsSaved())
                                 db.commentDao().insertComments(SampleDataGenerator.injectComment())
-
+                                db.productDao().insertProducts(SampleDataGenerator.getProducts(context))
                             }).start()
                         }
                     }).allowMainThreadQueries().build()

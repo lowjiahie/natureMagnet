@@ -23,7 +23,7 @@ import androidx.room.*
 )
 
 data class Reply(
-    @PrimaryKey(autoGenerate = true) val replyID: Long,
+    @PrimaryKey(autoGenerate = true) var replyID: Long,
     val content: String?,
     val replyDatetime: String?,
     val eventLink: String?,

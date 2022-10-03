@@ -24,7 +24,7 @@ import androidx.room.*
 )
 
 data class Comment(
-    @PrimaryKey(autoGenerate = true) val commentID: Long,
+    @PrimaryKey(autoGenerate = true) var commentID: Long,
     val content: String?,
     val commentDatetime: String?,
     val eventLink: String?,

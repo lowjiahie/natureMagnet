@@ -18,7 +18,7 @@ import com.example.naturemagnet.typeconverterClass.ImageConverter
     )]
 )
 data class Post(
-    @PrimaryKey(autoGenerate = true) val postID: Long,
+    @PrimaryKey(autoGenerate = true) var postID: Long,
     val title: String?,
     val content: String?,
     var imgPost: Bitmap?,
