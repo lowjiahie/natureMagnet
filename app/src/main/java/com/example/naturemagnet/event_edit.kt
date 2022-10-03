@@ -2,6 +2,7 @@ package com.example.naturemagnet
 
 import android.database.sqlite.SQLiteConstraintException
 import android.icu.text.SimpleDateFormat
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.naturemagnet.dao.ActivityDao
@@ -38,6 +40,7 @@ class event_edit : Fragment() {
     private lateinit var prefManager: PrefManager
     private val sharedViewModel: EventDetailsViewModel by activityViewModels()
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,24 +79,24 @@ class event_edit : Fragment() {
 
         /** binding the activity object to livedata */
         binding.apply{
-            Log.e("event_edit.kt", sharedViewModel.parent?.value.toString())
             eventName.text = currentActivity?.name
             descriptionInputTextField.setText(currentActivity?.descriptions.toString())
             activitySneakPeek.setImageBitmap(currentActivity?.sneakPeek)
-
+            eventTime.text = currentActivity?.dateTime.toString()
+            eventDate.text = currentActivity?.dateTime.toString()
+            detailsCardDatetime.text = currentActivity?.registrationDeadline.toString()
+            Log.e("event_edit", currentActivity?.registrationDeadline.toString())
             saveButton.setOnClickListener {
                 var updatedActivity = currentActivity
                 updatedActivity?.name = eventName.text.toString()
                 updatedActivity?.descriptions = descriptionInputTextField.text.toString()
 
                 if (currentActivity != null) {
-                    val c = Calendar.getInstance()
-                    val year = c.get(Calendar.YEAR)
-                    val month = c.get(Calendar.MONTH) + 1
-                    val day = c.get(Calendar.DAY_OF_MONTH)
-
-//                    val sdf = SimpleDateFormat("yyyy/M/dd hh:mm:ss")
-//                    val currentDate = sdf.format(Date())
+                    var time: String = eventTime.text.toString()
+                    time = time.replace('-', '/')
+                    var date: String = eventDate.text.toString()
+                    date = date.replace('-', '/')
+                    val deadLine: String = eventDeadline.text.toString()
                 }
             }
         }

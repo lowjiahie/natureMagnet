@@ -50,7 +50,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/event_name">
 
                             <TextView
-                                android:id="@+id/eventTime"
                                 style="@style/subheading"
                                 android:layout_width="100dp"
                                 android:layout_height="wrap_content"
@@ -60,7 +59,7 @@
                                 android:textSize="20dp"></TextView>
 
                             <TextView
-                                android:id="@+id/timePicker"
+                                android:id="@+id/eventTime"
                                 style="@style/subheading"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -79,7 +78,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/event_time_container">
 
                             <TextView
-                                android:id="@+id/eventDate"
                                 style="@style/subheading"
                                 android:layout_width="100dp"
                                 android:layout_height="wrap_content"
@@ -89,7 +87,7 @@
                                 android:textSize="20dp"></TextView>
 
                             <TextView
-                                android:id="@+id/datePicker"
+                                android:id="@+id/eventDate"
                                 style="@style/subheading"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -108,7 +106,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/event_date_container">
 
                             <TextView
-                                android:id="@+id/event_dead_line"
                                 style="@style/subheading"
                                 android:layout_width="100dp"
                                 android:layout_height="wrap_content"
@@ -118,14 +115,23 @@
                                 android:textSize="20dp"></TextView>
 
                             <TextView
-                                android:id="@+id/deadline_date_picker"
+                                android:id="@+id/event_deadline"
                                 style="@style/subheading"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="@dimen/padding_8"
-                                android:text=" : Picker is set @ backend"
                                 android:textAlignment="center"
+                                android:textColor="@color/black"
                                 android:textSize="18dp"></TextView>
+                            <TextView
+                                android:id="@+id/details_card_datetime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:text="24/6/2022 \n12 : 00 P.M. - 12 : 30 P.M."
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="#ACBA9A"
+                                android:textSize="18dp" />
                         </LinearLayout>
 
                         <HorizontalScrollView
