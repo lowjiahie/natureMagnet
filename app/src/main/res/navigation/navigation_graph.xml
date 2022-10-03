@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_admin_management"
-        android:name="com.example.naturemagnet.fragment_admin_management"
+        android:name="com.example.naturemagnet.Admin_management"
         android:label="Product Management">
         <action
             android:id="@+id/action_fragment_admin_management_to_addProduct"

@@ -1,19 +1,10 @@
 package com.example.naturemagnet.adapter
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.naturemagnet.R
 import com.example.naturemagnet.databinding.FragmentAdminManagementComponentBinding
 import com.example.naturemagnet.entity.Product
-import com.example.naturemagnet.fragment_admin_management
 
 class ProdAdminAdapter (private val data: List<Product>, private val productClickListener: ProductClickListener) : RecyclerView.Adapter<ProdAdminAdapter.MyViewHolder>() {
 

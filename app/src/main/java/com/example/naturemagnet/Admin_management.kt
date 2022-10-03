@@ -22,7 +22,7 @@ import com.example.naturemagnet.databinding.FragmentAdminManagementBinding
 import com.example.naturemagnet.entity.Product
 
 
-class fragment_admin_management : Fragment(), ProductClickListener {
+class Admin_management : Fragment(), ProductClickListener {
 
     private lateinit var binding: FragmentAdminManagementBinding
     private lateinit var manager: RecyclerView.LayoutManager
