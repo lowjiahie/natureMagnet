@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_activitty_user_adminlogin.xml" value="0.291970802919708" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_user_adminlogin.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_user_firstpage.xml" value="0.24728260869565216" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_user_login.xml" value="0.2" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_user_register.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/activity_user_secondpage.xml" value="0.213768115942029" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_edit.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_main.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_fragment1.xml" value="0.21105072463768115" />

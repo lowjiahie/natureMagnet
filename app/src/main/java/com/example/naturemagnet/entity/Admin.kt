@@ -17,6 +17,6 @@ data class Admin(
     val phone: String?,
     val password: String?,
 ){
-    constructor(adminName: String, adminEmail: String, phone: String, password:String,
-                address:String) : this(0,adminName, adminEmail, phone, password, address)
+    constructor(adminName: String, adminEmail: String, address: String, phone:String,
+                password: String) : this(0,adminName, adminEmail, address, phone, password)
 }

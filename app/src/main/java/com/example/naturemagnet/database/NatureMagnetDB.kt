@@ -39,9 +39,9 @@ abstract class NatureMagnetDB : RoomDatabase () {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             Thread(Runnable {
-                                Log.e("Diu Lei Lou Mou", "checked chekded")
                                 val db = getInstance(context)!!
                                 db.customerDao().insertCustomers(SampleDataGenerator.getCustomers())
+                                db.customerDao().insertAdmins(SampleDataGenerator.getAdmins())
                             }).start()
                         }
                     }).allowMainThreadQueries().build()

@@ -28,7 +28,7 @@ class activity_user_firstpage : AppCompatActivity() {
 
     private fun pleaseloginHere(){
         binding!!.navigationloginButton.setOnClickListener{
-            startActivity(Intent(this, activity_user_login::class.java))
+            startActivity(Intent(this, activity_user_secondpage::class.java))
             finish()
         }
     }

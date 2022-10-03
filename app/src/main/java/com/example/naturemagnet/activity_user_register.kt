@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.naturemagnet.dao.CustomerViewModel
-import com.example.naturemagnet.databinding.ActivityUserLoginBinding
 import com.example.naturemagnet.databinding.ActivityUserRegisterBinding
 import com.example.naturemagnet.entity.Customer
 
@@ -46,7 +44,6 @@ class activity_user_register : AppCompatActivity() {
                 if (validation(name, email, phone, address, password, confirmpassword)) {
                     if(compare(password, confirmpassword)) {
                         val customer = Customer(name, email, phone, address, password)
-                        //val intent = Intent(this, activity_user_login::class.java)
 
                         cCustomerViewModel.insertCustomer(customer)
 

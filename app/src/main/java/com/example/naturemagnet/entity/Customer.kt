@@ -27,6 +27,10 @@ data class Customer(
         address: String
     ) : this(0, custName, custEmail, phone,"", address)
     constructor(
+        custID: Long, custName: String, custEmail: String, phone: String,
+        address: String
+    ) : this(custID, custName, custEmail, phone,"", address)
+    constructor(
         password: String
     ) : this(0, "", "", "", password, "")
 }

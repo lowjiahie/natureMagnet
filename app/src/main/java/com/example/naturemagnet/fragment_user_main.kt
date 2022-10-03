@@ -47,7 +47,6 @@ class fragment_user_main : Fragment() {
         }
         prefManager = PrefManager(this.requireActivity())
         db = NatureMagnetDB.getInstance(application)!!
-        customer = db.customerDao().loginValidation(prefManager.getEmail().toString())
 
 
         setupUI()
@@ -77,6 +76,7 @@ class fragment_user_main : Fragment() {
 //    }
 
     private fun setupUI(){
+        customer = db.customerDao().loginValidation(prefManager.getEmail().toString())
         binding.nameText.text = customer.custName
         binding.emailText.text = customer.custEmail
         binding.phoneText.text =customer.phone

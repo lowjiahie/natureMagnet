@@ -9,8 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.naturemagnet.dao.CustomerDao
 import com.example.naturemagnet.dao.CustomerViewModel
+import com.example.naturemagnet.dao.PrefManager
+import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentUserChangepasswordBinding
 import com.example.naturemagnet.databinding.FragmentUserMainBinding
 import com.example.naturemagnet.entity.Customer
@@ -20,20 +23,31 @@ class fragment_user_changepassword : Fragment() {
 
     private lateinit var cCustomerViewModel: CustomerViewModel
     private lateinit var binding: FragmentUserChangepasswordBinding
+    private lateinit var prefManager: PrefManager
+    private lateinit var db : NatureMagnetDB
+    private lateinit var customer : Customer
     private lateinit var cCustomerDao: CustomerDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_user_main, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_user_changepassword, container, false)
 
 
         cCustomerViewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
 
         binding.confirmButton.setOnClickListener{
             changePassword()
+            findNavController().navigate(R.id.fragment_user_main)
         }
+        val application = requireNotNull(this.activity).application
+
+        prefManager = PrefManager(this.requireActivity())
+        db = NatureMagnetDB.getInstance(application)!!
+        cCustomerDao = db.customerDao()
+        customer = cCustomerDao.loginValidation(prefManager.getEmail().toString())
+
 
         return binding.root
     }
@@ -45,9 +59,8 @@ class fragment_user_changepassword : Fragment() {
 
         if (compare(password, confirmpassword)) {
 
+            cCustomerDao.updateCust1(password, prefManager.getId()!!)
 
-            val customers = Customer(password)
-            cCustomerDao.updateCustomer(customers)
 
             Toast.makeText(
                 context,
@@ -55,8 +68,7 @@ class fragment_user_changepassword : Fragment() {
                 Toast.LENGTH_LONG
             ).show()
 
-            val intent = Intent(context, fragment_user_main::class.java)
-            startActivity(intent)
+
         }
     }
 

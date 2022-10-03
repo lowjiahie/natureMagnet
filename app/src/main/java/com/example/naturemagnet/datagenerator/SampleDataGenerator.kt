@@ -22,10 +22,10 @@ class SampleDataGenerator {
 
         fun getAdmins(): List<Admin>{
             return listOf(
-                Admin("Meng","meng5@gmail.com","0153134124","123asd","Jalan Kuala Lumpur"),
-                Admin("Jingsen","jingsen@gmail.com","0153134124","123asd","Jalan Malaysia 1"),
-                Admin("Qing Qing","qingqing1@gmail.com","0153134124","123asd","Jalan Malaysia 5"),
-                Admin("Jing Den","jingen@gmail.com","0153134124","123asd","Jalan Malaysia 9")
+                Admin("Meng","meng5@gmail.com","Jalan Kuala Lumpur","0153134124","123asd"),
+                Admin("Jingsen","jingsen@gmail.com","Jalan Malaysia 1","0153134124","123asd"),
+                Admin("Qing Qing","qingqing1@gmail.com","Jalan Malaysia 5","0153134124","123asd",),
+                Admin("Jing Den","jingen@gmail.com", "Jalan Malaysia 9", "0153134124","123asd")
             )
         }
 

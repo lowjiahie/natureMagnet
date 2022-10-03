@@ -25,12 +25,21 @@ class PrefManager(context: Context) {
         editor?.commit()
     }
 
+    fun setEmail1(adminEmail : String?){
+        editor?.putString("adminEmail",adminEmail)
+        editor?.commit()
+    }
+
     fun isLogin() : Boolean?{
         return pref?.getBoolean(IS_LOGIN,false)
     }
 
     fun getEmail() : String?{
         return pref?.getString("custEmail","")
+    }
+
+    fun getEmail1() : String?{
+        return pref?.getString("adminEmail","")
     }
 
     fun setId(id : Long){

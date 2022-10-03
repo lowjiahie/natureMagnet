@@ -1,12 +1,9 @@
 package com.example.naturemagnet
 
-import android.app.AlertDialog
-import android.content.Context
-import android.content.Intent
+
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -26,7 +23,7 @@ class fragment_user_editprofile : Fragment() {
     private lateinit var prefManager: PrefManager
     private lateinit var db : NatureMagnetDB
     private lateinit var customer : Customer
-    lateinit var cCustomerDao: CustomerDao
+    private lateinit var cCustomerDao: CustomerDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,15 +32,12 @@ class fragment_user_editprofile : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_user_editprofile, container, false)
 
-        binding.confirmButton.setOnClickListener(){
-            findNavController().navigate(R.id.fragment_user_main)
-        }
-
 
         cCustomerViewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
 
         binding.confirmButton.setOnClickListener{
             updateCustomer()
+            findNavController().navigate(R.id.fragment_user_main)
         }
 
 
@@ -54,7 +48,6 @@ class fragment_user_editprofile : Fragment() {
         cCustomerDao = db.customerDao()
         customer = cCustomerDao.loginValidation(prefManager.getEmail().toString())
         binding.editName.setText(customer.custName.toString())
-        binding.editEmail.setText(customer.custEmail)
         binding.editPhone.setText(customer.phone.toString())
         binding.editAddress.setText(customer.address.toString())
 
@@ -65,12 +58,11 @@ class fragment_user_editprofile : Fragment() {
 
     private fun updateCustomer() {
         val name = binding.editName.text.toString()
-        val email = binding.editEmail.text.toString()
         val phone = binding.editPhone.text.toString()
         val address = binding.editAddress.text.toString()
 
-        val customers = Customer(name, email, phone, address)
-        cCustomerDao.updateCustomer(customers)
+
+        cCustomerDao.updateCust(name, phone, address, prefManager.getId()!!)
 
         Toast.makeText(
             context,
