@@ -39,11 +39,15 @@
         <action
             android:id="@+id/action_fragment_shop_to_fragment_prodDetail"
             app:destination="@id/fragment_prodDetail" />
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
     </fragment>
     <fragment
         android:id="@+id/fragment_admin_management"
         android:name="com.example.naturemagnet.fragment_admin_management"
-        android:label="fragment_admin_management" >
+        android:label="Product Management">
         <action
             android:id="@+id/action_fragment_admin_management_to_addProduct"
             app:destination="@id/adminAddProduct" />

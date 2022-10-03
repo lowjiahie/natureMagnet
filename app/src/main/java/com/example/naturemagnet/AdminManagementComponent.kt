@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.naturemagnet.ViewModel.ProductViewModel
 import com.example.naturemagnet.databinding.FragmentAdminManagementComponentBinding
 
 class AdminManagementComponent : Fragment() {
@@ -25,16 +27,6 @@ class AdminManagementComponent : Fragment() {
             container,
             false
         )
-        Log.e("whr u", "testing 123")
-//        binding.updProdBtn.text = "testing"
-        binding.updProdBtn.setOnClickListener {
-            Log.e("Update Product", "Update Product")
-//            findNavController().navigate(R.id.adminEditProduct)
-        }
-        binding.delProdBtn.setOnClickListener {
-            Log.e("Delete Product", "Delete Product")
-            //delete function
-        }
 
         // Inflate the layout for this fragment
         return binding.root

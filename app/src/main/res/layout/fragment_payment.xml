@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment_payment">
+    tools:context=".fragment_shop">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -150,7 +150,7 @@
             app:layout_constraintStart_toEndOf="@+id/inputName"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.411"
-            app:srcCompat="@mipmap/cardlogo" />
+             />
 
         <TextView
             android:id="@+id/cardNumber"

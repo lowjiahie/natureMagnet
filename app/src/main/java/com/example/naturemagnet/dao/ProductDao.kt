@@ -17,27 +17,32 @@ interface ProductDao {
     @Query(
         "UPDATE Product SET prodName = :newProdName WHERE prodName = :oldProdName"
     )
-    fun replaceNewProdName(newProdName: String , oldProdName: String): Product
+    fun replaceNewProdName(newProdName: String , oldProdName: String): Void
 
     @Query(
         "UPDATE Product SET prodPrice = :newProdPrice WHERE prodPrice = :oldProdPrice"
     )
-    fun replaceNewProdPrice(newProdPrice: String , oldProdPrice: String): Product
+    fun replaceNewProdPrice(newProdPrice: String , oldProdPrice: String): Void
 
     @Query(
         "UPDATE Product SET prodQuantityStock = :newProdStock WHERE prodQuantityStock = :oldProdStock"
     )
-    fun replaceNewProdStock(newProdStock: Int , oldProdStock: Int): Product
+    fun replaceNewProdStock(newProdStock: Int , oldProdStock: Int): Void
 
     @Query(
         "UPDATE Product SET prodDescription = :newProdDesc WHERE prodDescription = :oldProdDesc"
     )
-    fun replaceNewProdDesc(newProdDesc: String, oldProdDesc: String): Product
+    fun replaceNewProdDesc(newProdDesc: String, oldProdDesc: String): Void
 
     @Query(
-        "UPDATE Product SET prodImage = :newProdImg WHERE prodImage = :oldProdImg"
+        "UPDATE Product SET prodImage = :newProdImg WHERE prodName = :prodName"
     )
-    fun replaceNewProdImage(newProdImg: Bitmap, oldProdImg: Bitmap): Product
+    fun replaceNewProdImage(newProdImg: Bitmap, prodName: String): Void
+
+    @Query(
+        "DELETE FROM Product WHERE Product.prodName = :prodName"
+    )
+    fun queDelProduct(prodName: String): Void
 
     @Insert
     fun insertProducts(product: List<Product>)
@@ -50,4 +55,5 @@ interface ProductDao {
 
     @Delete
     fun deleteProduct(product: Product)
+
 }

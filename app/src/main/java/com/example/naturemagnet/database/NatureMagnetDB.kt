@@ -16,8 +16,7 @@ import java.util.concurrent.Executors
 
 //Any new entity please add here
 @Database (entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
-    News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
-    PostSaved::class, Product::class, ProductCategory::class, Reply::class],
+    News::class, NewsSaved::class, Post::class, PostLiked::class, PostSaved::class, Product::class, Reply::class],
     version = 1)
 //Any new converter please add here
 @TypeConverters(ImageConverter::class)
@@ -26,10 +25,10 @@ abstract class NatureMagnetDB : RoomDatabase () {
     abstract fun activityDao(): ActivityDao
     abstract fun customerDao(): CustomerDao
     abstract fun adminDao(): AdminDao
-    abstract fun productCategoryDao(): ProductCategoryDao
+//    abstract fun productCategoryDao(): ProductCategoryDao
     abstract fun productDao(): ProductDao
-    abstract fun orderDao(): OrderDao
-    abstract fun orderItemDao(): OrderItemDao
+//    abstract fun orderDao(): OrderDao
+//    abstract fun orderItemDao(): OrderItemDao
 
     companion object {
         private var INSTANCE: NatureMagnetDB? = null
@@ -47,10 +46,10 @@ abstract class NatureMagnetDB : RoomDatabase () {
                                 val db = getInstance(context)!!
                                 db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
                                 db.adminDao().insertAdmin(SampleDataGenerator.getAdmins())
-                                db.productCategoryDao().insertProdCats(SampleDataGenerator.getProductCategory())
+//                                db.productCategoryDao().insertProdCats(SampleDataGenerator.getProductCategory())
                                 db.productDao().insertProducts(SampleDataGenerator.getProducts(context))
-                                db.orderDao().insertOrders(SampleDataGenerator.getOrders())
-                                db.orderItemDao().insertOrderItems(SampleDataGenerator.getOrderItems())
+//                                db.orderDao().insertOrders(SampleDataGenerator.getOrders())
+//                                db.orderItemDao().insertOrderItems(SampleDataGenerator.getOrderItems())
                             }).start()
                         }
                     }).allowMainThreadQueries().build()

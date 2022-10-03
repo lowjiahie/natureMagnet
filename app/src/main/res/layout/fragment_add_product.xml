@@ -30,6 +30,7 @@
                 android:layout_width="335dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +99,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="@+id/inputProdPrice"
                 app:layout_constraintTop_toBottomOf="@+id/inputProdPrice" />
@@ -108,12 +110,12 @@
                 android:layout_height="98dp"
                 android:layout_marginTop="16dp"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="@+id/inputProdStock"
                 app:layout_constraintStart_toStartOf="@+id/addProdDesc"
                 app:layout_constraintTop_toBottomOf="@+id/addProdDesc" />
-
 
             <TextView
                 android:id="@+id/addProdDesc"
@@ -146,6 +148,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@+id/textView31"
                 app:layout_constraintHorizontal_bias="0.568"
                 app:layout_constraintStart_toEndOf="@+id/addProdName"
@@ -157,6 +160,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="@+id/inputProdName"
                 app:layout_constraintTop_toBottomOf="@+id/inputProdName" />

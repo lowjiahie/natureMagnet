@@ -1,5 +1,6 @@
 package com.example.naturemagnet.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,17 +9,14 @@ import com.example.naturemagnet.databinding.FragmentProductBinding
 import com.example.naturemagnet.databinding.FragmentShopBinding
 import com.example.naturemagnet.entity.Product
 
-class ProductAdapter(private val data: List<Product>, val prodListClickListener: ProdListClickListener) : RecyclerView.Adapter<ProductAdapter.MyViewHolder>()  {
+class ProductAdapter(private val data: List<Product>, private val productClickListener: ProductClickListener) : RecyclerView.Adapter<ProductAdapter.MyViewHolder>()  {
 
     inner class MyViewHolder(val binding: FragmentProductBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item:Product){
             binding.prodShopComp = item
             binding.shopImage.setImageBitmap(item.prodImage)
+//            val productName = binding.prodName.toString()
         }
-    }
-
-    interface ProdListClickListener {
-        fun onProdListItemClick(view: View, product: Product)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -29,8 +27,9 @@ class ProductAdapter(private val data: List<Product>, val prodListClickListener:
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(data[position])
+        holder.binding.prodName.text = data[position].prodName
         holder.binding.root.setOnClickListener{
-            prodListClickListener.onProdListItemClick(it,data[position])
+            productClickListener.onProductClick(it, data[position])
         }
     }
 

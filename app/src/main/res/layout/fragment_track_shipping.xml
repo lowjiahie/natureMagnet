@@ -3,7 +3,7 @@
     <data>
         <variable
             name="tracker"
-            type="com.example.naturemagnet.entity.Order" />
+            type="com.example.naturemagnet.entity.Product" />
     </data>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"

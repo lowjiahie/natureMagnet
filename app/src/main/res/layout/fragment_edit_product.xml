@@ -16,57 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextureView
-                android:id="@+id/selectedProdID"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="@{editProd.productID}"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextureView>
-
-            <TextureView
-                android:id="@+id/selectedProdName"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="@{editProd.prodName}"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextureView>
-            <TextureView
-                android:id="@+id/selectedProdPrice"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="@{editProd.prodPrice}"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextureView>
-            <TextureView
-                android:id="@+id/selectedProdStock"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="@{editProd.prodQuantityStock}"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextureView>
-            <TextureView
-                android:id="@+id/selectedProdDesc"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="@{editProd.prodDescription}"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextureView>
             <TextView
                 android:id="@+id/textView32"
                 android:layout_width="0dp"
@@ -85,13 +34,13 @@
                 android:layout_marginEnd="38dp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView32"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/btnUpdProdName"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
                 android:text="Update Name"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toTopOf="@+id/editProdPrice"
@@ -117,9 +66,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="26dp"
                 android:layout_marginBottom="14dp"
-                android:text="Edit Product"
+                android:text=""
                 android:textColor="#000000"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/editProdName"
                 app:layout_constraintStart_toEndOf="@+id/editProdName"
@@ -159,11 +108,13 @@
             <EditText
                 android:id="@+id/inputProdStock"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="54dp"
                 android:layout_marginEnd="54dp"
                 android:ems="10"
+                android:text=""
                 android:inputType="number"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/btnUpdProdStock"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -172,12 +123,14 @@
             <EditText
                 android:id="@+id/inputProdDesc"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="54dp"
                 android:layout_marginEnd="54dp"
                 android:ems="10"
+                android:text=""
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/btnUpdProdDesc"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -186,8 +139,7 @@
             <Button
                 android:id="@+id/btnUpdProdStock"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginBottom="17dp"
+                android:layout_height="wrap_content"
                 android:text="Update Stock"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toTopOf="@+id/editProdDesc"
@@ -224,10 +176,12 @@
             <EditText
                 android:id="@+id/inputProdName"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="54dp"
                 android:layout_marginEnd="54dp"
                 android:ems="10"
+                android:text=""
+                android:textColor="@color/black"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toTopOf="@+id/btnUpdProdName"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -237,11 +191,13 @@
             <EditText
                 android:id="@+id/inputProdPrice"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="54dp"
                 android:layout_marginEnd="54dp"
                 android:ems="10"
+                android:text=""
                 android:inputType="numberDecimal"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/btnUpdProdPrice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -250,8 +206,7 @@
             <Button
                 android:id="@+id/btnUpdProdPrice"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginBottom="12dp"
+                android:layout_height="wrap_content"
                 android:text="Update Price"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toTopOf="@+id/editProdStock"
@@ -262,8 +217,7 @@
             <Button
                 android:id="@+id/btnUpdProdDesc"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginBottom="17dp"
+                android:layout_height="wrap_content"
                 android:text="Update Description"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toTopOf="@+id/editProdImg"
@@ -273,16 +227,41 @@
 
             <ImageButton
                 android:id="@+id/loadNewProdImg"
-                android:layout_width="0dp"
+                android:layout_width="150dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="54dp"
                 android:layout_marginEnd="54dp"
-                android:layout_marginBottom="97dp"
+                android:layout_marginBottom="90dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editProdImg"
                 app:srcCompat="@mipmap/ic_upload_image" />
+
+            <Button
+                android:id="@+id/btnUpdNewImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Upload Image"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="@+id/loadNewProdImg"
+                app:layout_constraintStart_toEndOf="@+id/loadNewProdImg"
+                app:layout_constraintTop_toTopOf="@+id/loadNewProdImg"
+                app:layout_constraintVertical_bias="0.562"></Button>
+
+            <Button
+                android:id="@+id/btnDelProd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Delete Product"
+                app:backgroundTint="@color/design_default_color_error"
+                app:layout_constraintEnd_toEndOf="@+id/btnUpdNewImg"
+                app:layout_constraintHorizontal_bias="0.489"
+                app:layout_constraintStart_toStartOf="@+id/loadNewProdImg"
+                app:layout_constraintTop_toBottomOf="@+id/loadNewProdImg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

@@ -15,7 +15,7 @@ import com.example.naturemagnet.databinding.FragmentAdminManagementComponentBind
 import com.example.naturemagnet.entity.Product
 import com.example.naturemagnet.fragment_admin_management
 
-class ProdAdminAdapter (private val data: List<Product>) : RecyclerView.Adapter<ProdAdminAdapter.MyViewHolder>() {
+class ProdAdminAdapter (private val data: List<Product>, private val productClickListener: ProductClickListener) : RecyclerView.Adapter<ProdAdminAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val binding: FragmentAdminManagementComponentBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Product){
@@ -32,14 +32,8 @@ class ProdAdminAdapter (private val data: List<Product>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(data[position])
-        holder.binding.updProdBtn.setOnClickListener {
-            it.findNavController().navigate(R.id.adminEditProduct)
-            Log.e("Update Product", "Update Product")
-
-        }
-        holder.binding.delProdBtn.setOnClickListener {
-            Log.e("Delete Product", "Delete Product")
-            //delete function
+        holder.binding.root.setOnClickListener{
+            productClickListener.onProductClick(it, data[position])
         }
     }
 

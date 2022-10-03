@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         db = NatureMagnetDB.getInstance(this)!!
 //        db.customerDao().insertCustomer(SampleDataGenerator.getCustomer())
-        Log.i("MainActivity",db.customerDao().getCustAll().toString())
+//        Log.i("MainActivity",db.customerDao().getCustAll().toString())
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,

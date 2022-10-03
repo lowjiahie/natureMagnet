@@ -90,49 +90,49 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/YA_card"
-                                    style="@style/card_container">
+<!--                                <com.google.android.material.card.MaterialCardView-->
+<!--                                    android:id="@+id/YA_card"-->
+<!--                                    style="@style/card_container">-->
 
-                                    <!-- background sneak peek -->
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="180dp"
-                                        android:contentDescription="content_description_media"
-                                        android:scaleType="centerCrop"
-                                        app:srcCompat="@drawable/fruit" />
+<!--                                    &lt;!&ndash; background sneak peek &ndash;&gt;-->
+<!--                                    <ImageView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="180dp"-->
+<!--                                        android:contentDescription="content_description_media"-->
+<!--                                        android:scaleType="centerCrop"-->
+<!--                                        app:srcCompat="@drawable/fruit" />-->
 
-                                    <!-- event icon-->
-                                    <androidx.cardview.widget.CardView
-                                        style="@style/card_icon_activity"
-                                        app:cardCornerRadius="50dp">
+<!--                                    &lt;!&ndash; event icon&ndash;&gt;-->
+<!--                                    <androidx.cardview.widget.CardView-->
+<!--                                        style="@style/card_icon_activity"-->
+<!--                                        app:cardCornerRadius="50dp">-->
 
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:contentDescription="content_description_media"
-                                            android:scaleType="centerCrop"
-                                            app:srcCompat="@drawable/photo" />
+<!--                                        <ImageView-->
+<!--                                            android:layout_width="match_parent"-->
+<!--                                            android:layout_height="match_parent"-->
+<!--                                            android:contentDescription="content_description_media"-->
+<!--                                            android:scaleType="centerCrop"-->
+<!--                                            app:srcCompat="@drawable/photo" />-->
 
-                                    </androidx.cardview.widget.CardView>
+<!--                                    </androidx.cardview.widget.CardView>-->
 
-                                    <!-- Event Brief Info-->
-                                    <androidx.cardview.widget.CardView
-                                        style="@style/card_desc_container"
-                                        app:cardBackgroundColor="#E6FFFFFF"
-                                        app:cardCornerRadius="@dimen/border_radius_10">
+<!--                                    &lt;!&ndash; Event Brief Info&ndash;&gt;-->
+<!--                                    <androidx.cardview.widget.CardView-->
+<!--                                        style="@style/card_desc_container"-->
+<!--                                        app:cardBackgroundColor="#E6FFFFFF"-->
+<!--                                        app:cardCornerRadius="@dimen/border_radius_10">-->
 
-                                        <TextView
-                                            android:id="@+id/title"
-                                            style="@style/card_desc_title_activity"
-                                            android:text="@string/yourActivitiesTitle"></TextView>
+<!--&lt;!&ndash;                                        <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                            android:id="@+id/title"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            style="@style/card_desc_title_activity"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            android:text="@string/yourActivitiesTitle"></TextView>&ndash;&gt;-->
 
-                                        <TextView
-                                            android:id="@+id/participants"
-                                            style="@style/card_desc_text_activity"
-                                            android:text="102,938 Participants"></TextView>
-                                    </androidx.cardview.widget.CardView>
-                                </com.google.android.material.card.MaterialCardView>
+<!--&lt;!&ndash;                                        <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                            android:id="@+id/participants"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            style="@style/card_desc_text_activity"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            android:text="102,938 Participants"></TextView>&ndash;&gt;-->
+<!--                                    </androidx.cardview.widget.CardView>-->
+<!--                                </com.google.android.material.card.MaterialCardView>-->
 
                             </LinearLayout>
                         </LinearLayout>
@@ -254,25 +254,25 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <Button
-                                    android:id="@+id/containedButton1"
-                                    style="@style/cat_btn"
-                                    android:text="button1" />
+<!--                                <Button-->
+<!--                                    android:id="@+id/containedButton1"-->
+<!--                                    style="@style/cat_btn"-->
+<!--                                    android:text="button1" />-->
 
-                                <Button
-                                    android:id="@+id/containedButton2"
-                                    style="@style/cat_btn"
-                                    android:text="Contained button" />
+<!--                                <Button-->
+<!--                                    android:id="@+id/containedButton2"-->
+<!--                                    style="@style/cat_btn"-->
+<!--                                    android:text="Contained button" />-->
 
-                                <Button
-                                    android:id="@+id/containedButton1"
-                                    style="@style/cat_btn"
-                                    android:text="button1" />
+<!--                                <Button-->
+<!--                                    android:id="@+id/containedButton1"-->
+<!--                                    style="@style/cat_btn"-->
+<!--                                    android:text="button1" />-->
 
-                                <Button
-                                    android:id="@+id/containedButton2"
-                                    style="@style/cat_btn"
-                                    android:text="Contained button" />
+<!--                                <Button-->
+<!--                                    android:id="@+id/containedButton2"-->
+<!--                                    style="@style/cat_btn"-->
+<!--                                    android:text="Contained button" />-->
                                 <!--                    <Button-->
                                 <!--                        android:id="@+id/containedButton"-->
                                 <!--                        android:layout_width="wrap_content"-->
