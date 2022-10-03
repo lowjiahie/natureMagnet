@@ -5,15 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
-import android.view.View.INVISIBLE
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.naturemagnet.adapter.EventActivityClickkListener
@@ -25,11 +21,10 @@ import com.example.naturemagnet.dao.CategoryDao
 import com.example.naturemagnet.dao.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentEventMainBinding
-import com.example.naturemagnet.datagenerator.SampleDataGenerator
 import com.example.naturemagnet.entity.Activity
-import com.example.naturemagnet.entity.ActivityJoined
 import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.viewModel.EventDetailsViewModel
+import java.text.DecimalFormat
 import java.util.*
 
 
@@ -73,7 +68,18 @@ class event_main : Fragment(), EventActivityClickkListener {
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH) + 1
         val day = c.get(Calendar.DAY_OF_MONTH)
-        val activitiesHappeningToday = eventRepository.getActivitiesByDate("$year/$month/$day")
+        var tempMonth: String
+        var tempDay: String
+        tempMonth = if (month.toInt() < 10 )
+            "0$month"
+        else
+            month.toString()
+        tempDay = if (day.toInt() < 10)
+            "0$day"
+        else
+            day.toString()
+
+        val activitiesHappeningToday = eventRepository.getActivitiesByDate("$year/$tempMonth/$tempDay")
 //        2022/10/31 to display sample data
         val eventAdapter2 = EventAdapter(activitiesHappeningToday, this, "ActivitiesToday")
 
