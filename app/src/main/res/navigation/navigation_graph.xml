@@ -12,15 +12,15 @@
         android:id="@+id/eventMainFragment"
         android:name="com.example.naturemagnet.event_main"
         android:label="Event"
-        tools:layout="@layout/fragment_event_main" >
+        tools:layout="@layout/fragment_event_main">
         <action
             android:id="@+id/action_eventMainFragment_to_eventEdit"
             app:destination="@id/eventEdit" />
 
         <argument
             android:name="clickFrom"
-            app:argType="string"
-            android:defaultValue="From First Fragment" />
+            android:defaultValue="From First Fragment"
+            app:argType="string" />
 
         <action
             android:id="@+id/action_eventMainFragment_to_event_details"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/awarenessMainFragment"
         android:name="com.example.naturemagnet.awareness_main"
-        android:label="Awareness" >
+        android:label="Awareness">
         <action
             android:id="@+id/action_awarenessMainFragment_to_fragment_all_post"
             app:destination="@id/fragment_all_post" />
@@ -37,18 +37,14 @@
     <fragment
         android:id="@+id/createPostFragment"
         android:name="com.example.naturemagnet.create_post"
-        android:label="Create Post" >
+        android:label="Create Post">
         <action
             android:id="@+id/action_createPostFragment_to_fragment_all_post"
             app:destination="@id/fragment_all_post"
             app:popUpTo="@id/fragment_all_post"
             app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/test2"
-        android:name="com.example.naturemagnet.test2"
-        android:label="test2"
-        tools:layout="@layout/fragment_test2" />
+
     <fragment
         android:id="@+id/eventEdit"
         android:name="com.example.naturemagnet.event_edit"
@@ -59,14 +55,11 @@
         android:name="com.example.naturemagnet.event_details"
         android:label="Event Details"
         tools:layout="@layout/fragment_event_details" />
+
     <fragment
-        android:id="@+id/eventManageFragment"
-        android:name="com.example.naturemagnet.event_manage"
-        android:label="Event Manage"
-        tools:layout="@layout/fragment_event_manage" />
         android:id="@+id/fragment_all_post"
         android:name="com.example.naturemagnet.all_posts"
-        android:label="All Posts" >
+        android:label="All Posts">
         <action
             android:id="@+id/action_fragment_all_post_to_createPostFragment"
             app:destination="@id/createPostFragment" />
@@ -80,4 +73,11 @@
         android:id="@+id/my_posts_fragment"
         android:name="com.example.naturemagnet.my_posts"
         android:label="My Post" />
+
+    <fragment
+        android:id="@+id/eventManageFragment"
+        android:name="com.example.naturemagnet.event_manage"
+        android:label="Event Manage"
+        tools:layout="@layout/fragment_event_manage" />
+
 </navigation>

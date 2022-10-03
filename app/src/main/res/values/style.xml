@@ -209,12 +209,12 @@
 
     <style name="card_rectangle_desc_title_activity">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">raleway</item>
-        <item name="android:paddingTop">@dimen/padding_15</item>
+        <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">@dimen/padding_8</item>
-        <item name="android:paddingLeft">@dimen/padding_24</item>
-        <item name="android:paddingRight">@dimen/padding_15</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
@@ -222,12 +222,12 @@
 
     <style name="card_rectangle_desc_text_activity">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">45dp</item>
         <item name="android:layout_marginTop">40dp</item>
         <item name="android:paddingTop">@dimen/padding_8</item>
         <item name="android:paddingBottom">@dimen/padding_8</item>
-        <item name="android:paddingLeft">@dimen/padding_24</item>
-        <item name="android:paddingRight">@dimen/padding_15</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
         <item name="android:fontFamily">roboto regular</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textSize">12dp</item>

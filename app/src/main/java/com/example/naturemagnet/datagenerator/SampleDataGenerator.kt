@@ -1,6 +1,10 @@
 package com.example.naturemagnet.datagenerator
 
-import com.example.naturemagnet.entity.Customer
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import com.example.naturemagnet.R
+import com.example.naturemagnet.entity.*
 
 class SampleDataGenerator {
 
@@ -11,16 +15,6 @@ class SampleDataGenerator {
                 Customer("kotlin","kotlin@gmail.com","0153123124","123asd","kotlinMalaysia"),
                 Customer("wenxin","wenxin1@gmail.com","0153134124","123asd","Jalan Kuala Lumpur 1"),
                 Customer("jingchong","jingchong1@gmail.com","0153134124","123asd","Jalan Kuala Lumpur 2")
-            )
-        }
-
-        fun getCustomer(): Customer {
-            return Customer(
-                "jiahie",
-                "jiahielow@gmail.com",
-                "0153134124",
-                "123asd",
-                "jalanMalaysia"
             )
         }
 
