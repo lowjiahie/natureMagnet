@@ -1,17 +1,19 @@
 package com.example.naturemagnet.adapter
 
+import android.app.Application
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.naturemagnet.databinding.FragmentAdminManagementComponentBinding
 import com.example.naturemagnet.entity.Product
 
-class ProdAdminAdapter (private val data: List<Product>, private val productClickListener: ProductClickListener) : RecyclerView.Adapter<ProdAdminAdapter.MyViewHolder>() {
+class ProdAdminAdapter (private val data: List<Product>,
+                        private val productClickListener: ProductClickListener, val application:Application) : RecyclerView.Adapter<ProdAdminAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val binding: FragmentAdminManagementComponentBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Product){
             binding.prodAdminComp = item
-            binding.imageView.setImageBitmap(item.prodImage)
         }
     }
 
@@ -23,6 +25,7 @@ class ProdAdminAdapter (private val data: List<Product>, private val productClic
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(data[position])
+        Glide.with(application).load(data[position].prodImage).into(holder.binding.imageView)
         holder.binding.root.setOnClickListener{
             productClickListener.onProductClick(it, data[position])
         }

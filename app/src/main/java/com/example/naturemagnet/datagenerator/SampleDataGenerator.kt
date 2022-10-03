@@ -5,12 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.example.naturemagnet.R
 import com.example.naturemagnet.entity.*
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Log
-import com.example.naturemagnet.R
-import com.example.naturemagnet.entity.*
+
 
 class SampleDataGenerator {
 
@@ -95,14 +90,6 @@ class SampleDataGenerator {
             )
         }
 
-        fun getAdmins(): List<Admin>{
-            return listOf(
-                Admin("Meng","meng5@gmail.com","0153134124","123asd","Jalan Kuala Lumpur"),
-                Admin("Jingsen","jingsen@gmail.com","0153134124","123asd","Jalan Malaysia 1"),
-                Admin("Qing Qing","qingqing1@gmail.com","0153134124","123asd","Jalan Malaysia 5"),
-                Admin("Jing Den","jingen@gmail.com","0153134124","123asd","Jalan Malaysia 9")
-            )
-        }
 
 //        fun getProductCategory(): List<ProductCategory>{
 //
@@ -299,8 +286,6 @@ class SampleDataGenerator {
                 Comment("Hello world 5","2022-09-30 10:23:00",null,1,2),
             )
         }
-
-
 
 
         fun injectActivityJoined(): List<ActivityJoined> {

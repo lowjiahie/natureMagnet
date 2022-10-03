@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Event">
         <menu>
-            <!--            <group android:checkableBehavior="single">-->
             <group>
                 <item
                     android:id="@+id/eventMainFragment"
@@ -33,7 +32,7 @@
         <menu>
             <group>
                 <item
-                    android:id="@+id/cart"
+                    android:id="@+id/fragment_admin_management"
                     android:icon="@drawable/ic_cart_empty_fill"
                     android:title="@string/cart"></item>
                 <item
@@ -43,11 +42,5 @@
             </group>
         </menu>
     </item>
-
-    <item
-        android:id="@+id/logout"
-        android:icon="@drawable/ic_logout"
-        android:title="@string/logout"></item>
-
 
 </menu>

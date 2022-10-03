@@ -17,8 +17,8 @@ import java.util.concurrent.Executors
 //Any new entity please add here
 @Database(
     entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
-        News::class, NewsSaved::class, Order::class, OrderItem::class, Post::class, PostLiked::class,
-        PostSaved::class, Product::class, ProductCategory::class, Reply::class],
+        News::class, NewsSaved::class, Post::class, PostLiked::class,
+        PostSaved::class, Product::class],
     version = 1
 )
 //Any new converter please add here

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bd915b52f55e8a18b405e30ac990bb02",
+    "identityHash": "f30d39ad80569e9daee2210ed5032e73",
     "entities": [
       {
         "tableName": "activity",
@@ -617,186 +617,6 @@
         ]
       },
       {
-        "tableName": "order",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`orderID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `orderDateTime` TEXT, `aproxDate` TEXT, `orderStatus` TEXT, `orderTotalPrice` REAL, `shipmentName` TEXT, `shipmentAddress` TEXT, `shipmentPhnNum` TEXT, `postDateTime` TEXT, `custID` INTEGER NOT NULL, FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
-        "fields": [
-          {
-            "fieldPath": "orderID",
-            "columnName": "orderID",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "orderDateTime",
-            "columnName": "orderDateTime",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "aproxDate",
-            "columnName": "aproxDate",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "orderStatus",
-            "columnName": "orderStatus",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "orderTotalPrice",
-            "columnName": "orderTotalPrice",
-            "affinity": "REAL",
-            "notNull": false
-          },
-          {
-            "fieldPath": "shipmentName",
-            "columnName": "shipmentName",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "shipmentAddress",
-            "columnName": "shipmentAddress",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "shipmentPhnNum",
-            "columnName": "shipmentPhnNum",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "postDateTime",
-            "columnName": "postDateTime",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "custID",
-            "columnName": "custID",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "orderID"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [
-          {
-            "name": "index_order_orderID",
-            "unique": true,
-            "columnNames": [
-              "orderID"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_order_orderID` ON `${TABLE_NAME}` (`orderID`)"
-          },
-          {
-            "name": "index_order_custID",
-            "unique": false,
-            "columnNames": [
-              "custID"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_order_custID` ON `${TABLE_NAME}` (`custID`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "customer",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "custID"
-            ],
-            "referencedColumns": [
-              "custID"
-            ]
-          }
-        ]
-      },
-      {
-        "tableName": "orderItem",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`productID` INTEGER NOT NULL, `orderID` INTEGER NOT NULL, `orderItemQty` INTEGER NOT NULL, PRIMARY KEY(`productID`, `orderID`), FOREIGN KEY(`productID`) REFERENCES `product`(`productID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`orderID`) REFERENCES `order`(`orderID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
-        "fields": [
-          {
-            "fieldPath": "productID",
-            "columnName": "productID",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "orderID",
-            "columnName": "orderID",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "orderItemQty",
-            "columnName": "orderItemQty",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "productID",
-            "orderID"
-          ],
-          "autoGenerate": false
-        },
-        "indices": [
-          {
-            "name": "index_orderItem_productID",
-            "unique": true,
-            "columnNames": [
-              "productID"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_orderItem_productID` ON `${TABLE_NAME}` (`productID`)"
-          },
-          {
-            "name": "index_orderItem_orderID",
-            "unique": true,
-            "columnNames": [
-              "orderID"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_orderItem_orderID` ON `${TABLE_NAME}` (`orderID`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "product",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "productID"
-            ],
-            "referencedColumns": [
-              "productID"
-            ]
-          },
-          {
-            "table": "order",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "orderID"
-            ],
-            "referencedColumns": [
-              "orderID"
-            ]
-          }
-        ]
-      },
-      {
         "tableName": "post",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`postID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `content` TEXT, `imgPost` BLOB, `eventLink` TEXT, `shareCount` INTEGER, `postDate` TEXT, `custID` INTEGER NOT NULL, FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
@@ -1025,14 +845,8 @@
       },
       {
         "tableName": "product",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`productID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `prodName` TEXT, `prodPrice` TEXT, `prodDescription` TEXT, `prodQuantityStock` TEXT, `prodImage` BLOB, `prodCategoryID` INTEGER NOT NULL, `adminID` INTEGER NOT NULL, FOREIGN KEY(`prodCategoryID`) REFERENCES `productCategory`(`prodCategoryID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`adminID`) REFERENCES `admin`(`adminID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`prodName` TEXT, `prodPrice` TEXT, `prodDescription` TEXT, `prodQuantityStock` INTEGER, `prodImage` BLOB, `adminID` INTEGER NOT NULL, `productID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FOREIGN KEY(`adminID`) REFERENCES `admin`(`adminID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
-          {
-            "fieldPath": "productID",
-            "columnName": "productID",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "prodName",
             "columnName": "prodName",
@@ -1054,7 +868,7 @@
           {
             "fieldPath": "prodQuantityStock",
             "columnName": "prodQuantityStock",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": false
           },
           {
@@ -1064,14 +878,14 @@
             "notNull": false
           },
           {
-            "fieldPath": "prodCategoryID",
-            "columnName": "prodCategoryID",
+            "fieldPath": "adminID",
+            "columnName": "adminID",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "adminID",
-            "columnName": "adminID",
+            "fieldPath": "productID",
+            "columnName": "productID",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -1093,15 +907,6 @@
             "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_product_productID` ON `${TABLE_NAME}` (`productID`)"
           },
           {
-            "name": "index_product_prodCategoryID",
-            "unique": false,
-            "columnNames": [
-              "prodCategoryID"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_product_prodCategoryID` ON `${TABLE_NAME}` (`prodCategoryID`)"
-          },
-          {
             "name": "index_product_adminID",
             "unique": false,
             "columnNames": [
@@ -1112,17 +917,6 @@
           }
         ],
         "foreignKeys": [
-          {
-            "table": "productCategory",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "prodCategoryID"
-            ],
-            "referencedColumns": [
-              "prodCategoryID"
-            ]
-          },
           {
             "table": "admin",
             "onDelete": "CASCADE",
@@ -1135,149 +929,12 @@
             ]
           }
         ]
-      },
-      {
-        "tableName": "productCategory",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`prodCategoryID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `categoryName` TEXT)",
-        "fields": [
-          {
-            "fieldPath": "prodCategoryID",
-            "columnName": "prodCategoryID",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "categoryName",
-            "columnName": "categoryName",
-            "affinity": "TEXT",
-            "notNull": false
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "prodCategoryID"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [
-          {
-            "name": "index_productCategory_prodCategoryID",
-            "unique": true,
-            "columnNames": [
-              "prodCategoryID"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_productCategory_prodCategoryID` ON `${TABLE_NAME}` (`prodCategoryID`)"
-          }
-        ],
-        "foreignKeys": []
-      },
-      {
-        "tableName": "reply",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`replyID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `content` TEXT, `replyDatetime` TEXT, `eventLink` TEXT, `custID` INTEGER NOT NULL, `commentID` INTEGER NOT NULL, FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`commentID`) REFERENCES `comment`(`commentID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
-        "fields": [
-          {
-            "fieldPath": "replyID",
-            "columnName": "replyID",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "content",
-            "columnName": "content",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "replyDatetime",
-            "columnName": "replyDatetime",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "eventLink",
-            "columnName": "eventLink",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "custID",
-            "columnName": "custID",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "commentID",
-            "columnName": "commentID",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "replyID"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [
-          {
-            "name": "index_reply_replyID",
-            "unique": true,
-            "columnNames": [
-              "replyID"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_reply_replyID` ON `${TABLE_NAME}` (`replyID`)"
-          },
-          {
-            "name": "index_reply_custID",
-            "unique": false,
-            "columnNames": [
-              "custID"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_reply_custID` ON `${TABLE_NAME}` (`custID`)"
-          },
-          {
-            "name": "index_reply_commentID",
-            "unique": false,
-            "columnNames": [
-              "commentID"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_reply_commentID` ON `${TABLE_NAME}` (`commentID`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "customer",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "custID"
-            ],
-            "referencedColumns": [
-              "custID"
-            ]
-          },
-          {
-            "table": "comment",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "commentID"
-            ],
-            "referencedColumns": [
-              "commentID"
-            ]
-          }
-        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bd915b52f55e8a18b405e30ac990bb02')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f30d39ad80569e9daee2210ed5032e73')"
     ]
   }
 }
