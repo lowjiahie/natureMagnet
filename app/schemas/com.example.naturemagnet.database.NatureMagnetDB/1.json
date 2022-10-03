@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "23de8f7c1784a58eaccf27dbaf9dd649",
+    "identityHash": "bd915b52f55e8a18b405e30ac990bb02",
     "entities": [
       {
         "tableName": "activity",
@@ -497,7 +497,7 @@
       },
       {
         "tableName": "news",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`newsID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `newsLink` TEXT, `sourceName` TEXT, `publishedDateTime` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`newsID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `newsLink` TEXT, `sourceName` TEXT, `publishedDate` TEXT)",
         "fields": [
           {
             "fieldPath": "newsID",
@@ -524,8 +524,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "publishedDateTime",
-            "columnName": "publishedDateTime",
+            "fieldPath": "publishedDate",
+            "columnName": "publishedDate",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -581,22 +581,14 @@
         },
         "indices": [
           {
-            "name": "index_newsSaved_custID",
+            "name": "index_newsSaved_custID_newsID",
             "unique": true,
             "columnNames": [
-              "custID"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_newsSaved_custID` ON `${TABLE_NAME}` (`custID`)"
-          },
-          {
-            "name": "index_newsSaved_newsID",
-            "unique": true,
-            "columnNames": [
+              "custID",
               "newsID"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_newsSaved_newsID` ON `${TABLE_NAME}` (`newsID`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_newsSaved_custID_newsID` ON `${TABLE_NAME}` (`custID`, `newsID`)"
           }
         ],
         "foreignKeys": [
@@ -806,7 +798,7 @@
       },
       {
         "tableName": "post",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`postID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `content` TEXT, `imgPost` BLOB, `eventLink` TEXT, `shareCount` INTEGER, `postDateTime` TEXT, `custID` INTEGER NOT NULL, FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`postID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `content` TEXT, `imgPost` BLOB, `eventLink` TEXT, `shareCount` INTEGER, `postDate` TEXT, `custID` INTEGER NOT NULL, FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "postID",
@@ -845,8 +837,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "postDateTime",
-            "columnName": "postDateTime",
+            "fieldPath": "postDate",
+            "columnName": "postDate",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -899,7 +891,7 @@
       },
       {
         "tableName": "postLiked",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`custID` INTEGER NOT NULL, `postID` INTEGER NOT NULL, `likeDateTime` TEXT NOT NULL, PRIMARY KEY(`custID`, `postID`), FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`postID`) REFERENCES `post`(`postID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`custID` INTEGER NOT NULL, `postID` INTEGER NOT NULL, `likeDateTime` TEXT, PRIMARY KEY(`custID`, `postID`), FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`postID`) REFERENCES `post`(`postID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "custID",
@@ -917,7 +909,7 @@
             "fieldPath": "likeDateTime",
             "columnName": "likeDateTime",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -929,22 +921,14 @@
         },
         "indices": [
           {
-            "name": "index_postLiked_custID",
+            "name": "index_postLiked_custID_postID",
             "unique": true,
             "columnNames": [
-              "custID"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_postLiked_custID` ON `${TABLE_NAME}` (`custID`)"
-          },
-          {
-            "name": "index_postLiked_postID",
-            "unique": true,
-            "columnNames": [
+              "custID",
               "postID"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_postLiked_postID` ON `${TABLE_NAME}` (`postID`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_postLiked_custID_postID` ON `${TABLE_NAME}` (`custID`, `postID`)"
           }
         ],
         "foreignKeys": [
@@ -974,7 +958,7 @@
       },
       {
         "tableName": "postSaved",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`custID` INTEGER NOT NULL, `postID` INTEGER NOT NULL, `savedDateTime` TEXT NOT NULL, PRIMARY KEY(`custID`, `postID`), FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`postID`) REFERENCES `post`(`postID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`custID` INTEGER NOT NULL, `postID` INTEGER NOT NULL, `savedDateTime` TEXT, PRIMARY KEY(`custID`, `postID`), FOREIGN KEY(`custID`) REFERENCES `customer`(`custID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`postID`) REFERENCES `post`(`postID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "custID",
@@ -992,7 +976,7 @@
             "fieldPath": "savedDateTime",
             "columnName": "savedDateTime",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -1004,22 +988,14 @@
         },
         "indices": [
           {
-            "name": "index_postSaved_custID",
+            "name": "index_postSaved_custID_postID",
             "unique": true,
             "columnNames": [
-              "custID"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_postSaved_custID` ON `${TABLE_NAME}` (`custID`)"
-          },
-          {
-            "name": "index_postSaved_postID",
-            "unique": true,
-            "columnNames": [
+              "custID",
               "postID"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_postSaved_postID` ON `${TABLE_NAME}` (`postID`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_postSaved_custID_postID` ON `${TABLE_NAME}` (`custID`, `postID`)"
           }
         ],
         "foreignKeys": [
@@ -1301,7 +1277,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '23de8f7c1784a58eaccf27dbaf9dd649')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bd915b52f55e8a18b405e30ac990bb02')"
     ]
   }
 }

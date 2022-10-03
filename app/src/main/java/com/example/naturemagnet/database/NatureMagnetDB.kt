@@ -24,13 +24,15 @@ import java.util.concurrent.Executors
 )
 //Any new converter please add here
 @TypeConverters(ImageConverter::class)
-abstract class NatureMagnetDB : RoomDatabase() {
+abstract class NatureMagnetDB : RoomDatabase () {
     //define your DAO here
-    abstract fun customerDao(): CustomerDao
     abstract fun activityDao(): ActivityDao
+    abstract fun customerDao(): CustomerDao
     abstract fun categoryDao(): CategoryDao
     abstract fun activityJoinedDao(): ActivityJoinedDao
-    private val eventRepository: EventRepository = EventRepository(activityDao(), categoryDao(), activityJoinedDao())
+    abstract fun postDao(): PostDao
+    abstract fun newsDao(): NewsDao
+    abstract fun commentDao(): CommentDao
 
     companion object {
         private var INSTANCE: NatureMagnetDB? = null
@@ -45,16 +47,17 @@ abstract class NatureMagnetDB : RoomDatabase() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             Thread(Runnable {
-                                val db = getInstance(context)
-                                db?.customerDao()
-                                    ?.insertCustomer(SampleDataGenerator.getCustomers())
-                                db?.categoryDao()
-                                    ?.insertCategories(SampleDataGenerator.injectCategories(context))
-                                db?.activityDao()
-                                    ?.insertActivities(SampleDataGenerator.injectActivities(context))
-                                db?.activityJoinedDao()
-                                    ?.insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
-                                Log.e("db", "DB is working")
+                                val db = getInstance(context)!!
+                                db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
+                                db.categoryDao().insertCategories(SampleDataGenerator.injectCategories(context))
+                                db.activityDao().insertActivities(SampleDataGenerator.injectActivities(context))
+                                db.activityJoinedDao().insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
+                                db.postDao().insertPosts(SampleDataGenerator.injectPost(context))
+                                db.postDao().insertPostLikeds(SampleDataGenerator.injectPostLiked())
+                                db.postDao().insertPostSaveds(SampleDataGenerator.injectPostSaved())
+                                db.newsDao().insertNews(SampleDataGenerator.injectNews())
+                                db.newsDao().insertNewsSaved(SampleDataGenerator.injectNewsSaved())
+                                db.commentDao().insertComments(SampleDataGenerator.injectComment())
                             }).start()
                         }
                     }).allowMainThreadQueries().build()
@@ -67,4 +70,5 @@ abstract class NatureMagnetDB : RoomDatabase() {
             INSTANCE = null
         }
     }
+
 }

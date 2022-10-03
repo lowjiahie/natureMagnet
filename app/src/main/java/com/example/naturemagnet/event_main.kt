@@ -25,6 +25,7 @@ import com.example.naturemagnet.entity.Activity
 import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.viewModel.EventDetailsViewModel
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -64,6 +65,10 @@ class event_main : Fragment(), EventActivityClickkListener {
         val layoutManager2 = LinearLayoutManager(application)
         layoutManager2.orientation = LinearLayoutManager.HORIZONTAL
 
+        val sdf = SimpleDateFormat("yyyy/MM/dd")
+        sdf.timeZone = TimeZone.getTimeZone("Asia/Kuala_Lumpur")
+        val currentDate = sdf.format(Date())
+
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH) + 1
@@ -79,7 +84,8 @@ class event_main : Fragment(), EventActivityClickkListener {
         else
             day.toString()
 
-        val activitiesHappeningToday = eventRepository.getActivitiesByDate("$year/$tempMonth/$tempDay")
+//        val activitiesHappeningToday = eventRepository.getActivitiesByDate("$year/$tempMonth/$tempDay")
+        val activitiesHappeningToday = eventRepository.getActivitiesByDate(currentDate)
 //        2022/10/31 to display sample data
         val eventAdapter2 = EventAdapter(activitiesHappeningToday, this, "ActivitiesToday")
 

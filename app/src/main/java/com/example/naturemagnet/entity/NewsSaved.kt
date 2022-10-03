@@ -9,7 +9,7 @@ import androidx.room.Index
 @Entity(
     tableName = "newsSaved",
     primaryKeys = ["custID", "newsID"],
-    indices = [Index(value = ["custID"], unique = true),Index(value = ["newsID"], unique = true)],
+    indices = [Index(value = ["custID","newsID"],unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,

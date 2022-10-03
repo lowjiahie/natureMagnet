@@ -3,6 +3,7 @@ package com.example.naturemagnet.dao
 import android.content.Context
 import android.content.SharedPreferences
 
+
 class PrefManager(context: Context) {
 
     //share pref mode
@@ -20,8 +21,8 @@ class PrefManager(context: Context) {
         editor?.commit()
     }
 
-    fun setEmail(custEmail : String?){
-        editor?.putString("custEmail",custEmail)
+    fun setEmail(custEmail: String?) {
+        editor?.putString("custEmail", custEmail)
         editor?.commit()
     }
 

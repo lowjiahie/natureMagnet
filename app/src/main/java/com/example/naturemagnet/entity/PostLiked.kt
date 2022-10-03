@@ -8,7 +8,7 @@ import androidx.room.Index
 @Entity(
     tableName = "postLiked",
     primaryKeys = ["custID", "postID"],
-    indices = [Index(value = ["custID"], unique = true),Index(value = ["postID"], unique = true)],
+    indices = [Index(value = ["custID","postID"],unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,
@@ -27,5 +27,8 @@ import androidx.room.Index
 data class PostLiked(
     val custID: Long,
     val postID: Long,
-    val likeDateTime: String
-)
+    val likeDateTime: String?
+){
+    constructor(cusID:Long, postID: Long)
+            : this(cusID, postID,"")
+}
