@@ -58,15 +58,15 @@
     <fragment
         android:id="@+id/adminAddProduct"
         android:name="com.example.naturemagnet.AddProduct"
-        android:label="fragment_add_product"
+        android:label="Add Product"
         tools:layout="@layout/fragment_add_product" />
     <fragment
         android:id="@+id/adminEditProduct"
         android:name="com.example.naturemagnet.EditProduct"
-        android:label="EditProduct" />
+        android:label="Edit Product" />
     <fragment
         android:id="@+id/fragment_prodDetail"
         android:name="com.example.naturemagnet.fragment_prodDetail"
-        android:label="fragment_prod_detail"
+        android:label="Details"
         tools:layout="@layout/fragment_prod_detail" />
 </navigation>

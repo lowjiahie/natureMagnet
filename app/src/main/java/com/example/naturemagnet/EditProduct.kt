@@ -112,10 +112,10 @@ class EditProduct : Fragment() {
 
         binding.loadNewProdImg.setOnClickListener{
             pickImageGallery()
+            binding.btnUpdNewImg.visibility = View.VISIBLE
         }
 
         binding.btnUpdNewImg.setOnClickListener{
-
             var imgUploaded = bitmap
             var prodName = binding.inputProdName.text.toString()
             var actualProduct = db.loadProductDetail(prodName)

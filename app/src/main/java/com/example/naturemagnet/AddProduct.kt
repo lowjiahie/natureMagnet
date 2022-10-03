@@ -81,13 +81,21 @@ class AddProduct : Fragment() {
                 Toast.makeText(application, "Please pick an image", Toast.LENGTH_SHORT).show();
             }
             if(successful == true){
-                db.insertProduct(Product(productName, productPrice, productDescription, productStock, imgUploaded,1))
-                Toast.makeText(application, "The product has been added", Toast.LENGTH_SHORT)
-                    .show();
+                var actualProduct = db.loadProductDetail(productName)
+                if(actualProduct == null)
+                {
+                    db.insertProduct(Product(productName, productPrice, productDescription, productStock, imgUploaded,1))
+                    Toast.makeText(application, "The product has been added", Toast.LENGTH_LONG).show();
+                    it.findNavController().navigate(R.id.fragment_admin_management)
+                }
+                else{
+                    Toast.makeText(application, "The product has not been added. Please Try Again!", Toast.LENGTH_LONG)
+                        .show();
+                    it.findNavController().navigate(R.id.fragment_admin_management)
+                }
             }
             if(successful == false){
-                db.insertProduct(Product(productName, productPrice, productDescription, productStock, imgUploaded,1))
-                Toast.makeText(application, "The product has not been added. Please Try Again!", Toast.LENGTH_LONG)
+                Toast.makeText(application, "New Product not added or has been existed. Please Try Again!", Toast.LENGTH_LONG)
                     .show();
                 it.findNavController().navigate(R.id.fragment_admin_management)
             }

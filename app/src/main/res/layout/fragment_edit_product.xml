@@ -246,6 +246,7 @@
                 android:layout_marginStart="4dp"
                 android:text="Upload Image"
                 app:backgroundTint="@null"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/loadNewProdImg"
                 app:layout_constraintStart_toEndOf="@+id/loadNewProdImg"
                 app:layout_constraintTop_toTopOf="@+id/loadNewProdImg"
