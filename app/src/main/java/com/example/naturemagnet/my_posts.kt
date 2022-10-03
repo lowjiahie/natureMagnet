@@ -6,17 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.naturemagnet.adapter.MyPostsAdapter
 import com.example.naturemagnet.adapter.PostDetailsAdapter
 import com.example.naturemagnet.dao.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
-import com.example.naturemagnet.databinding.FragmentAllPostsBinding
+import com.example.naturemagnet.databinding.FragmentCreatePostBinding
+import com.example.naturemagnet.databinding.FragmentMyPostsBinding
+import com.example.naturemagnet.entity.Post
 
-class all_posts : Fragment() {
+class my_posts : Fragment() {
 
-    lateinit var binding : FragmentAllPostsBinding
+    lateinit var binding: FragmentMyPostsBinding
     lateinit var manager: RecyclerView.LayoutManager
     private lateinit var prefManager: PrefManager
 
@@ -25,26 +27,24 @@ class all_posts : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_all_posts, container, false
+            inflater, R.layout.fragment_my_posts, container, false
         )
         val application = requireNotNull(this.activity).application
         prefManager = PrefManager(requireActivity())
         val loginedCus: Long = prefManager.getId()!!
 
         val db = NatureMagnetDB.getInstance(application)!!
-        val postList = db.postDao().getAllPost().asReversed()
+        val cusPostList : MutableList<Post> = db.postDao().getCusPost(loginedCus).asReversed().toMutableList()
 
         manager = LinearLayoutManager(application, LinearLayoutManager.VERTICAL ,false)
-        binding.postsAllRecyclerView.apply {
-            adapter = PostDetailsAdapter(postList,application,db,loginedCus)
+        binding.myPostRecyclerView.apply {
+            adapter = MyPostsAdapter(cusPostList,application,db,loginedCus)
             layoutManager = manager
-        }
 
-        binding.addPostBtn.setOnClickListener{
-            findNavController().navigate(R.id.action_fragment_all_post_to_createPostFragment)
         }
 
         return binding.root
     }
+
 
 }

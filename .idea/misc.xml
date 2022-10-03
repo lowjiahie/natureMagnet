@@ -28,12 +28,15 @@
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_create_post.xml" value="0.1" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_event_main.xml" value="0.1" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_my_posts.xml" value="0.22" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_test1.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/fragment_test2.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/my_post_card.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/news_horizontal_item.xml" value="0.4985754985754986" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/news_vertical_item.xml" value="0.4466666666666667" />
-        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/post_details_vertical_item.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/posts_vertical_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/post_details_card.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/post_details_vertical_item.xml" value="0.2774566473988439" />
+        <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/layout/posts_vertical_item.xml" value="0.4515195369030391" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.22" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/menu/drawer_menu.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/Admin-pc/AndroidStudioProjects/natureMagnet/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1165" />

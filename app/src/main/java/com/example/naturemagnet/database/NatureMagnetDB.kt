@@ -45,8 +45,8 @@ abstract class NatureMagnetDB : RoomDatabase () {
                                 val db = getInstance(context)!!
                                 db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
                                 db.postDao().insertPosts(SampleDataGenerator.injectPost(context))
-                                db.postDao().insertPostLiked(SampleDataGenerator.injectPostLiked())
-                                db.postDao().insertPostSaved(SampleDataGenerator.injectPostSaved())
+                                db.postDao().insertPostLikeds(SampleDataGenerator.injectPostLiked())
+                                db.postDao().insertPostSaveds(SampleDataGenerator.injectPostSaved())
                                 db.newsDao().insertNews(SampleDataGenerator.injectNews())
                                 db.newsDao().insertNewsSaved(SampleDataGenerator.injectNewsSaved())
                                 db.commentDao().insertComments(SampleDataGenerator.injectComment())

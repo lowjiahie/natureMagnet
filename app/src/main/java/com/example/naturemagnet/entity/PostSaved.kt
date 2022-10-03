@@ -1,5 +1,6 @@
 package com.example.naturemagnet.entity
 
+import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -27,5 +28,8 @@ import androidx.room.Index
 data class PostSaved(
     val custID: Long,
     val postID: Long,
-    val savedDateTime: String
-)
+    val savedDateTime: String?
+){
+    constructor(cusID:Long, postID: Long)
+            : this(cusID, postID,"")
+}

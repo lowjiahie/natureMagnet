@@ -84,14 +84,16 @@ class create_post : Fragment() {
                 db.postDao()
                     .insertPost(Post(title, content, imgPost, eventLink, shareCount, postDate, 1))
                 //navigate to post page
-                findNavController().navigate(R.id.fragment_all_post)
+                findNavController().navigate(R.id.action_createPostFragment_to_fragment_all_post)
             } else {
                 Toast.makeText(application, "title/text/image cannot empty", Toast.LENGTH_SHORT)
                     .show();
             }
         }catch (ex : Exception){
             Toast.makeText(application, "Please pick an image", Toast.LENGTH_SHORT)
-                .show();
+                .show()
+
+
         }
     }
 

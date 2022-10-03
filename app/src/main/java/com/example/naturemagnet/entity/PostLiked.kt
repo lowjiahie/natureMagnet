@@ -27,5 +27,8 @@ import androidx.room.Index
 data class PostLiked(
     val custID: Long,
     val postID: Long,
-    val likeDateTime: String
-)
+    val likeDateTime: String?
+){
+    constructor(cusID:Long, postID: Long)
+            : this(cusID, postID,"")
+}
