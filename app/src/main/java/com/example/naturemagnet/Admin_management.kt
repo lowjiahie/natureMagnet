@@ -47,7 +47,7 @@ class Admin_management : Fragment(), ProductClickListener {
         db = NatureMagnetDB.getInstance(application)!!
         prodList = db.productDao().getProdAll()
         binding.recyclerView.apply{
-            adapter = ProdAdminAdapter(prodList, listener)
+            adapter = ProdAdminAdapter(prodList, listener,application)
             layoutManager = manager
         }
 

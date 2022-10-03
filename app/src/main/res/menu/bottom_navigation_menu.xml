@@ -25,7 +25,7 @@
         android:title="@string/shop"/>
 
     <item
-        android:id="@+id/fragment_admin_management"
+        android:id="@+id/fragment_user_main"
         android:enabled="true"
         android:icon="@drawable/nav_user_ic"
         android:title="@string/profile"/>

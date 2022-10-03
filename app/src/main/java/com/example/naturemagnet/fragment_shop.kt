@@ -45,7 +45,7 @@ class fragment_shop : Fragment(), ProductClickListener {
         prodDao = NatureMagnetDB.getInstance(application)!!.productDao()
         prodList = prodDao.getProdAll()
         binding.recyclerView.apply{
-            adapter = ProductAdapter(prodList, listener)
+            adapter = ProductAdapter(prodList, listener,application)
             layoutManager = manager
         }
 

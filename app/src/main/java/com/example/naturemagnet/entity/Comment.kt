@@ -1,5 +1,6 @@
 package com.example.naturemagnet.entity
 
+import android.graphics.Bitmap
 import androidx.room.*
 
 //one customer can have many comments
@@ -29,4 +30,7 @@ data class Comment(
     val eventLink: String?,
     @ColumnInfo(index = true) var custID: Long,
     @ColumnInfo(index = true) var postID: Long,
-)
+){
+    constructor(content: String, commentDatetime: String, eventLink: String?, custID: Long, postID: Long)
+            : this(0, content, commentDatetime, eventLink, custID, postID)
+}

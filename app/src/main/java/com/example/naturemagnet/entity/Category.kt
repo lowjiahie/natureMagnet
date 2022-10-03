@@ -11,8 +11,9 @@ import androidx.room.PrimaryKey
     indices = [Index(value = ["categoryID"], unique = true)]
 )
 data class Category(
-    @PrimaryKey (autoGenerate = true) var categoryID: Long?,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo (name = "description") val description: String?,
     @ColumnInfo (name = "icon") val icon: Bitmap?
-)
+){
+    @PrimaryKey (autoGenerate = true) var categoryID: Long = 0
+}

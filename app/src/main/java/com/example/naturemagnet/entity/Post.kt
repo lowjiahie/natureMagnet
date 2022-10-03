@@ -3,6 +3,7 @@ package com.example.naturemagnet.entity
 import android.graphics.Bitmap
 import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
+import com.example.naturemagnet.typeconverterClass.ImageConverter
 
 
 //one to many (one customer can have many posts)
@@ -20,10 +21,15 @@ data class Post(
     @PrimaryKey(autoGenerate = true) var postID: Long,
     val title: String?,
     val content: String?,
-//    @TypeConverters(ImageConverter::class) val imgPost: Bitmap?,
-    val imgPost: Bitmap?,
-    val eventLink: String?,
+    var imgPost: Bitmap?,
+    var eventLink: String?,
     val shareCount: Int?,
-    val postDateTime: String?,
+    val postDate: String?,
     @ColumnInfo(index = true) var custID: Long
-)
+){
+    constructor(title: String, content: String, imgPost: Bitmap?, eventLink: String?, shareCount: Int, postDate: String, custID: Long)
+            : this(0, title, content, imgPost, eventLink, shareCount, postDate, custID)
+
+    constructor(title: String, content: String, imgPost: Bitmap?)
+            : this(0, title, content, imgPost, "", 0, "", 0)
+}

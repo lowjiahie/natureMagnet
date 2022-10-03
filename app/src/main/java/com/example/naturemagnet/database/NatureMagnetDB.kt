@@ -15,20 +15,24 @@ import com.example.naturemagnet.typeconverterClass.ImageConverter
 import java.util.concurrent.Executors
 
 //Any new entity please add here
-@Database (entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
-    News::class, NewsSaved::class, Post::class, PostLiked::class, PostSaved::class, Product::class, Reply::class],
-    version = 1)
+@Database(
+    entities = [Activity::class, ActivityJoined::class, Admin::class, Category::class, Comment::class, Customer::class,
+        News::class, NewsSaved::class, Post::class, PostLiked::class,
+        PostSaved::class, Product::class],
+    version = 1
+)
 //Any new converter please add here
 @TypeConverters(ImageConverter::class)
 abstract class NatureMagnetDB : RoomDatabase () {
     //define your DAO here
     abstract fun activityDao(): ActivityDao
     abstract fun customerDao(): CustomerDao
-    abstract fun adminDao(): AdminDao
-//    abstract fun productCategoryDao(): ProductCategoryDao
+    abstract fun categoryDao(): CategoryDao
+    abstract fun activityJoinedDao(): ActivityJoinedDao
+    abstract fun postDao(): PostDao
+    abstract fun newsDao(): NewsDao
+    abstract fun commentDao(): CommentDao
     abstract fun productDao(): ProductDao
-//    abstract fun orderDao(): OrderDao
-//    abstract fun orderItemDao(): OrderItemDao
 
     companion object {
         private var INSTANCE: NatureMagnetDB? = null
@@ -44,12 +48,18 @@ abstract class NatureMagnetDB : RoomDatabase () {
                             super.onCreate(db)
                             Thread(Runnable {
                                 val db = getInstance(context)!!
-                                db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
-                                db.adminDao().insertAdmin(SampleDataGenerator.getAdmins())
-//                                db.productCategoryDao().insertProdCats(SampleDataGenerator.getProductCategory())
+                                db.customerDao().insertCustomers(SampleDataGenerator.getCustomers())
+                                db.customerDao().insertAdmins(SampleDataGenerator.getAdmins())
+                                db.categoryDao().insertCategories(SampleDataGenerator.injectCategories(context))
+                                db.activityDao().insertActivities(SampleDataGenerator.injectActivities(context))
+                                db.activityJoinedDao().insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
+                                db.postDao().insertPosts(SampleDataGenerator.injectPost(context))
+                                db.postDao().insertPostLikeds(SampleDataGenerator.injectPostLiked())
+                                db.postDao().insertPostSaveds(SampleDataGenerator.injectPostSaved())
+                                db.newsDao().insertNews(SampleDataGenerator.injectNews())
+                                db.newsDao().insertNewsSaved(SampleDataGenerator.injectNewsSaved())
+                                db.commentDao().insertComments(SampleDataGenerator.injectComment())
                                 db.productDao().insertProducts(SampleDataGenerator.getProducts(context))
-//                                db.orderDao().insertOrders(SampleDataGenerator.getOrders())
-//                                db.orderItemDao().insertOrderItems(SampleDataGenerator.getOrderItems())
                             }).start()
                         }
                     }).allowMainThreadQueries().build()
