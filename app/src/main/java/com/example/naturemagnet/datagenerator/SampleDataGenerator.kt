@@ -1,15 +1,12 @@
 package com.example.naturemagnet.datagenerator
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import com.example.naturemagnet.R
-import com.example.naturemagnet.entity.*
+import com.example.naturemagnet.entity.Customer
 
 class SampleDataGenerator {
 
     companion object {
-        fun getCustomers(): List<Customer> {
+        fun getCustomers(): List<Customer>{
+
             return listOf(
                 Customer("jiahie","jiahielow@gmail.com","0153134124","123asd","jalanMalaysia"),
                 Customer("kotlin","kotlin@gmail.com","0153123124","123asd","kotlinMalaysia"),
@@ -149,6 +146,15 @@ class SampleDataGenerator {
                 PostLiked(1,4,"2022-10-01 15:10:00"),
                 PostLiked(2,1,"2022-09-28 10:00:00"),
                 PostLiked(2,2,"2022-09-28 11:40:00"),
+            )
+        }
+
+        fun getAdmins(): List<Admin>{
+            return listOf(
+                Admin("Meng","meng5@gmail.com","Jalan Kuala Lumpur","0153134124","123asd"),
+                Admin("Jingsen","jingsen@gmail.com","Jalan Malaysia 1","0153134124","123asd"),
+                Admin("Qing Qing","qingqing1@gmail.com","Jalan Malaysia 5","0153134124","123asd",),
+                Admin("Jing Den","jingen@gmail.com", "Jalan Malaysia 9", "0153134124","123asd")
             )
         }
 

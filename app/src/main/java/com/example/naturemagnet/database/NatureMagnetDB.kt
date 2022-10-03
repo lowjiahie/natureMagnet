@@ -11,7 +11,6 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.naturemagnet.dao.*
 import com.example.naturemagnet.datagenerator.SampleDataGenerator
 import com.example.naturemagnet.entity.*
-import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.typeconverterClass.ImageConverter
 import java.util.concurrent.Executors
 
@@ -49,6 +48,7 @@ abstract class NatureMagnetDB : RoomDatabase () {
                             Thread(Runnable {
                                 val db = getInstance(context)!!
                                 db.customerDao().insertCustomer(SampleDataGenerator.getCustomers())
+                                db.customerDao().insertAdmins(SampleDataGenerator.getAdmins())
                                 db.categoryDao().insertCategories(SampleDataGenerator.injectCategories(context))
                                 db.activityDao().insertActivities(SampleDataGenerator.injectActivities(context))
                                 db.activityJoinedDao().insertActivitiesJoined(SampleDataGenerator.injectActivityJoined())
@@ -58,6 +58,7 @@ abstract class NatureMagnetDB : RoomDatabase () {
                                 db.newsDao().insertNews(SampleDataGenerator.injectNews())
                                 db.newsDao().insertNewsSaved(SampleDataGenerator.injectNewsSaved())
                                 db.commentDao().insertComments(SampleDataGenerator.injectComment())
+
                             }).start()
                         }
                     }).allowMainThreadQueries().build()

@@ -34,22 +34,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var navController: NavController
-    private lateinit var db: NatureMagnetDB
+    private lateinit var db : NatureMagnetDB
     private lateinit var prefManager: PrefManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        init()
+        checkLogin()
         db = NatureMagnetDB.getInstance(this)!!
-        prefManager = PrefManager(this)!!
-        prefManager.setId(2)
 //        db.customerDao().insertCustomer(SampleDataGenerator.getCustomer())
-        Log.e("MainActivity", db.activityDao().getAll().toString())
+        Log.i("MainActivity",db.customerDao().getCustAll().toString())
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,
-                R.id.eventMainFragment
+                R.id.eventMainFragment,R.id.fragment_user_main
             ), binding.drawerLayout
         )
         navController = findNavController(R.id.hostFragment)
@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> showBottomNav()
                 R.id.awarenessMainFragment -> showBottomNav()
                 R.id.eventMainFragment -> showBottomNav()
+                R.id.fragment_user_main -> showBottomNav()
                 else -> hideBottomNav()
             }
         }
@@ -84,6 +85,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideBottomNav(){
         binding.bottomNavigation.visibility = View.GONE
+    }
+
+    private fun init() {
+        prefManager = PrefManager(this)
+    }
+
+    private fun checkLogin(){
+        if(prefManager.isLogin() == false){
+            val intent = Intent(this, activity_user_firstpage::class.java)
+            startActivity(intent)
+        }
     }
 
 //    override fun onOptionsItemSelected(item: MenuItem): Boolean{
