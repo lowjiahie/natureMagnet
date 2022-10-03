@@ -10,7 +10,7 @@ import com.example.naturemagnet.entity.ActivityJoined
 import com.example.naturemagnet.entity.Category
 
 class EventRepository(private val activityDao: ActivityDao, private val categoryDao: CategoryDao, private val activityJoinedDao: ActivityJoinedDao) {
-    //activity
+    /** activity */
     fun getAllActivities(): List<Activity> = activityDao.getAll()
     fun getActivity(activityId: Long): Activity = activityDao.getActivity(activityId)
     fun getActivitiesByDate(date: String): List<Activity> {
@@ -20,6 +20,8 @@ class EventRepository(private val activityDao: ActivityDao, private val category
         for (a in activities){
             var currentActivityDate: String = a.dateTime?.subSequence(0, 10) as String
             currentActivityDate = currentActivityDate.replace('-', '/')
+            Log.e("eventRepository: A >", currentActivityDate)
+            Log.e("eventRepository: Date >", date)
             if (currentActivityDate == date ){
                 activitiesWanted.add(index, a)
                 index++
@@ -40,7 +42,7 @@ class EventRepository(private val activityDao: ActivityDao, private val category
         return activityDao.deleteActivity(activity)
     }
 
-    //category
+    /** category */
     fun getAllCategories(): List<Category> = categoryDao.getAll()
     fun getCategory(categoryId: Long): Category = categoryDao.getCategory(categoryId)
     suspend fun insertCategory(category: Category) {
@@ -56,7 +58,7 @@ class EventRepository(private val activityDao: ActivityDao, private val category
         return categoryDao.deleteCategory(category)
     }
 
-
+    /** activitiesJoined */
     fun getAllActivitiesJoined(): List<ActivityJoined> = activityJoinedDao.getAll()
     fun getActivityJoined(activityId: Long): ActivityJoined = activityJoinedDao.getActivityJoined(activityId)
     fun insertActivityJoined(activityJoined: ActivityJoined) {

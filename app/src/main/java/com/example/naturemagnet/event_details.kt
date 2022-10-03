@@ -1,5 +1,6 @@
 package com.example.naturemagnet
 
+import android.database.sqlite.SQLiteConstraintException
 import android.icu.text.SimpleDateFormat
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -18,6 +20,7 @@ import androidx.navigation.findNavController
 import com.example.naturemagnet.dao.ActivityDao
 import com.example.naturemagnet.dao.ActivityJoinedDao
 import com.example.naturemagnet.dao.CategoryDao
+import com.example.naturemagnet.dao.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentEventDetailsBinding
 import com.example.naturemagnet.entity.Activity
@@ -30,6 +33,7 @@ import java.util.*
 
 class event_details : Fragment() {
     private var binding: FragmentEventDetailsBinding? = null
+    private lateinit var prefManager: PrefManager
 
     /** viewModel important */
     private val sharedViewModel: EventDetailsViewModel by activityViewModels()
@@ -46,6 +50,7 @@ class event_details : Fragment() {
 
         val application = requireNotNull(this.activity).application
         db = NatureMagnetDB.getInstance(application)!!
+        prefManager = PrefManager(application)
         val activityDao: ActivityDao = db.activityDao()
         val categoryDao: CategoryDao = db.categoryDao()
         val activityJoinedDao: ActivityJoinedDao = db.activityJoinedDao()
@@ -54,10 +59,13 @@ class event_details : Fragment() {
         binding?.apply {
             /** using viewModel set on another fragment */
             val currentActivity = sharedViewModel.activity.value
+
+            /** formate the date */
             val dateTime: String = currentActivity?.dateTime.toString()
             var date: String = dateTime.subSequence(0, 10) as String
             date = date.replace('-', '/')
 
+            /** formate time of the activity */
             var time: String = dateTime.subSequence(11, 16) as String
             var hr = time.split(':')[0]
             val min = time.split(':')[1]
@@ -71,23 +79,32 @@ class event_details : Fragment() {
             }
             val formatedDateTime: String = date + "\nEvent Start @ " + time
 
-            detailsCardTitle.text = currentActivity?.name
+            /** binding the data to the layout */
+            binding!!.currentActivity = currentActivity
             detailsCardSneakpeek.setImageBitmap(currentActivity?.sneakPeek)
             detailsCardIcon.setImageBitmap(currentActivity?.sneakPeek)
             detailsCardDatetime.text = formatedDateTime
-            detailsCardDesc.text = currentActivity?.descriptions
 
-            Log.e("event_details", sharedViewModel.parent?.value.toString())
+//            Log.e("event_details", sharedViewModel.parent?.value.toString())
             if (sharedViewModel.parent?.value.toString() == "ActivitiesJoined") {
                 detailsCardJoinBtn.visibility = GONE
                 detailsCardQuitBtn.visibility = VISIBLE
+                detailsCardEditBtn.visibility = GONE
             }
             if (sharedViewModel.parent?.value.toString() == "ActivitiesToday") {
                 detailsCardJoinBtn.visibility = VISIBLE
                 detailsCardQuitBtn.visibility = GONE
+                detailsCardEditBtn.visibility = GONE
             }
             if (sharedViewModel.parent?.value.toString() == "PopEvent") {
+                detailsCardJoinBtn.visibility = VISIBLE
                 detailsCardQuitBtn.visibility = GONE
+                detailsCardEditBtn.visibility = GONE
+            }
+            if (sharedViewModel.parent?.value.toString() == "ManageActivities") {
+                detailsCardJoinBtn.visibility = GONE
+                detailsCardQuitBtn.visibility = GONE
+                detailsCardEditBtn.visibility = VISIBLE
             }
 
             detailsCardJoinBtn.setOnClickListener {
@@ -101,9 +118,22 @@ class event_details : Fragment() {
                     val sdf = SimpleDateFormat("yyyy/M/dd hh:mm:ss")
                     val currentDate = sdf.format(Date())
 
-                    var tempActivityJoined = ActivityJoined(currentActivity.custID, currentActivity.activityID, currentDate)
-                    eventRepository.insertActivityJoined(tempActivityJoined)
-                    it.findNavController().navigate(R.id.eventMainFragment)
+                    try {
+                        var tempActivityJoined = ActivityJoined(
+                            prefManager.getId()!!,
+                            currentActivity.activityID,
+                            currentDate
+                        )
+                        eventRepository.insertActivityJoined(tempActivityJoined)
+                        it.findNavController().navigate(R.id.eventMainFragment)
+                    } catch (exception: SQLiteConstraintException) {
+                        Log.e("event_details", exception.toString())
+                        Toast.makeText(
+                            application,
+                            "You Have Joined the Activity",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
 //                    Log.e("Event_ Details", tempActivityJoined.toString())
                 }
             }
@@ -111,7 +141,10 @@ class event_details : Fragment() {
             detailsCardQuitBtn.setOnClickListener {
                 //TODO: delete specific activityJoined entries using with custId & activityId
                 if (currentActivity != null) {
-                    eventRepository.deleteActivityJoined(currentActivity.activityID, currentActivity.custID)
+                    eventRepository.deleteActivityJoined(
+                        prefManager.getId()!!,
+                        currentActivity.custID
+                    )
                     it.findNavController().navigate(R.id.eventMainFragment)
                 }
 //                Log.e("Event_ Details", "join btn clicked")
@@ -121,6 +154,10 @@ class event_details : Fragment() {
                 //TODO: bring user back to previous fragment
                 it.findNavController().popBackStack()
 //                Log.e("Event_ Details", "join btn clicked")
+            }
+
+            detailsCardEditBtn.setOnClickListener{
+                it.findNavController().navigate(R.id.eventEdit)
             }
         }
 //        Log.e("event_details", sharedViewModel.activity.value.toString())

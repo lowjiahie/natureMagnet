@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -21,6 +22,7 @@ import com.example.naturemagnet.adapter.EventRectangleAdapter
 import com.example.naturemagnet.dao.ActivityDao
 import com.example.naturemagnet.dao.ActivityJoinedDao
 import com.example.naturemagnet.dao.CategoryDao
+import com.example.naturemagnet.dao.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentEventMainBinding
 import com.example.naturemagnet.datagenerator.SampleDataGenerator
@@ -34,32 +36,32 @@ import java.util.*
 class event_main : Fragment(), EventActivityClickkListener {
     // TODO: Rename and change types of parameters
     lateinit var binding: FragmentEventMainBinding
+    private lateinit var db: NatureMagnetDB
+    private lateinit var prefManager: PrefManager
     private lateinit var listener: EventActivityClickkListener
     private val sharedViewModel: EventDetailsViewModel by activityViewModels()
-    private lateinit var db: NatureMagnetDB
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        /** Inflate the layout for this fragment */
+        /** local variables */
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_main, container, false)
         val application = requireNotNull(this.activity).application
         db = NatureMagnetDB.getInstance(application)!!
+        prefManager = PrefManager(application)
+        listener = this
 
+        /** preparing repository instances for accessing database */
         val activityDao: ActivityDao = db.activityDao()
         val categoryDao: CategoryDao = db.categoryDao()
         val activityJoinedDao: ActivityJoinedDao = db.activityJoinedDao()
         val eventRepository = EventRepository(activityDao, categoryDao, activityJoinedDao)
 
-        binding.viewModel = sharedViewModel
-        listener = this
-
         /** get all activities the specific user has joined and display in a RecyclerView */
         val layoutManager1 = LinearLayoutManager(application)
         layoutManager1.orientation = LinearLayoutManager.HORIZONTAL
-        val eventAdapter1 = EventAdapter(eventRepository.getActivitiesJoinedByUser(2), this, "ActivitiesJoined")
+        val eventAdapter1 = EventAdapter(eventRepository.getActivitiesJoinedByUser(prefManager.getId()!!), this, "ActivitiesJoined")
         binding.yourActivityCardRecyclerView.layoutManager = layoutManager1
         binding.yourActivityCardRecyclerView.adapter = eventAdapter1
 
@@ -72,10 +74,13 @@ class event_main : Fragment(), EventActivityClickkListener {
         val month = c.get(Calendar.MONTH) + 1
         val day = c.get(Calendar.DAY_OF_MONTH)
         val activitiesHappeningToday = eventRepository.getActivitiesByDate("$year/$month/$day")
-//        2022-10-31 to display sample data
+//        2022/10/31 to display sample data
         val eventAdapter2 = EventAdapter(activitiesHappeningToday, this, "ActivitiesToday")
 
-        if (activitiesHappeningToday == null) {
+         val emptyList: List<Activity> = emptyList()
+        Log.e("event_main", emptyList.toString())
+        Log.e("event_main", activitiesHappeningToday.toString())
+        if (activitiesHappeningToday == emptyList) {
             binding.activitiesToday.visibility = GONE
         } else {
             binding.activitiesTodayCardRecyclerView.layoutManager = layoutManager2
@@ -109,8 +114,7 @@ class event_main : Fragment(), EventActivityClickkListener {
         /** updating data in viewModel */
         sharedViewModel.setActivity(tempActivity)
         sharedViewModel.setParent(tempParent)
-        /** get to know which component invoking */
-//        Log.e("event_main", layout)
+
         view.findNavController().navigate(R.id.event_details)
 //        Log.e("Event_Main_Fragment", sharedViewModel.num.value.toString())
 //        Log.e("Event_Main_Fragment", sharedViewModel.activity.value.toString())

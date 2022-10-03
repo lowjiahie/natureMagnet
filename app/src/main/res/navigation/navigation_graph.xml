@@ -50,4 +50,9 @@
         android:name="com.example.naturemagnet.event_details"
         android:label="Event Details"
         tools:layout="@layout/fragment_event_details" />
+    <fragment
+        android:id="@+id/eventManageFragment"
+        android:name="com.example.naturemagnet.event_manage"
+        android:label="Event Manage"
+        tools:layout="@layout/fragment_event_manage" />
 </navigation>

@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.example.naturemagnet.dao.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.ActivityMainBinding
 import kotlinx.coroutines.GlobalScope
@@ -19,11 +20,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var navController: NavController
     private lateinit var db: NatureMagnetDB
+    private lateinit var prefManager: PrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         db = NatureMagnetDB.getInstance(this)!!
+        prefManager = PrefManager(this)!!
+        prefManager.setId(2)
 //        db.customerDao().insertCustomer(SampleDataGenerator.getCustomer())
         Log.e("MainActivity", db.activityDao().getAll().toString())
         appBarConfiguration = AppBarConfiguration(

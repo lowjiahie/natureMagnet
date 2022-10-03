@@ -9,7 +9,7 @@
                     android:icon="@drawable/ic_dashboard"
                     android:title="@string/dashboard"></item>
                 <item
-                    android:id="@+id/event_activity_row"
+                    android:id="@+id/eventManageFragment"
                     android:icon="@drawable/ic_activity_fill"
                     android:title="@string/manageActivity"></item>
             </group>
