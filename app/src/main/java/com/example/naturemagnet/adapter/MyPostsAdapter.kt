@@ -75,7 +75,7 @@ class MyPostsAdapter(private val data: MutableList<Post>,val application : Appli
         holder.binding.postTitle.text = title
         holder.binding.imageView.setImageBitmap(bitmap)
         holder.binding.postAuthor.text = "By ${cus.custName}"
-        holder.binding.textView8.text = date
+        holder.binding.date.text = date
 
     }
 

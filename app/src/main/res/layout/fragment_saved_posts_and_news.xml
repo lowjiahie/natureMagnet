@@ -1,60 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-    </data>
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".saved_posts_and_news">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".awareness_main_fragment">
+        android:layout_height="match_parent">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:id="@+id/searchArea"
-                    style="@style/row"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:paddingBottom="0dp"
-                    app:layout_constraintBottom_toTopOf="@+id/yourActivities"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/outlinedTextField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Search News &amp; Posts"
-                        app:boxCornerRadiusBottomEnd="50dp"
-                        app:boxCornerRadiusBottomStart="50dp"
-                        app:boxCornerRadiusTopEnd="50dp"
-                        app:boxCornerRadiusTopStart="50dp"
-                        app:placeholderText="Search For Events">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/newsTopSection"
@@ -65,24 +23,38 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/textView3"
                     style="@style/title_style"
                     android:layout_marginLeft="16dp"
-                    android:text="All News"
+                    android:text=" Saved News"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.05"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+                <TextView
+                    android:id="@+id/viewMoreNewsLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginRight="16dp"
+                    android:gravity="right"
+                    android:text="Saved (0)"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="251dp"
+                    tools:layout_editor_absoluteY="92dp" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_width="412dp"
+                android:layout_height="246dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,12 +63,12 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/newsRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="210dp"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginRight="16dp"
                     android:orientation="horizontal"
-                    tools:listitem="@layout/news_horizontal_item" />
+                    tools:listitem="@layout/news_vertical_item" />
 
             </LinearLayout>
 
@@ -105,6 +77,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -115,7 +88,7 @@
                     android:id="@+id/posts_ttl"
                     style="@style/title_style"
                     android:layout_marginLeft="16dp"
-                    android:text="Recommended Posts"
+                    android:text="Saved Posts"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.05"
                     app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +101,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginRight="16dp"
                     android:gravity="right"
-                    android:text="View All"
+                    android:text="Saved (0)"
                     android:textAppearance="?attr/textAppearanceBody1"
                     android:textColor="@color/primaryColor"
                     android:textStyle="bold"
@@ -153,10 +126,7 @@
                     android:orientation="vertical"
                     tools:listitem="@layout/posts_vertical_item" />
             </LinearLayout>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </FrameLayout>
 </layout>

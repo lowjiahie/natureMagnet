@@ -4,6 +4,8 @@ import android.app.Application
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.naturemagnet.R
@@ -12,11 +14,13 @@ import com.example.naturemagnet.databinding.PostDetailsVerticalItemBinding
 import com.example.naturemagnet.entity.Post
 import com.example.naturemagnet.entity.PostLiked
 import com.example.naturemagnet.entity.PostSaved
+import com.example.naturemagnet.viewmodel.PostDetailsViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PostDetailsAdapter(private val data: List<Post>, private val application: Application,
-                         val db: NatureMagnetDB, val cusID : Long) :
+                         val db: NatureMagnetDB, val cusID : Long, val sharedViewModel: PostDetailsViewModel
+) :
     RecyclerView.Adapter<PostDetailsAdapter.PostDetailsViewHolder>() {
 
     inner class PostDetailsViewHolder(val binding: PostDetailsVerticalItemBinding) :
@@ -46,6 +50,7 @@ class PostDetailsAdapter(private val data: List<Post>, private val application: 
         val bitmap = data[position].imgPost
         val cus = db.customerDao().getCust(data[position].custID)
         val postID = data[position].postID
+        var passPost : MutableLiveData<Post>
 
         val loginedCus: Long = cusID
 
@@ -93,6 +98,12 @@ class PostDetailsAdapter(private val data: List<Post>, private val application: 
                 db.postDao().deletePostLiked(PostLiked(loginedCus,data[position].postID))
             }
             this.notifyDataSetChanged()
+        }
+
+        holder.binding.root.setOnClickListener{
+            passPost = MutableLiveData<Post>(data[position])
+            sharedViewModel.setPost(passPost)
+            it.findNavController().navigate(R.id.action_fragment_all_post_to_post_details)
         }
 
         if (title!!.length > 20) {

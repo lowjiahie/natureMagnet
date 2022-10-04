@@ -11,6 +11,9 @@ interface NewsDao {
     @Query("SELECT * FROM News")
     fun getAllNews(): List<News>
 
+    @Query("SELECT * FROM News WHERE News.newsID = :newsID")
+    fun getNews(newsID : Long): News
+
     @Insert
     fun insertNews(news: List<News>)
 
@@ -23,6 +26,12 @@ interface NewsDao {
     //NewsSaved
     @Insert
     fun insertNewsSaved(newsSaved : List<NewsSaved>)
+
+    @Insert
+    fun insertCusNewsSaved(newsSaved :NewsSaved)
+
+    @Delete
+    fun deleteNewsSaved(newsSaved: NewsSaved)
 
 
 

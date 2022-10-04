@@ -29,4 +29,7 @@ data class NewsSaved(
     val custID: Long,
     val newsID: Long,
     val savedDateTime: String
-)
+){
+    constructor(custID: Long,newsID: Long)
+            : this(custID,newsID,"" )
+}

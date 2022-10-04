@@ -70,7 +70,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="56dp"
             android:src="@drawable/inactive_circle"
-            app:layout_constraintBottom_toTopOf="@+id/imageView5"
+            app:layout_constraintBottom_toTopOf="@+id/commentBtn"
             app:layout_constraintEnd_toStartOf="@+id/dateTimeLabel3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -98,14 +98,14 @@
             app:layout_constraintTop_toBottomOf="@+id/dateTimeLabel3" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/commentBtn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="54dp"
             android:src="@drawable/inactive_circle"
-            app:layout_constraintBottom_toTopOf="@+id/imageView6"
+            app:layout_constraintBottom_toTopOf="@+id/saveBtn"
             app:layout_constraintEnd_toStartOf="@+id/dateTimeLabel2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
@@ -118,8 +118,8 @@
             android:fontFamily="@font/roboto"
             android:text="August 26, 2021 - 15:54"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/imageView5" />
+            app:layout_constraintStart_toEndOf="@+id/commentBtn"
+            app:layout_constraintTop_toTopOf="@+id/commentBtn" />
 
         <TextView
             android:id="@+id/shippingStatus2"
@@ -133,7 +133,7 @@
             app:layout_constraintTop_toBottomOf="@+id/dateTimeLabel2" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/saveBtn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
@@ -143,7 +143,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/dateTimeLabel1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+            app:layout_constraintTop_toBottomOf="@+id/commentBtn" />
 
         <TextView
             android:id="@+id/dateTimeLabel1"
@@ -153,8 +153,8 @@
             android:fontFamily="@font/roboto"
             android:text="August 26, 2021 - 15:54"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="@+id/imageView6" />
+            app:layout_constraintStart_toEndOf="@+id/saveBtn"
+            app:layout_constraintTop_toTopOf="@+id/saveBtn" />
 
         <TextView
             android:id="@+id/shippingStatus1"

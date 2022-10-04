@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         init()
         checkLogin()
         db = NatureMagnetDB.getInstance(this)!!
-//        db.customerDao().insertCustomer(SampleDataGenerator.getCustomer())
+
         Log.i("MainActivity",db.customerDao().getCustAll().toString())
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -85,14 +85,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean{
-//        return toggle.onOptionsItemSelected(item)
-//    }
-
-//    override fun onSupportNavigateUp(): Boolean {
-//        return navController.navigateUp(appBarConfiguration)
-//                || super.onSupportNavigateUp()
-//    }
 
 
 }

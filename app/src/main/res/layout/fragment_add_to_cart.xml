@@ -104,7 +104,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/loveBtn"
                 android:tag="image_tag"
                 android:layout_width="0dp"
                 android:layout_height="60dp"

@@ -22,7 +22,7 @@
                     android:icon="@drawable/ic_ios_paper"
                     android:title="@string/myPost"></item>
                 <item
-                    android:id="@+id/mySavedNewsPosts"
+                    android:id="@+id/saved_posts_and_news"
                     android:icon="@drawable/ic_star_fill"
                     android:title="@string/mySavedNewsPosts"></item>
             </group>

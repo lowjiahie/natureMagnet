@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import androidx.room.*
 import com.example.naturemagnet.entity.*
 import com.example.naturemagnet.entity.entityRelationship.CustomerWithActivities
+import com.example.naturemagnet.entity.entityRelationship.CustomerWithNewsSaved
 import com.example.naturemagnet.entity.entityRelationship.CustomerWithPostLiked
 import com.example.naturemagnet.entity.entityRelationship.CustomerWithPostSaved
 
@@ -13,6 +14,10 @@ interface PostDao {
     //Post
     @Query("SELECT * FROM Post")
     fun getAllPost(): List<Post>
+
+    @Query("SELECT * FROM Post ORDER BY RANDOM() LIMIT 4")
+    fun getRandomPost(): List<Post>
+
 
     @Query("SELECT * FROM Post WHERE Post.postID = :postID")
     fun getPost(postID:Long): Post
@@ -71,5 +76,9 @@ interface PostDao {
     @Transaction
     @Query("SELECT * FROM Customer WHERE custID = :custID")
     fun getCustomerWithPostLiked(custID: Long): List<CustomerWithPostLiked>
+
+    @Transaction
+    @Query("SELECT * FROM Customer WHERE custID = :custID")
+    fun getCustomerWithNewsSaved(custID: Long): List<CustomerWithNewsSaved>
 
 }

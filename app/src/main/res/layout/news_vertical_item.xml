@@ -41,7 +41,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="278dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="90dp"
             app:cardBackgroundColor="#FFFFFF">
@@ -55,7 +55,7 @@
                 android:paddingTop="10dp"
                 android:text="Climate change: Arctic warming linked to colder winters"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textColor="@color/primaryDarkColor" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/sub_title"
