@@ -55,7 +55,6 @@ class create_post : Fragment() {
             checkValidPost(application)
         }
 
-
         return binding.root
     }
 

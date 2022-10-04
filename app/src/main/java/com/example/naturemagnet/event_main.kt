@@ -89,8 +89,8 @@ class event_main : Fragment(), EventActivityClickkListener {
         val eventAdapter2 = EventAdapter(activitiesHappeningToday, this, "ActivitiesToday")
 
          val emptyList: List<Activity> = emptyList()
-        Log.e("event_main", emptyList.toString())
-        Log.e("event_main", activitiesHappeningToday.toString())
+//        Log.e("event_main", emptyList.toString())
+//        Log.e("event_main", activitiesHappeningToday.toString())
         if (activitiesHappeningToday == emptyList) {
             binding.activitiesToday.visibility = GONE
         } else {
