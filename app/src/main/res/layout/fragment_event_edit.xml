@@ -58,15 +58,18 @@
                                 android:textAlignment="textStart"
                                 android:textSize="20dp"></TextView>
 
-                            <TextView
-                                android:id="@+id/eventTime"
-                                style="@style/subheading"
-                                android:layout_width="match_parent"
+                            <EditText
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="@dimen/padding_8"
-                                android:text=" : Picker is set @ backend"
-                                android:textAlignment="center"
-                                android:textSize="18dp"></TextView>
+                                android:id="@+id/in_date"
+                                android:textColor="@color/black" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edit"
+                                android:id="@+id/btn_date"
+                                android:textSize="14dp"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -86,15 +89,18 @@
                                 android:textAlignment="textStart"
                                 android:textSize="20dp"></TextView>
 
-                            <TextView
-                                android:id="@+id/eventDate"
-                                style="@style/subheading"
-                                android:layout_width="match_parent"
+                            <EditText
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="@dimen/padding_8"
-                                android:text=" : Picker is set @ backend"
-                                android:textAlignment="center"
-                                android:textSize="18dp"></TextView>
+                                android:id="@+id/in_time"
+                                android:textColor="@color/black"/>
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edit"
+                                android:id="@+id/btn_time"
+                                android:textSize="14dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -103,7 +109,8 @@
                             android:layout_height="wrap_content"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/event_date_container">
+                            app:layout_constraintTop_toBottomOf="@+id/event_date_container"
+                            android:orientation="horizontal">
 
                             <TextView
                                 style="@style/subheading"
@@ -114,24 +121,18 @@
                                 android:textAlignment="textStart"
                                 android:textSize="20dp"></TextView>
 
-                            <TextView
-                                android:id="@+id/event_deadline"
-                                style="@style/subheading"
-                                android:layout_width="match_parent"
+                            <EditText
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="@dimen/padding_8"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="18dp"></TextView>
-                            <TextView
-                                android:id="@+id/details_card_datetime"
+                                android:id="@+id/in_deadline"
+                                android:textColor="@color/black"/>
+
+                            <Button
                                 android:layout_width="wrap_content"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="8dp"
-                                android:text="24/6/2022 \n12 : 00 P.M. - 12 : 30 P.M."
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="#ACBA9A"
-                                android:textSize="18dp" />
+                                android:layout_height="wrap_content"
+                                android:text="Edit"
+                                android:id="@+id/btn_deadline"
+                                android:textSize="14dp" />
                         </LinearLayout>
 
                         <HorizontalScrollView
