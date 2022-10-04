@@ -8,6 +8,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.naturemagnet.entity.PrefManager
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var navController: NavController
-    private lateinit var db : NatureMagnetDB
+    private lateinit var db: NatureMagnetDB
     private lateinit var prefManager: PrefManager
 
 
@@ -26,18 +27,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         init()
-        checkLogin()
-        db = NatureMagnetDB.getInstance(this)!!
+        navController = findNavController(R.id.hostFragment)
 
-        Log.i("MainActivity",db.customerDao().getCustAll().toString())
+        db = NatureMagnetDB.getInstance(this)!!
+        Log.i("MainActivity", db.customerDao().getCustAll().toString())
+        checkLogin()
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,
-                R.id.eventMainFragment,R.id.fragment_user_main,
+                R.id.eventMainFragment, R.id.fragment_user_main,
                 R.id.fragment_shop, R.id.fragment_admin_management
             ), binding.drawerLayout
         )
-        navController = findNavController(R.id.hostFragment)
         binding.apply {
             //toolbar
             toolbar.setupWithNavController(navController, appBarConfiguration)
@@ -57,20 +58,20 @@ class MainActivity : AppCompatActivity() {
                 R.id.awarenessMainFragment -> showBottomNav()
                 R.id.eventMainFragment -> showBottomNav()
                 R.id.fragment_shop -> showBottomNav()
-                R.id.fragment_admin_management -> showBottomNav()
                 R.id.fragment_user_main -> showBottomNav()
                 else -> hideBottomNav()
             }
         }
 
+
     }
 
-    private fun showBottomNav(){
+    private fun showBottomNav() {
         binding.bottomNavigation.visibility = View.VISIBLE
 
     }
 
-    private fun hideBottomNav(){
+    private fun hideBottomNav() {
         binding.bottomNavigation.visibility = View.GONE
     }
 
@@ -78,13 +79,32 @@ class MainActivity : AppCompatActivity() {
         prefManager = PrefManager(this)
     }
 
-    private fun checkLogin(){
-        if(prefManager.isLogin() == false){
+    private fun checkLogin() {
+
+
+        if (prefManager.isLogin() == false) {
             val intent = Intent(this, activity_user_firstpage::class.java)
             startActivity(intent)
+        } else {
+
+
+            val navGraph = navController.navInflater.inflate(R.navigation.navigation_graph)
+            if (prefManager.getEmail() != "") {
+                Log.e("Tag1",prefManager.getEmail().toString())
+                Log.e("Tag","Log home")
+                navGraph.setStartDestination(R.id.homeFragment)
+            }
+
+            if (prefManager.getEmail1() !="") {
+                Log.e("Tag2",prefManager.getEmail1().toString())
+                Log.e("Tag","Log admin")
+                navGraph.setStartDestination(R.id.fragment_admin_management)
+            }
+
+            navController.graph = navGraph
+
         }
     }
-
 
 
 }
