@@ -80,6 +80,7 @@ class event_edit : Fragment() {
             deadline.setText(currentActivity?.registrationDeadline.toString())
 
             /** get current activity's datetime and format it to be display */
+            //TODO: a mechanism to decide which setup should be use
             if (sharedViewModel.parent?.value.toString() != "ManageActivities")
                 setupCreateAction(binding)
             else
