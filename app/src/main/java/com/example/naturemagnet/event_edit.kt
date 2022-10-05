@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
@@ -191,6 +192,7 @@ class event_edit : Fragment() {
         val minute = 0
 
         binding.activitySneakPeek.setImageBitmap(null)
+        binding.activitySneakPeek.visibility = GONE
         binding.descriptionInputTextField.text = null
         val dateSetListener = OnDateSetListener { _, year, month, day ->
             val myFormat = "dd/MM/yyyy" // mention the format you need
