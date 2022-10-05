@@ -43,7 +43,7 @@ class activity_user_register : AppCompatActivity() {
 
                 if (validation(name, email, phone, address, password, confirmpassword)) {
                     if(compare(password, confirmpassword)) {
-                        val customer = Customer(name, email, phone, address, password)
+                        val customer = Customer(name, email, phone, password, address)
 
                         cCustomerViewModel.insertCustomer(customer)
 
