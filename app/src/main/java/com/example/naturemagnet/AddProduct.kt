@@ -84,7 +84,8 @@ class AddProduct : Fragment() {
                 var actualProduct = db.loadProductDetail(productName)
                 if(actualProduct == null)
                 {
-                    db.insertProduct(Product(productName, productPrice, productDescription, productStock, imgUploaded,1))
+                    db.insertProduct(Product(productName,
+                        "RM $productPrice", productDescription, productStock, imgUploaded,1))
                     Toast.makeText(application, "The product has been added", Toast.LENGTH_LONG).show();
                     it.findNavController().navigate(R.id.action_adminAddProduct_to_fragment_admin_management)
                 }
