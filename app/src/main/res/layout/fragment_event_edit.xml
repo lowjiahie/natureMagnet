@@ -58,18 +58,28 @@
                                 android:textAlignment="textStart"
                                 android:textSize="20dp"></TextView>
 
-                            <EditText
-                                android:layout_width="200dp"
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextField1"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/in_date"
-                                android:textColor="@color/black" />
+                                android:hint="Time">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/time"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#000000"
+                                    android:enabled="false"/>
+                            </com.google.android.material.textfield.TextInputLayout>
 
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
                                 android:text="Edit"
-                                android:id="@+id/btn_date"
-                                android:textSize="14dp"/>
+                                android:id="@+id/btn_time" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -89,18 +99,27 @@
                                 android:textAlignment="textStart"
                                 android:textSize="20dp"></TextView>
 
-                            <EditText
-                                android:layout_width="200dp"
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextField2"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/in_time"
-                                android:textColor="@color/black"/>
+                                android:hint="Date">
 
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/date"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#000000"
+                                    android:enabled="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
                                 android:text="Edit"
-                                android:id="@+id/btn_time"
-                                android:textSize="14dp" />
+                                android:id="@+id/btn_date" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -121,18 +140,20 @@
                                 android:textAlignment="textStart"
                                 android:textSize="20dp"></TextView>
 
-                            <EditText
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/in_deadline"
-                                android:textColor="@color/black"/>
-
-                            <Button
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextField3"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Edit"
-                                android:id="@+id/btn_deadline"
-                                android:textSize="14dp" />
+                                android:hint="Deadline">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/deadline"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#000000"
+                                    android:enabled="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
                         <HorizontalScrollView
@@ -203,12 +224,13 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:layout_marginRight="@dimen/margin_15"
                                 android:hint="Event Descriptions"
+
                                 android:textAlignment="textStart"
                                 android:textColorHint="@color/black"
                                 app:boxStrokeColor="@color/black"
-                                android:maxLength="150"
+                                android:maxLength="200"
                                 app:counterEnabled="true"
-                                app:counterMaxLength="150"
+                                app:counterMaxLength="200"
                                 app:counterTextColor="@color/black"
                                 app:hintTextColor="@color/black"
                                 app:layout_constraintTop_toBottomOf="@+id/event_desc_container">
@@ -220,6 +242,7 @@
                                     android:text="All kind of item will be accepted as a charity goods including tangible and intangible product that could be utilized by the old folks home"
                                     android:maxLines="5"
                                     android:minLines="2"
+                                    android:maxLength="200"
                                     android:textColor="@color/black"
                                     app:placeholderText="Event Descriptions" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -284,5 +307,19 @@
                 </androidx.cardview.widget.CardView>
             </androidx.cardview.widget.CardView>
         </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#B9000000"
+            android:visibility="gone">
+            <DatePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="150dp" />
+        </LinearLayout>
     </FrameLayout>
+
 </layout>
