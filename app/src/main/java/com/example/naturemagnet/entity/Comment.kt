@@ -1,9 +1,7 @@
 package com.example.naturemagnet.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import android.graphics.Bitmap
+import androidx.room.*
 
 //one customer can have many comments
 //one post can have many comments
@@ -21,14 +19,18 @@ import androidx.room.PrimaryKey
             childColumns = arrayOf("postID"),
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index(value = ["commentID"], unique = true)]
 )
 
 data class Comment(
-    @PrimaryKey val commentID: String,
+    @PrimaryKey(autoGenerate = true) var commentID: Long,
     val content: String?,
     val commentDatetime: String?,
     val eventLink: String?,
-    @ColumnInfo(index = true) var custID: String,
-    @ColumnInfo(index = true) var postID: String,
-)
+    @ColumnInfo(index = true) var custID: Long,
+    @ColumnInfo(index = true) var postID: Long,
+){
+    constructor(content: String, commentDatetime: String, eventLink: String?, custID: Long, postID: Long)
+            : this(0, content, commentDatetime, eventLink, custID, postID)
+}

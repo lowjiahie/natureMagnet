@@ -1,15 +1,15 @@
 package com.example.naturemagnet.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
+import android.graphics.Bitmap
+import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
-import androidx.room.PrimaryKey
+import com.example.naturemagnet.typeconverterClass.ImageConverter
 
 
 //one to many (one customer can have many posts)
 @Entity(
     tableName = "post",
+    indices = [Index(value = ["postID"], unique = true)],
     foreignKeys = [ForeignKey(
         entity = Customer::class,
         parentColumns = arrayOf("custID"),
@@ -18,12 +18,18 @@ import androidx.room.PrimaryKey
     )]
 )
 data class Post(
-    @PrimaryKey val postID: String,
+    @PrimaryKey(autoGenerate = true) var postID: Long,
     val title: String?,
     val content: String?,
-    val imgPost: String?,
-    val eventLink: String?,
-    val shareCount: String?,
-    val postDateTime: String?,
-    @ColumnInfo(index = true) var custID: String
-)
+    var imgPost: Bitmap?,
+    var eventLink: String?,
+    val shareCount: Int?,
+    val postDate: String?,
+    @ColumnInfo(index = true) var custID: Long
+){
+    constructor(title: String, content: String, imgPost: Bitmap?, eventLink: String?, shareCount: Int, postDate: String, custID: Long)
+            : this(0, title, content, imgPost, eventLink, shareCount, postDate, custID)
+
+    constructor(title: String, content: String, imgPost: Bitmap?)
+            : this(0, title, content, imgPost, "", 0, "", 0)
+}

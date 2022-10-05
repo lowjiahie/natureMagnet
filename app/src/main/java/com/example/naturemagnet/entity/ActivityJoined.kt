@@ -1,29 +1,32 @@
 package com.example.naturemagnet.entity
 
+import android.graphics.Bitmap
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.Index
 
 @Entity(
     tableName = "activityJoined",
     primaryKeys = ["custID", "activityID"],
-    indices = [Index("custID"), Index("activityID")],
+    indices = [Index(value = ["custID", "activityID"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,
             parentColumns = arrayOf("custID"),
             childColumns = arrayOf("custID"),
-            onDelete = ForeignKey.CASCADE
+            onDelete = CASCADE
         ), ForeignKey(
             entity = Activity::class,
             parentColumns = arrayOf("activityID"),
             childColumns = arrayOf("activityID"),
-            onDelete = ForeignKey.CASCADE
+            onDelete = CASCADE
         )
     ]
 )
 data class ActivityJoined(
-    val custID: String,
-    val activityID: String,
-    val dateJoined: String
+    @ColumnInfo(name = "custID") val custID: Long,
+    @ColumnInfo(name = "activityID") val activityID: Long,
+    @ColumnInfo(name = "dateJoined") val dateJoined: String
 )
