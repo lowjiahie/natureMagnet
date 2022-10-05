@@ -21,6 +21,9 @@ interface CustomerDao {
     @Query("SELECT * FROM Customer Where Customer.custID = :cusID")
     fun getCust(cusID:Long): Customer
 
+    @Query("SELECT * FROM Customer Where Customer.custEmail = :custEmail")
+    fun getCustwithEmail(custEmail:String): Customer
+
     @Insert
     fun insertCustomers(customer: List<Customer>)
 

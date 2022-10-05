@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.example.naturemagnet.dao.CustomerDao
 import com.example.naturemagnet.entity.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.ActivityMainBinding
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     private lateinit var db : NatureMagnetDB
     private lateinit var prefManager: PrefManager
-
+    lateinit var customerDao: CustomerDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
