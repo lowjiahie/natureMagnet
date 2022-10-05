@@ -58,7 +58,8 @@
                             android:layout_marginTop="4dp"
                             android:layout_marginBottom="4dp"
                             android:text=""
-                            android:textAppearance="?attr/textAppearanceHeadline5" />
+                            android:textAppearance="?attr/textAppearanceHeadline5"
+                            android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/aqiStatus1"
@@ -116,7 +117,8 @@
                             android:layout_marginTop="4dp"
                             android:layout_marginBottom="4dp"
                             android:text=""
-                            android:textAppearance="?attr/textAppearanceHeadline5" />
+                            android:textAppearance="?attr/textAppearanceHeadline5"
+                            android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/aqiStatus2"
@@ -175,7 +177,8 @@
                             android:layout_marginTop="4dp"
                             android:layout_marginBottom="4dp"
                             android:text=""
-                            android:textAppearance="?attr/textAppearanceHeadline5" />
+                            android:textAppearance="?attr/textAppearanceHeadline5"
+                            android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/aqiStatus3"

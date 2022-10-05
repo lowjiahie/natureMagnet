@@ -165,6 +165,7 @@
                 android:layout_marginTop="596dp"
                 android:layout_marginEnd="20dp"
                 android:text="Post"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
