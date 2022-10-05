@@ -28,17 +28,14 @@
             </group>
         </menu>
     </item>
-    <item android:title="Shop">
+    <item android:title="Mangement Prod">
         <menu>
             <group>
                 <item
                     android:id="@+id/fragment_admin_management"
-                    android:icon="@drawable/ic_cart_empty_fill"
-                    android:title="@string/cart"></item>
-                <item
-                    android:id="@+id/trackShipping"
-                    android:icon="@drawable/ic_local_shipping"
-                    android:title="@string/trackShipping"></item>
+                    android:icon="@drawable/ic_product__1_"
+                    android:title="Product Management"></item>
+
             </group>
         </menu>
     </item>

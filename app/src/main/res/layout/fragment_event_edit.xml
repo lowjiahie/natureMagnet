@@ -276,6 +276,7 @@
                                     android:backgroundTint="#A60E0E"
                                     android:text="Delete"
                                     android:textColor="#DCE5D4"
+                                    android:visibility="gone"
                                     android:textSize="18dp" />
                             </LinearLayout>
                         </LinearLayout>

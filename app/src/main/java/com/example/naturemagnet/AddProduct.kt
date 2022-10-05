@@ -86,18 +86,18 @@ class AddProduct : Fragment() {
                 {
                     db.insertProduct(Product(productName, productPrice, productDescription, productStock, imgUploaded,1))
                     Toast.makeText(application, "The product has been added", Toast.LENGTH_LONG).show();
-                    it.findNavController().navigate(R.id.fragment_admin_management)
+                    it.findNavController().navigate(R.id.action_adminAddProduct_to_fragment_admin_management)
                 }
                 else{
                     Toast.makeText(application, "The product has not been added. Please Try Again!", Toast.LENGTH_LONG)
                         .show();
-                    it.findNavController().navigate(R.id.fragment_admin_management)
+                    it.findNavController().navigate(R.id.action_adminAddProduct_to_fragment_admin_management)
                 }
             }
             if(successful == false){
                 Toast.makeText(application, "New Product not added or has been existed. Please Try Again!", Toast.LENGTH_LONG)
                     .show();
-                it.findNavController().navigate(R.id.fragment_admin_management)
+                it.findNavController().navigate(R.id.action_adminAddProduct_to_fragment_admin_management)
             }
         }
         // Inflate the layout for this fragment

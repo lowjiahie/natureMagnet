@@ -71,20 +71,36 @@
         android:label="Product Management">
         <action
             android:id="@+id/action_fragment_admin_management_to_addProduct"
-            app:destination="@id/adminAddProduct" />
+            app:destination="@id/adminAddProduct"
+            app:popUpTo="@id/adminAddProduct"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_fragment_admin_management_to_editProduct2"
-            app:destination="@id/adminEditProduct" />
+            app:destination="@id/adminEditProduct"
+            app:popUpTo="@id/adminEditProduct"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/adminAddProduct"
         android:name="com.example.naturemagnet.AddProduct"
         android:label="Add Product"
-        tools:layout="@layout/fragment_add_product" />
+        tools:layout="@layout/fragment_add_product" >
+        <action
+            android:id="@+id/action_adminAddProduct_to_fragment_admin_management"
+            app:destination="@id/fragment_admin_management"
+            app:popUpTo="@id/fragment_admin_management"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/adminEditProduct"
         android:name="com.example.naturemagnet.EditProduct"
-        android:label="Edit Product" />
+        android:label="Edit Product" >
+        <action
+            android:id="@+id/action_adminEditProduct_to_fragment_admin_management"
+            app:destination="@id/fragment_admin_management"
+            app:popUpTo="@id/fragment_admin_management"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_prodDetail"
         android:name="com.example.naturemagnet.fragment_prodDetail"

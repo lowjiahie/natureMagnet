@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,
                 R.id.eventMainFragment, R.id.fragment_user_main,
-                R.id.fragment_shop, R.id.fragment_admin_management
+                R.id.fragment_shop
             ), binding.drawerLayout
         )
         binding.apply {
@@ -95,11 +95,11 @@ class MainActivity : AppCompatActivity() {
                 navGraph.setStartDestination(R.id.homeFragment)
             }
 
-            if (prefManager.getEmail1() !="") {
-                Log.e("Tag2",prefManager.getEmail1().toString())
-                Log.e("Tag","Log admin")
-                navGraph.setStartDestination(R.id.fragment_admin_management)
-            }
+//            if (prefManager.getEmail1() !="") {
+//                Log.e("Tag2",prefManager.getEmail1().toString())
+//                Log.e("Tag","Log admin")
+//                navGraph.setStartDestination(R.id.fragment_admin_management)
+//            }
 
             navController.graph = navGraph
 

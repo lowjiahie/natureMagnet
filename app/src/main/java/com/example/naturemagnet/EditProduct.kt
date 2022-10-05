@@ -139,7 +139,7 @@ class EditProduct : Fragment() {
             else{
                 db.queDelProduct(editName)
                 Toast.makeText(application, "Product " + binding.inputProdName.text.toString() + " has Successfully Deleted", Toast.LENGTH_LONG).show();
-                it.findNavController().navigate(R.id.fragment_admin_management)
+                it.findNavController().navigate(R.id.action_adminEditProduct_to_fragment_admin_management)
             }
         }
 

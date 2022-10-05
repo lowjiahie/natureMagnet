@@ -1,35 +1,36 @@
 package com.example.naturemagnet
 
+import android.app.Activity
 import android.app.Application
-import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
-import android.app.TimePickerDialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import android.widget.EditText
-import android.widget.TimePicker
 import android.widget.Toast
+import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.naturemagnet.dao.ActivityDao
 import com.example.naturemagnet.dao.ActivityJoinedDao
 import com.example.naturemagnet.dao.CategoryDao
-import com.example.naturemagnet.dao.PrefManager
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentEventEditBinding
-import com.example.naturemagnet.entity.Post
+import com.example.naturemagnet.entity.PrefManager
 import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.viewModel.EventDetailsViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -43,6 +44,7 @@ class event_edit : Fragment() {
     private lateinit var db: NatureMagnetDB
     private lateinit var prefManager: PrefManager
     private val sharedViewModel: EventDetailsViewModel by activityViewModels()
+    private lateinit var bitmap: Bitmap
     var in_date: EditText? = null
     var cal = Calendar.getInstance()
 
@@ -99,8 +101,12 @@ class event_edit : Fragment() {
                     cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 }
 
-//            imageUploader.setOnClickListener{
-//                pickImageGallery()}
+            imageUploader.setOnClickListener {
+                Log.e("event_edit", "click click click")
+            }
+            imageUploader.setOnClickListener {
+                pickImageGallery()
+            }
 //            imageUploader.setOnClickListener{
 //                checkValidPost(application)
 //            }
@@ -158,11 +164,24 @@ class event_edit : Fragment() {
 //
 //                Log.e("Event_Edit", "Button for Deadline is Clicked")
 //            }
+            cancelButton.setOnClickListener{
+                it.findNavController().popBackStack()
+            }
+            saveButton.setOnClickListener {
+                var updatedActivity = currentActivity
+                val emptyBitmap = Bitmap.createBitmap(
+                    updatedActivity?.sneakPeek!!.getWidth(),
+                    updatedActivity?.sneakPeek!!.getHeight(),
+                    updatedActivity?.sneakPeek!!.getConfig()
+                )
 
-//            saveButton.setOnClickListener {
-//                var updatedActivity = currentActivity
-//                updatedActivity?.name = eventName.text.toString()
-//                updatedActivity?.descriptions = descriptionInputTextField.text.toString()
+                if (updatedActivity?.sneakPeek!!.sameAs(emptyBitmap))
+                    updatedActivity?.sneakPeek = bitmap
+                updatedActivity?.descriptions = descriptionInputTextField.text.toString()
+                eventRepository.updateActivity(updatedActivity!!)
+                Toast.makeText(application,"Activity Details Has been succesfully updated !", Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.eventManageFragment)
+            }
 
             if (currentActivity != null) {
 //                    var time: String = eventTime.text.toString()
@@ -186,14 +205,36 @@ class event_edit : Fragment() {
 //        picker.show(event_edit, "tag")
             return binding.root
         }
+    }
 
+    fun pickImageGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, create_post.IMAGE_REQUEST_CODE)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-//    fun pickImageGallery(){
-//        val intent = Intent(Intent.ACTION_PICK)
-//        intent.type ="image/*"
-//        startActivityForResult(intent, create_post.IMAGE_REQUEST_CODE)
-//    }
-//    fun checkValidPost(application : Application){
+        if (requestCode == create_post.IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Glide.with(this)
+                .asBitmap()
+                .load(data?.data)
+                .into(object : CustomTarget<Bitmap?>() {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        @Nullable transition: Transition<in Bitmap?>?
+                    ) {
+                        binding.activitySneakPeek.setImageBitmap(resource)
+                        bitmap = resource
+                    }
+
+                    override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
+                })
+
+        }
+    }
+
+    fun checkValidPost(application : Application){
 ////        val sdf = SimpleDateFormat("yyyy-MM-dd")
 ////        val currentDate = sdf.format(Date())
 ////
@@ -224,6 +265,5 @@ class event_edit : Fragment() {
 ////                .show()
 ////
 ////
-////        }
-    }
+        }
 }

@@ -35,7 +35,7 @@ class EventRepository(private val activityDao: ActivityDao, private val category
     suspend fun insertActivities(activities: List<Activity>) {
         return activityDao.insertActivities(activities)
     }
-    suspend fun updateActivity(activity: Activity) {
+    fun updateActivity(activity: Activity) {
         return activityDao.updateUsers(activity)
     }
     suspend fun deleteActivity(activity: Activity) {
@@ -68,6 +68,7 @@ class EventRepository(private val activityDao: ActivityDao, private val category
         activityJoinedDao.insertActivitiesJoined(activitiesJoined)
     }
     fun deleteActivityJoined(activityId: Long, custId: Long) {
+        Log.e("Event_Repo", activityId.toString()+" = "+custId.toString())
         activityJoinedDao.deleteActivityJoined(activityId, custId)
     }
     fun getActivitiesJoinedByUser(userId: Long): List<Activity> = activityDao.getActivitiesJoinedByUser(userId)

@@ -137,8 +137,8 @@ class event_details : Fragment() {
                 //TODO: delete specific activityJoined entries using with custId & activityId
                 if (currentActivity != null) {
                     eventRepository.deleteActivityJoined(
-                        prefManager.getId()!!,
-                        currentActivity.custID
+                        currentActivity.activityID,
+                        prefManager.getId()!!
                     )
                     it.findNavController().navigate(R.id.eventMainFragment)
                 }

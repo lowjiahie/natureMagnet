@@ -52,7 +52,7 @@ class Admin_management : Fragment(), ProductClickListener {
         }
 
         binding.addProdBtn.setOnClickListener {
-            findNavController().navigate(R.id.adminAddProduct)
+            findNavController().navigate(R.id.action_fragment_admin_management_to_addProduct)
         }
 
         // Inflate the layout for this fragment
