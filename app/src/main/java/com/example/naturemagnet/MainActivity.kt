@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment, R.id.awarenessMainFragment,
                 R.id.eventMainFragment, R.id.fragment_user_main,
-                R.id.fragment_shop
+                R.id.fragment_shop, R.id.eventManageFragment
             ), binding.drawerLayout
         )
         binding.apply {
@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.eventMainFragment -> showBottomNav()
                 R.id.fragment_shop -> showBottomNav()
                 R.id.fragment_user_main -> showBottomNav()
+                R.id.eventManageFragment -> showBottomNav()
                 else -> hideBottomNav()
             }
         }

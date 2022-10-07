@@ -1,7 +1,6 @@
 package com.example.naturemagnet
 
-import android.app.Activity
-import android.app.Application
+import android.app.*
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
 import android.graphics.Bitmap
@@ -18,6 +17,7 @@ import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -28,10 +28,17 @@ import com.example.naturemagnet.dao.ActivityJoinedDao
 import com.example.naturemagnet.dao.CategoryDao
 import com.example.naturemagnet.database.NatureMagnetDB
 import com.example.naturemagnet.databinding.FragmentEventEditBinding
+import com.example.naturemagnet.databinding.FragmentEventManageBinding
 import com.example.naturemagnet.entity.PrefManager
+import com.example.naturemagnet.picker.DatePicker
+import com.example.naturemagnet.picker.TimePicker
 import com.example.naturemagnet.repository.EventRepository
 import com.example.naturemagnet.viewModel.EventDetailsViewModel
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.Year
 import java.util.*
+import java.util.Calendar.*
 
 
 /**
@@ -45,8 +52,6 @@ class event_edit : Fragment() {
     private lateinit var prefManager: PrefManager
     private val sharedViewModel: EventDetailsViewModel by activityViewModels()
     private lateinit var bitmap: Bitmap
-    var in_date: EditText? = null
-    var cal = Calendar.getInstance()
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
@@ -66,143 +71,39 @@ class event_edit : Fragment() {
         val activityJoinedDao: ActivityJoinedDao = db.activityJoinedDao()
         val eventRepository = EventRepository(activityDao, categoryDao, activityJoinedDao)
 
-        /** formate the date */
-        val dateTime: String = currentActivity?.dateTime.toString()
-        var date: String = dateTime.subSequence(0, 10) as String
-        date = date.replace('-', '/')
-
-        /** formate time of the activity */
-        var time: String = dateTime.subSequence(11, 16) as String
-        var hr = time.split(':')[0]
-        val min = time.split(':')[1]
-        if (hr.toInt() - 12 >= 0) {
-            if (hr.toInt() - 12 > 0) {
-                hr = (hr.toInt() - 12).toString()
-            }
-            time = hr + " : " + min + " P.M."
-        } else {
-            time = hr + " : " + min + " A.M."
-        }
-        val formatedDateTime: String = date + "\nEvent Start @ " + time
-
         /** binding the activity object to livedata */
         binding.apply {
             eventName.text = currentActivity?.name
             descriptionInputTextField.setText(currentActivity?.descriptions.toString())
             activitySneakPeek.setImageBitmap(currentActivity?.sneakPeek)
-            inTime.setText(currentActivity?.dateTime.toString().subSequence(11, 16))
-            inDate.setText(currentActivity?.dateTime.toString().subSequence(0, 10))
-            inDeadline.setText(currentActivity?.registrationDeadline.toString())
+            deadline.setText(currentActivity?.registrationDeadline.toString())
 
-            val dateSetListener =
-                OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                    cal.set(Calendar.YEAR, year)
-                    cal.set(Calendar.MONTH, monthOfYear)
-                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                }
-
-            imageUploader.setOnClickListener {
-                Log.e("event_edit", "click click click")
-            }
+            /** get current activity's datetime and format it to be display */
+            if (sharedViewModel.parent?.value.toString() != "ManageActivities")
+                setupCreateAction(binding)
+            else
+                setupEditAction(this, currentActivity?.dateTime.toString())
             imageUploader.setOnClickListener {
                 pickImageGallery()
             }
-//            imageUploader.setOnClickListener{
-//                checkValidPost(application)
-//            }
-
-//            btnTime!!.setOnClickListener(
-//                object : View.OnClickListener {
-//                override fun onClick(view: View) {
-//                    DatePickerDialog(
-//                        application,
-//                        dateSetListener,
-//                        // set DatePickerDialog to point to today's date when it loads up
-//                        cal.get(Calendar.YEAR),
-//                        cal.get(Calendar.MONTH),
-//                        cal.get(Calendar.DAY_OF_MONTH)
-//                    ).show()
-//                }
-//            })
-//            btnTime.setOnClickListener {
-////                val datePickerBtn = binding.btnTime
-////            picker.setOnClickListener{
-////                picker.show(requireActivity().supportFragmentManager, picker.toString())
-////            }
-////
-////            picker.addOnPositiveButtonClickListener {
-////                val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
-////                calendar.timeInMillis = it.first
-////                val format = SimpleDateFormat("yyyy-MM-dd")
-////                var formattedDate = format.format(calendar.time)
-////                calendar.timeInMillis = it.second
-////                var formattedDate2 = format.format(calendar.time)
-////
-////                inDate.setText( "${formattedDate} - ${formattedDate2}")
-////            }()
-////
-////                Log.e("Event_Edit", "Button for Time is Clicked")
-////            }
-//            inDeadline.setOnClickListener {
-////                // Get Current Date
-////                val c = Calendar.getInstance()
-////                mYear = c[Calendar.YEAR]
-////                mMonth = c[Calendar.MONTH]
-////                mDay = c[Calendar.DAY_OF_MONTH]
-////                // Get Current Time
-////                mHour = c[Calendar.HOUR_OF_DAY]
-////                mMinute = c[Calendar.MINUTE]
-////
-////                // Launch Time Picker Dialog
-////                val timePickerDialog = TimePickerDialog(it.context,
-////                    OnTimeSetListener { view, hourOfDay, minute -> txtTime!!.setText("$hourOfDay:$minute") },
-////                    mHour,
-////                    mMinute,
-////                    false
-////                )
-////                timePickerDialog.show()
-//
-//                Log.e("Event_Edit", "Button for Deadline is Clicked")
-//            }
             cancelButton.setOnClickListener{
                 it.findNavController().popBackStack()
             }
             saveButton.setOnClickListener {
                 var updatedActivity = currentActivity
-                val emptyBitmap = Bitmap.createBitmap(
-                    updatedActivity?.sneakPeek!!.getWidth(),
-                    updatedActivity?.sneakPeek!!.getHeight(),
-                    updatedActivity?.sneakPeek!!.getConfig()
-                )
 
-                if (updatedActivity?.sneakPeek!!.sameAs(emptyBitmap))
+                if (::bitmap.isInitialized) {
+                    Log.e("event_edit", "imange changed")
                     updatedActivity?.sneakPeek = bitmap
+                }
+
+                updatedActivity?.dateTime = date.text.toString() + " " + time.text.toString() +":00"
                 updatedActivity?.descriptions = descriptionInputTextField.text.toString()
                 eventRepository.updateActivity(updatedActivity!!)
                 Toast.makeText(application,"Activity Details Has been succesfully updated !", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.eventManageFragment)
             }
 
-            if (currentActivity != null) {
-//                    var time: String = eventTime.text.toString()
-                time = time.replace('-', '/')
-//                    var date: String = eventDate.text.toString()
-                date = date.replace('-', '/')
-//                    val deadLine: String = eventDeadline.text.toString()
-            }
-//        }
-//        }
-
-            // Inflate the layout for this fragment
-//        val picker =
-//            MaterialTimePicker.Builder()
-//            .setTimeFormat(TimeFormat.CLOCK_12H)
-//            .setHour(12)
-//            .setMinute(10)
-//            .setTitleText("Select Appointment time")
-//            .setTheme(R.style.ThemeOverlay_App_DatePicker)
-//            .build()
-//        picker.show(event_edit, "tag")
             return binding.root
         }
     }
@@ -230,40 +131,89 @@ class event_edit : Fragment() {
 
                     override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
                 })
-
         }
     }
+    fun setupEditAction(binding: FragmentEventEditBinding, dateTime: String) {
+        binding.date.setText(dateTime.subSequence(0, 10))
+        binding.time.setText(dateTime.subSequence(11, 16))
 
-    fun checkValidPost(application : Application){
-////        val sdf = SimpleDateFormat("yyyy-MM-dd")
-////        val currentDate = sdf.format(Date())
-////
-////        try {
-////            val title = binding.textinputTxt.text.toString().trim()
-////            val content = binding.textinputTtl.text.toString().trim()
-////            var imgPost = bitmap
-////            var eventLink = null
-////            val shareCount = 0
-////            val postDate = currentDate
-////
-////            val db = NatureMagnetDB.getInstance(application)!!
-////
-////
-////            if (title.isNotEmpty() && content.isNotEmpty() && imgPost != null) {
-////                Toast.makeText(application, "The post has been published", Toast.LENGTH_SHORT)
-////                    .show();
-////                db.postDao()
-////                    .insertPost(Post(title, content, imgPost, eventLink, shareCount, postDate, 1))
-////                //navigate to post page
-////                findNavController().navigate(R.id.action_createPostFragment_to_fragment_all_post)
-////            } else {
-////                Toast.makeText(application, "title/text/image cannot empty", Toast.LENGTH_SHORT)
-////                    .show();
-////            }
-////        }catch (ex : Exception){
-////            Toast.makeText(application, "Please pick an image", Toast.LENGTH_SHORT)
-////                .show()
-////
-////
+        val yearTemp = dateTime.subSequence(0, 4)
+        val monthTemp = dateTime.subSequence(5, 7)
+        val dayTemp = dateTime.subSequence(8, 10)
+        val hourTemp = dateTime.subSequence(11, 13)
+        val minuteTemp = dateTime.subSequence(14, 16)
+
+        val  c = Calendar.getInstance();
+        val year = yearTemp.toString().toInt()
+        val month = monthTemp.toString().toInt()
+        val day = dayTemp.toString().toInt()
+        val hour = hourTemp.toString().toInt()
+        val minute = minuteTemp.toString().toInt()
+        val dateSetListener = OnDateSetListener { _, year, month, day ->
+            val myFormat = "yyyy/MM/dd" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            val tempMonth = month + 1
+            var monthFormated:String = tempMonth.toString()
+            var dayFormated:String = day.toString()
+            if (tempMonth < 10)
+                monthFormated = "0$monthFormated"
+            if (day < 10)
+                dayFormated = "0$dayFormated"
+            binding.date.setText("$year/$monthFormated/$dayFormated")
         }
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+            var hourFormated: String = hour.toString()
+            var minuteFormated: String = minute.toString()
+            if (hour < 10){
+                hourFormated = "0$hour"
+            }
+            if (minute < 10)
+                minuteFormated = "0$minute"
+            binding.time.setText("$hourFormated:$minuteFormated")
+        }
+
+        var datePicker = DatePickerDialog(requireContext(), dateSetListener, year, month-1, day)
+        var timePicker = TimePickerDialog(requireContext(), timeSetListener, hour, minute, false)
+
+        binding.btnDate.setOnClickListener { datePicker.show() }
+        binding.btnTime.setOnClickListener { timePicker.show() }
+    }
+    fun setupCreateAction(binding: FragmentEventEditBinding) {
+        val  c = Calendar.getInstance();
+        val sdf = SimpleDateFormat("yyyy/MM/dd/ hh:mm:ss")
+        val todayDate = sdf.format(Date())
+        //c.set(Calendar.DATE, todayDate.toLong().toInt())
+
+        var year = c.get(YEAR)
+        val month = c.get(MONTH)
+        val day = c.get(DAY_OF_MONTH)
+        val hour = 0
+        val minute = 0
+
+        binding.activitySneakPeek.setImageBitmap(null)
+        binding.descriptionInputTextField.text = null
+        val dateSetListener = OnDateSetListener { _, year, month, day ->
+            val myFormat = "dd/MM/yyyy" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            var month = month + 2
+            binding.date.setText("$year/$month/$day")
+            binding.deadline.setText("$year/$month/$day")
+        }
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+            var hourFormated: String = hour.toString()
+            var minuteFormated: String = minute.toString()
+            if (hour < 10){
+                hourFormated = "0$hour"
+            }
+            if (minute < 10)
+                minuteFormated = "0$minute"
+            binding.time.setText("$hourFormated:$minuteFormated")
+        }
+
+        var datePicker = DatePickerDialog(requireContext(), dateSetListener, year, month, day)
+        var timePicker = TimePickerDialog(requireContext(), timeSetListener, hour, minute, false)
+
+        binding.btnDate.setOnClickListener { datePicker.show() }
+        binding.btnTime.setOnClickListener { timePicker.show() }
+    }
 }

@@ -107,9 +107,8 @@ class event_main : Fragment(), EventActivityClickkListener {
         binding.upComingEventCardRecyclerView.adapter = eventRectangleAdapter
 
         /** binding the Button to redirect user create activity fragment "manageEvent" */
-        binding.createActivityBtn.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.eventEdit)
-//            Log.e("Event_Main_Fragment", "clicked !!!!!")
+        binding.createActivityBtn.setOnClickListener{
+            it.findNavController().navigate(R.id.eventEdit)
         }
         return binding.root
     }

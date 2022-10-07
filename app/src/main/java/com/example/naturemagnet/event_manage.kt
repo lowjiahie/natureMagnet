@@ -53,6 +53,9 @@ class event_manage : Fragment(), EventActivityClickkListener {
         binding.yourActivityCardRecyclerView.layoutManager = layoutManager
         binding.yourActivityCardRecyclerView.adapter = eventRectangleAdapter
 
+        binding.createActivityBtn.setOnClickListener{
+            it.findNavController().navigate(R.id.eventEdit)
+        }
         // Inflate the layout for this fragment
         return binding.root
     }
